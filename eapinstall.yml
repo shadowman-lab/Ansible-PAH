@@ -30,10 +30,11 @@
       state: present
     when: ansible_distribution_version is match("8.*")
 
-  - name: Enable on boot
+  - name: Enable on boot and start service
     systemd:
       enabled: yes
       name: eap7-standalone.service
+      state: started
   
   - name: Open Firewalld for management port
     ansible.posix.firewalld:
