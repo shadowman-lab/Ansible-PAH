@@ -9,7 +9,7 @@
   - name: Deploy maze application
     copy:
       src: app/mazewars.war
-      dest: /opt/jboss-as/jboss-eap-7.3/standalone/deployments
+      dest: /opt/rh/eap7/root/usr/share/wildfly/standalone/deployments
   
   - name: Set stats for the e-mail body and ServiceNow
     set_stats:
