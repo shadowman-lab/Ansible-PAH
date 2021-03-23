@@ -4,9 +4,6 @@
   hosts: "{{ vm_name }}"
   gather_facts: true
 
-  collections:
-    - ansible.posix
-
   tasks:
 
   - name: Enable Repository for RHEL 7
@@ -39,14 +36,14 @@
       name: eap7-standalone.service
   
   - name: Open Firewalld for management port
-    firewalld:
+    ansible.posix.firewalld:
       port: 9990/tcp
       permanent: yes
       state: enabled 
     notify: restart_firewalld
 
   - name: Open Firewalld for http
-    firewalld:
+    ansible.posix.firewalld:
       port: 8080/tcp
       permanent: yes
       state: enabled 
