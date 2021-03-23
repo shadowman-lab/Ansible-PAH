@@ -1,35 +1,42 @@
 ---
 
-- name: Install JBOSS Common and EAP
+- name: Install JBOSS EAP
   hosts: "{{ vm_name }}"
   gather_facts: true
-
-  roles:
-    
-    - redhat-cop.jboss_eap
 
   collections:
     - ansible.posix
 
   tasks:
 
-  - name: Install packages
+  - name: Enable Repository for RHEL 7
+    rhsm_repository:
+      name: jb-eap-7.3-for-rhel-7-server-rpms
+      state: present
+    when: ansible_distribution_version is match("7.*")
+
+  - name: Enable Repository for RHEL 8
+    rhsm_repository:
+      name: jb-eap-7.3-for-rhel-8-server-rpms
+      state: present
+    when: ansible_distribution_version is match("8.*")
+
+  - name: Install EAP
     yum:
-      name:
-        - java-1.8.0-openjdk-devel
-        - unzip
-        - initscripts
-        - python-pip
+      name: '@jboss-eap7-jdk11'
       state: present
+    when: ansible_distribution_version is match("7.*")
 
-  - name: Install python dependencies
-    pip:
-      name:
-        - requests
-        - lxml
+  - name: Install EAP
+    dnf:
+      name: '@jboss-eap7-jdk11'
       state: present
+    when: ansible_distribution_version is match("8.*")
 
-
+  - name: Enable on boot
+    systemd:
+      enabled: yes
+      name: eap7-standalone.service
   
   - name: Open Firewalld for management port
     firewalld:
