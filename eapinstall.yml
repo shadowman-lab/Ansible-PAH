@@ -36,23 +36,9 @@
       name: eap7-standalone.service
       state: started
   
-  - name: Open Firewalld for management port
-    ansible.posix.firewalld:
-      port: 9993/tcp
-      permanent: yes
-      state: enabled 
-    notify: restart_firewalld
-
   - name: Open Firewalld for management port https
     ansible.posix.firewalld:
-      port: 9990/tcp
-      permanent: yes
-      state: enabled 
-    notify: restart_firewalld
-
-  - name: Open Firewalld for http
-    ansible.posix.firewalld:
-      port: 8080/tcp
+      port: 9993/tcp
       permanent: yes
       state: enabled 
     notify: restart_firewalld
