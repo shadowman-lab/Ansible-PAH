@@ -14,7 +14,7 @@
 
   - name: Enable Repository for RHEL 8
     rhsm_repository:
-      name: jb-eap-7.3-for-rhel-8-server-rpms
+      name: jb-eap-7.3-for-rhel-8-x86_64-rpms
       state: present
     when: ansible_distribution_version is match("8.*")
 
