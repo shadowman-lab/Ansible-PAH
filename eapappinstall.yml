@@ -14,8 +14,8 @@
   - name: Set stats for the e-mail body and ServiceNow
     set_stats:
       data:
-        email_body: "MazeWars: http://{{ ansible_host }}:8080/mazewars "
-        work_notes: "[code]<a href='http://{{ ansible_host }}:8080/mazewars'>MazeWars</a>[/code] "
+        email_body: "MazeWars: http://{{ ansible_host }}:8443/mazewars "
+        work_notes: "[code]<a href='http://{{ ansible_host }}:8443/mazewars'>MazeWars</a>[/code] "
 
   - name: Set stats for the e-mail subject
     set_stats:
