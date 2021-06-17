@@ -19,19 +19,19 @@
     when: ansible_distribution_version is match("8.*")
 
   - name: Install EAP
-    yum:
+    ansible.builtin.yum:
       name: '@jboss-eap7-jdk11'
       state: present
     when: ansible_distribution_version is match("7.*")
 
   - name: Install EAP
-    dnf:
+    ansible.builtin.dnf:
       name: '@jboss-eap7-jdk11'
       state: present
     when: ansible_distribution_version is match("8.*")
 
   - name: Enable on boot and start service
-    systemd:
+    ansible.builtin.systemd:
       enabled: yes
       name: eap7-standalone.service
       state: started
@@ -52,6 +52,6 @@
     
   handlers:
     - name: restart_firewalld
-      service:
+      ansible.builtin.service:
         name: firewalld
         state: restarted
