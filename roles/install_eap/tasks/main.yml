@@ -1,3 +1,4 @@
+---
 - name: Enable Repository for RHEL 7
   community.general.rhsm_repository:
     name: jb-eap-7.3-for-rhel-7-server-rpms

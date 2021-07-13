@@ -1,3 +1,4 @@
+---
 - name: Deploy maze application
   ansible.builtin.copy:
     src: app/mazewars.war

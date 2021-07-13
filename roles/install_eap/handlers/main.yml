@@ -1,3 +1,4 @@
+---
 - name: restart_firewalld
   ansible.builtin.service:
     name: firewalld
