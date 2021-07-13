@@ -1,0 +1,43 @@
+- name: Enable Repository for RHEL 7
+  community.general.rhsm_repository:
+    name: jb-eap-7.3-for-rhel-7-server-rpms
+    state: present
+  when: ansible_distribution_version is match("7.*")
+
+- name: Enable Repository for RHEL 8
+  community.general.rhsm_repository:
+    name: jb-eap-7.3-for-rhel-8-x86_64-rpms
+    state: present
+  when: ansible_distribution_version is match("8.*")
+
+- name: Install EAP
+  ansible.builtin.yum:
+    name: '@jboss-eap7-jdk11'
+    state: present
+  when: ansible_distribution_version is match("7.*")
+
+- name: Install EAP
+  ansible.builtin.dnf:
+    name: '@jboss-eap7-jdk11'
+    state: present
+  when: ansible_distribution_version is match("8.*")
+
+- name: Enable on boot and start service
+  ansible.builtin.systemd:
+    enabled: yes
+    name: eap7-standalone.service
+    state: started
+
+- name: Open Firewalld for management port https
+  ansible.posix.firewalld:
+    port: 9993/tcp
+    permanent: yes
+    state: enabled 
+  notify: restart_firewalld
+
+- name: Open Firewalld for https
+  ansible.posix.firewalld:
+    port: 8443/tcp
+    permanent: yes
+    state: enabled 
+  notify: restart_firewalld

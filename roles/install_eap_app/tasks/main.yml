@@ -1,0 +1,16 @@
+- name: Deploy maze application
+  ansible.builtin.copy:
+    src: app/mazewars.war
+    dest: /opt/rh/eap7/root/usr/share/wildfly/standalone/deployments
+
+- name: Set stats for the e-mail body and ServiceNow
+  ansible.builtin.set_stats:
+    data:
+      email_body: "MazeWars: https://{{ ansible_host }}:8443/mazewars "
+      work_notes: "[code]<a href='https://{{ ansible_host }}:8443/mazewars'>MazeWars</a>[/code] "
+
+- name: Set stats for the e-mail subject
+  ansible.builtin.set_stats:
+    data:
+      email_subject: "Ansible EAP app link"
+    aggregate: no
