@@ -3,6 +3,7 @@
 - name: Install JBOSS Application
   hosts: "{{ vm_name }}"
   gather_facts: false
+  strategy: free
 
   roles:
     - install_eap_app
