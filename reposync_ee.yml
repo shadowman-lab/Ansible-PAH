@@ -2,6 +2,7 @@
 - name: Sync all PAH remote repos
   hosts: localhost
   gather_facts: false
+  become: false
 
   roles:
     - sync_repos
