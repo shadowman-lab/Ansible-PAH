@@ -1,9 +1,9 @@
 
 - name: Remove <none> images after build
-  command:
-    cmd: podman rmi $(podman images -f 'dangling=true')
-  register: result
-  changed_when: '"repository name must be" in result.stderr'
+  shell:
+    cmd: podman rmi $(podman images -f 'dangling=true' -q)
+
+
 
 - name: push new EE to PAH
   command:
