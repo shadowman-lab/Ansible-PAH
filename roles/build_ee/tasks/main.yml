@@ -2,7 +2,7 @@
 
 - name: Remove <none> images after build
   command:
-    cmd: podman rmi $(podman images -f "dangling=true")
+    cmd: "podman rmi $(podman images -f 'dangling=true' -q)"
   changed_when: true
 
 - name: push new EE to PAH
