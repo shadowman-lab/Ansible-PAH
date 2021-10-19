@@ -1,9 +1,0 @@
----
-
-- name: Install JBOSS EAP
-  hosts: "{{ vm_name }}"
-  gather_facts: true
-  strategy: free
-
-  roles:
-    - install_eap

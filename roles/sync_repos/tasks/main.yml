@@ -1,0 +1,10 @@
+---
+- name: Sync community repo
+  ah_repository_sync:
+    name: community
+    wait: true
+
+- name: Sync community repo
+  ah_repository_sync:
+    name: rh-certified
+    wait: true
