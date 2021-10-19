@@ -1,9 +1,20 @@
+---
+
+- name: Ensure old EE is removed
+  command:
+    cmd: "podman rmi aaphub.shadowman.dev/full/ansibleee"
+  changed_when: true
+
+- name: Build new EE
+  command:
+    cmd: "ansible-builder build -t aaphub.shadowman.dev/full/ansibleee"
+    chdir: /home/adworjan/ansible/execution/
+  changed_when: true
 
 - name: Remove <none> images after build
   shell:
     cmd: podman rmi $(podman images -f 'dangling=true' -q)
-
-
+  changed_when: true
 
 - name: push new EE to PAH
   command:
