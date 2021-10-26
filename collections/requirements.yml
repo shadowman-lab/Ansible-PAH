@@ -1,7 +1,7 @@
 collections:
 
   - name: redhat_cop.ah_configuration
-    source: https://towerhub.shadowman.dev/api/galaxy/content/community/
+    source: https://towerpah.shadowman.dev/api/galaxy/content/community/
 
 
   
