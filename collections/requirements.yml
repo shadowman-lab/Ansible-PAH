@@ -1,7 +1,6 @@
 collections:
 
   - name: redhat_cop.ah_configuration
-    source: https://towerpah.shadowman.dev/api/galaxy/content/community/
 
 
   
