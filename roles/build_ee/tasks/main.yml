@@ -2,12 +2,12 @@
 
 - name: Ensure old EE is removed
   ansible.builtin.command:
-    cmd: "podman rmi aaphub.shadowman.dev/full/ansibleee"
+    cmd: "podman rmi towerpah.shadowman.dev/full/ansibleee"
   changed_when: true
 
 - name: Build new EE
   ansible.builtin.command:
-    cmd: "ansible-builder build -t aaphub.shadowman.dev/full/ansibleee"
+    cmd: "ansible-builder build -t towerpah.shadowman.dev/full/ansibleee"
     chdir: /home/adworjan/ansible/execution/
   changed_when: true
 
@@ -18,5 +18,5 @@
 
 - name: push new EE to PAH
   ansible.builtin.command:
-    cmd: "podman push --creds={{pah_user}}:{{pah_pass}} aaphub.shadowman.dev/full/ansibleee"
+    cmd: "podman push --creds={{pah_user}}:{{pah_pass}} towerpah.shadowman.dev/full/ansibleee"
   changed_when: true
