@@ -8,7 +8,7 @@
 
 - name: Build new EE
   ansible.builtin.command:
-    cmd: ls
+    cmd: 'ansible-builder build -t towerpah.shadowman.dev/full/ansibleee'
     chdir: /home/adworjan/ansible/execution/
   changed_when: true
 
