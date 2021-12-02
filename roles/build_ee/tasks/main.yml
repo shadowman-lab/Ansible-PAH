@@ -4,6 +4,7 @@
   ansible.builtin.command:
     cmd: "podman rmi towerpah.shadowman.dev/full/ansibleee"
   changed_when: true
+  ignore_errors: true
 
 - name: Build new EE
   ansible.builtin.shell:
