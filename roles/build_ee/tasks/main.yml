@@ -6,7 +6,7 @@
   changed_when: true
 
 - name: Build new EE
-  ansible.builtin.command:
+  ansible.builtin.shell:
     cmd: "ansible-builder build -t towerpah.shadowman.dev/full/ansibleee"
     chdir: /home/adworjan/ansible/execution/
   changed_when: true
