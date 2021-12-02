@@ -8,7 +8,7 @@
     - sync_repos
 
 - name: Build new EE
-  hosts: aap.shadowman.dev
+  hosts: tower.shadowman.dev
   gather_facts: false
 
   roles:
