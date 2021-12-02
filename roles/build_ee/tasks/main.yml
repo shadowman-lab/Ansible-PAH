@@ -7,7 +7,7 @@
   ignore_errors: true
 
 - name: Build new EE
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: "ansible-builder build -t towerpah.shadowman.dev/full/ansibleee"
     chdir: /home/adworjan/ansible/execution/
   changed_when: true
