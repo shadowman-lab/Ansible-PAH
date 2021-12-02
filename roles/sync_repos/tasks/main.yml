@@ -4,7 +4,7 @@
     name: community
     wait: true
     ah_host: "{{ lookup('env', 'AH_HOST') }}"
-    ah_api_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
+    ah_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
     
 
 - name: Sync rh-certified repo
@@ -12,4 +12,4 @@
     name: rh-certified
     wait: true
     ah_host: "{{ lookup('env', 'AH_HOST') }}"
-    ah_api_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
+    ah_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
