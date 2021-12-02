@@ -3,8 +3,13 @@
   redhat_cop.ah_configuration.ah_repository_sync:
     name: community
     wait: true
+    ah_host: "{{ lookup('env', 'AH_HOST') }}"
+    ah_api_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
+    
 
 - name: Sync rh-certified repo
   redhat_cop.ah_configuration.ah_repository_sync:
     name: rh-certified
     wait: true
+    ah_host: "{{ lookup('env', 'AH_HOST') }}"
+    ah_api_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
