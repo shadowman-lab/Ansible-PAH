@@ -1,13 +1,42 @@
 ---
 
-- name: Add latest tag new
-  redhat_cop.ah_configuration.ah_ee_image:
-    name: ee-supported-rhel8:latest
-    state: updated
-    append: true
-    tags:
-      - "newest"
-    ah_host: "{{ lookup('env', 'AH_HOST') }}"
-    ah_username: "{{ lookup('env', 'pah_user') }}"
-    ah_password: "{{ lookup('env', 'pah_pass') }}"
-  delegate_to: towerpah.shadowman.dev
+- name: Ensure old EE is removed
+  ansible.builtin.command:
+    cmd: "podman rmi towerpah.shadowman.dev/full/ansibleee"
+  changed_when: true
+  ignore_errors: true
+
+- name: Build new EE
+  ansible.builtin.command:
+    cmd: 'ansible-builder build -t towerpah.shadowman.dev/full/ansibleee'
+    chdir: /home/adworjan/ansible/execution/
+  changed_when: true
+
+- name: Remove <none> images after build
+  ansible.builtin.shell:
+    cmd: podman rmi $(podman images -f 'dangling=true' -q)
+  changed_when: true
+
+- name: Get current version
+  ansible.builtin.slurp:
+    src: '/home/adworjan/ansible/execution/version.txt'
+  register: version
+
+- name: get new tag version
+  ansible.builtin.set_fact:
+    new_version: "{{ (version['content'] | b64decode |float + 0.1)| round(1,'common') }}"
+
+- name: overwrite version file
+  ansible.builtin.copy:
+    content: "{{ new_version }}\n"
+    dest: /home/adworjan/ansible/execution/version.txt
+
+- name: push new EE to PAH with version number
+  ansible.builtin.command:
+    cmd: "podman push --creds={{pah_user}}:{{pah_pass}} towerpah.shadowman.dev/full/ansibleee towerpah.shadowman.dev/full/ansibleee:{{ new_version }}.0"
+  changed_when: true
+
+- name: push new EE to PAH to get latest tag
+  ansible.builtin.command:
+    cmd: "podman push --creds={{pah_user}}:{{pah_pass}} towerpah.shadowman.dev/full/ansibleee"
+  changed_when: true
