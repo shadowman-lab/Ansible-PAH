@@ -6,7 +6,7 @@
     state: updated
     append: true
     tags:
-      - newest
+      - "newest"
     ah_host: "{{ lookup('env', 'AH_HOST') }}"
     ah_username: "{{ lookup('env', 'pah_user') }}"
     ah_password: "{{ lookup('env', 'pah_pass') }}"
