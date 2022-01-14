@@ -6,5 +6,9 @@
   register: version
 
 - name: output new version
+  ansible.builtin.set_fact:
+    current_version: "{{ version['content'] | b64decode | float }}"
+
+- name: new version
   ansible.builtin.debug:
-    msg: "{{ version['content'] | b64decode | int }}"
+    msg: "{{ current + 0.1 }}"
