@@ -1,13 +1,13 @@
 ---
 
 - name: Get current version
-  ansible.builtin.slurp:
-    src: '/home/adworjan/ansible/execution/version.txt'
+  ansible.builtin.command:
+    cmd: 'cat /home/adworjan/ansible/execution/version.txt'
   register: version
 
 - name: get new tag version
   ansible.builtin.set_fact:
-    new_version: "{{ version['content'] | b64decode |float + 0.1 }}"
+    new_version: "{{ version.stdout_lines[0] |float + 0.1 }}"
 
 - name: new version
   ansible.builtin.debug:
@@ -15,5 +15,5 @@
 
 - name: overwrite version file
   ansible.builtin.copy:
-    content: "{{ new_version | round(1) }}\n"
+    content: "{{ new_version }}\n"
     dest: /home/adworjan/ansible/execution/version.txt
