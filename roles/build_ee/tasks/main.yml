@@ -6,4 +6,6 @@
     state: updated
     tags:
       - latest
+    ah_host: "{{ lookup('env', 'AH_HOST') }}"
+    ah_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
   delegate_to: towerpah.shadowman.dev
