@@ -6,3 +6,4 @@
     state: updated
     tags:
       - latest
+  delegate_to: towerpah.shadowman.dev
