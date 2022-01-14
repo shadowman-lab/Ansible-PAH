@@ -2,11 +2,11 @@
 
 - name: Add latest tag new
   redhat_cop.ah_configuration.ah_ee_image:
-    name: towerpah.shadowman.dev/full/ansibleee:1.1.0
+    name: full/ansibleee:1.1.0
     state: updated
+    append: true
     tags:
-      - tst
+      - newest
     ah_host: "{{ lookup('env', 'AH_HOST') }}"
     ah_username: "{{ lookup('env', 'pah_user') }}"
     ah_password: "{{ lookup('env', 'pah_pass') }}"
-  delegate_to: towerpah.shadowman.dev
