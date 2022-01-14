@@ -7,7 +7,7 @@
 
 - name: get new tag version
   ansible.builtin.set_fact:
-    new_version: "{{ version.stdout_lines[0] + 0.1 }}"
+    new_version: "{{ version.stdout_lines[0]|float + 0.1 }}"
 
 - name: new version
   ansible.builtin.debug:
