@@ -5,7 +5,7 @@
     name: full/ansibleee:1.1.0
     state: updated
     tags:
-      - latest
+      - tst
     ah_host: "{{ lookup('env', 'AH_HOST') }}"
     ah_username: "{{ lookup('env', 'pah_user') }}"
     ah_password: "{{ lookup('env', 'pah_pass') }}"
