@@ -1,7 +1,7 @@
 ---
 - name: Pull latest minimal EE
   ansible.builtin.command:
-    cmd: "podman pull --creds={{portaluser}}:{{portalpass}} registry.redhat.io/ansible-automation-platform-21/ee-minimal-rhel8:latest"
+    cmd: "podman pull --creds={{portaluser}}:{{portalpassword}} registry.redhat.io/ansible-automation-platform-21/ee-minimal-rhel8:latest"
   changed_when: true
   ignore_errors: true
 
