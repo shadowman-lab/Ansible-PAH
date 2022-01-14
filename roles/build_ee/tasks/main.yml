@@ -11,9 +11,9 @@
 
 - name: new version
   ansible.builtin.debug:
-    msg: "{{ new _version }}"
+    msg: "{{ new_version }}"
 
 - name: overwrite version file
   ansible.builtin.copy:
-    content: "{{ new_version | string }}"
+    content: "{{ new_version }}"
     dest: /home/adworjan/ansible/execution/version.txt
