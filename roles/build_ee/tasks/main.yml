@@ -8,5 +8,5 @@
       - latest
     ah_host: "{{ lookup('env', 'AH_HOST') }}"
     ah_username: "{{ lookup('env', 'pah_user') }}"
-    ah_password: a"{{ lookup('env', 'pah_pass') }}"
+    ah_password: "{{ lookup('env', 'pah_pass') }}"
   delegate_to: towerpah.shadowman.dev
