@@ -1,9 +1,10 @@
 ---
 
 - name: Get current version
-  ansible.builtin.set_fact:
-    version: "{{ lookup('file', '/home/adworjan/ansible/execution/version.txt') | int}}"
+  ansible.builtin.slurp:
+    src: '/home/adworjan/ansible/execution/version.txt'
+  register: version
 
 - name: output new version
   ansible.builtin.debug:
-    msg: "{{ version + 0.1 }}"
+    msg: "{{ version }}"
