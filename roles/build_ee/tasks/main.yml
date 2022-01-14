@@ -11,9 +11,9 @@
 
 - name: new version
   ansible.builtin.debug:
-    msg: "{{ new_version | round(1,'common') }}"
+    msg: "{{ new_version|float | round(1,'common') }}"
 
 - name: overwrite version file
   ansible.builtin.copy:
-    content: "{{ new_version | round(1,'common') }}\n"
+    content: "{{ new_version|float | round(1,'common') }}\n"
     dest: /home/adworjan/ansible/execution/version.txt
