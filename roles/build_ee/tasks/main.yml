@@ -15,5 +15,5 @@
 
 - name: overwrite version file
   ansible.builtin.copy:
-    content: "{{ new_version }}"
+    content: "{{ new_version | string }}"
     dest: /home/adworjan/ansible/execution/version.txt
