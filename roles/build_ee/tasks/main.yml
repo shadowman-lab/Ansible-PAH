@@ -7,4 +7,4 @@
 
 - name: output new version
   ansible.builtin.debug:
-    msg: "{{ version }}"
+    msg: "{{ version['content'] | b64decode }}"
