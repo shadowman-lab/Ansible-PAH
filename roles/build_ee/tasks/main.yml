@@ -1,36 +1,9 @@
 ---
 
-- name: Ensure old EE is removed
-  ansible.builtin.command:
-    cmd: "podman rmi towerpah.shadowman.dev/full/ansibleee"
-  changed_when: true
-  register: eeoutput
-  ignore_errors: true
-
-- name: Get version that was removed and add one
+- name: Get current version
   ansible.builtin.set_fact:
-    version: "{{ eeoutput.stdout_lines[0] | int }}"
+    version: "{{ lookup('file', '/home/adworjan/ansible/execution/version.txt') | int}}"
 
-- name: Debug
+- name: output new version
   ansible.builtin.debug:
-    msg: "{{ version }}"
-
-- name: Debug with add
-  ansible.builtin.debug:
-    msg: "{{ version + 1 }}"
-
-- name: Build new EE
-  ansible.builtin.command:
-    cmd: 'ansible-builder build -t towerpah.shadowman.dev/full/ansibleee'
-    chdir: /home/adworjan/ansible/execution/
-  changed_when: true
-
-- name: Remove <none> images after build
-  ansible.builtin.shell:
-    cmd: podman rmi $(podman images -f 'dangling=true' -q)
-  changed_when: true
-
-- name: push new EE to PAH
-  ansible.builtin.command:
-    cmd: "podman push --creds={{pah_user}}:{{pah_pass}} towerpah.shadowman.dev/full/ansibleee"
-  changed_when: true
+    msg: "{{ version + 0.1 }}"
