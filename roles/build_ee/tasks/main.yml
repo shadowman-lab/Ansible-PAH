@@ -4,7 +4,20 @@
   ansible.builtin.command:
     cmd: "podman rmi towerpah.shadowman.dev/full/ansibleee"
   changed_when: true
+  register: eeoutput
   ignore_errors: true
+
+- name: Get version that was removed and add one
+  ansible.builtin.set_fact:
+    version: "{{ eeoutput.stdout_lines[0] | int }}"
+
+- name: Debug
+  ansible.builtin.debug:
+    msg: "{{ version }}"
+
+- name: Debug with add
+  ansible.builtin.debug:
+    msg: "{{ version + 1 }}"
 
 - name: Build new EE
   ansible.builtin.command:
