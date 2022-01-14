@@ -1,4 +1,9 @@
 ---
+- name: Pull latest minimal EE
+  ansible.builtin.command:
+    cmd: "podman pull --creds={{portaluser}}:{{portalpass}} registry.redhat.io/ansible-automation-platform-21/ee-minimal-rhel8:latest"
+  changed_when: true
+  ignore_errors: true
 
 - name: Ensure old EE is removed
   ansible.builtin.command:
