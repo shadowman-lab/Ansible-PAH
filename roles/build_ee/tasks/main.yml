@@ -7,13 +7,13 @@
 
 - name: Ensure old EE is removed
   ansible.builtin.command:
-    cmd: "podman rmi towerpah.shadowman.dev/full/ansibleee"
+    cmd: "podman rmi towerpah.shadowman.dev/shadowmanee"
   changed_when: true
   ignore_errors: true
 
 - name: Build new EE
   ansible.builtin.command:
-    cmd: 'ansible-builder build -t towerpah.shadowman.dev/full/ansibleee'
+    cmd: 'ansible-builder build -t towerpah.shadowman.dev/shadowmanee'
     chdir: /home/adworjan/ansible/execution/
   changed_when: true
 
@@ -38,10 +38,10 @@
 
 - name: push new EE to PAH with version number
   ansible.builtin.command:
-    cmd: "podman push --creds={{pah_user}}:{{pah_pass}} towerpah.shadowman.dev/full/ansibleee towerpah.shadowman.dev/full/ansibleee:{{ new_version }}.0"
+    cmd: "podman push --creds={{pah_user}}:{{pah_pass}} towerpah.shadowman.dev/shadowmanee towerpah.shadowman.dev/shadowmanee:{{ new_version }}.0"
   changed_when: true
 
 - name: push new EE to PAH to get latest tag
   ansible.builtin.command:
-    cmd: "podman push --creds={{pah_user}}:{{pah_pass}} towerpah.shadowman.dev/full/ansibleee"
+    cmd: "podman push --creds={{pah_user}}:{{pah_pass}} towerpah.shadowman.dev/shadowmanee"
   changed_when: true
