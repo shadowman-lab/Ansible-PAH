@@ -7,8 +7,8 @@
 
 - name: output new version
   ansible.builtin.set_fact:
-    current_version: "{{ version['content'] | b64decode }}"
+    current_version: "{{ version['content'] | b64decode |float + 0.1 }}"
 
 - name: new version
   ansible.builtin.debug:
-    msg: "This is the output {{ current_version|float + 0.1 }}"
+    msg: "{{ current_version }}"
