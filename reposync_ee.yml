@@ -1,6 +1,6 @@
 ---
 - name: Sync all PAH remote repos
-  hosts: localhost
+  hosts: towerpah.shadowman.dev
   gather_facts: false
   become: false
 
