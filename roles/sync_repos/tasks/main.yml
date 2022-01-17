@@ -18,7 +18,7 @@
     force_basic_auth: yes
     validate_certs: no
 
-- name: Get Community Repo Status
+- name: Verify Community Repo Sync Completed
   uri:
     url: https://towerpah.shadowman.dev/api/galaxy/content/community/v3/sync/config/
     user: "{{ pah_user }}"
@@ -30,7 +30,7 @@
   retries: 120
   delay: 10
 
-- name: Get rh-certified Repo Status
+- name: Verify rh-certified Repo Sync Completed
   uri:
     url: https://towerpah.shadowman.dev/api/galaxy/content/rh-certified/v3/sync/config/
     user: "{{ pah_user }}"
