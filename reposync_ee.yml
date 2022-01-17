@@ -1,15 +1,10 @@
 ---
 - name: Sync all PAH remote repos
-  hosts: towerpah.shadowman.dev
+  hosts: localhost
   gather_facts: false
   become: false
 
   roles:
     - sync_repos
 
-- name: Build new EE
-  hosts: tower1.shadowman.dev
-  gather_facts: false
 
-  roles:
-    - build_ee

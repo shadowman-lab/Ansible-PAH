@@ -1,15 +1,29 @@
 ---
-- name: Sync community repo
-  redhat_cop.ah_configuration.ah_repository_sync:
-    name: community
-    wait: true
-    ah_host: "{{ lookup('env', 'AH_HOST') }}"
-    ah_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
-    
 
-- name: Sync rh-certified repo
-  redhat_cop.ah_configuration.ah_repository_sync:
-    name: rh-certified
-    wait: true
-    ah_host: "{{ lookup('env', 'AH_HOST') }}"
-    ah_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
+- name: Sync Community Repo
+  uri:
+    url: https://towerpah.shadowman.dev/api/galaxy/content/community/v3/sync/
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    method: POST
+    
+- name: Sync Certified Repo
+  uri:
+    url: https://towerpah.shadowman.dev/api/galaxy/content/rh-certified/v3/sync/
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    method: POST
+
+- name: Get Community Repo Status
+  uri:
+    url: https://towerpah.shadowman.dev/api/galaxy/content/community/v3/sync/config/
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+  register: communitystatus
+
+- name: Get rh-certified Repo Status
+  uri:
+    url: https://towerpah.shadowman.dev/api/galaxy/content/rh-certified/v3/sync/config/
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+  register: certifiedstatus
