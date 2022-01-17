@@ -1,21 +1,6 @@
 ---
 
-- name: Sync Community Repo
-  uri:
-    url: https://towerpah.shadowman.dev/api/galaxy/content/community/v3/sync/
-    user: "{{ pah_user }}"
-    password: "{{ pah_pass }}"
-    method: POST
-    force_basic_auth: yes
-    validate_certs: no
-    
-- name: Sync Certified Repo
-  uri:
-    url: https://towerpah.shadowman.dev/api/galaxy/content/rh-certified/v3/sync/
-    user: "{{ pah_user }}"
-    password: "{{ pah_pass }}"
-    method: POST
-    validate_certs: no
+
 
 - name: Get Community Repo Status
   uri:
@@ -23,6 +8,7 @@
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
     validate_certs: no
+    force_basic_auth: yes
   register: communitystatus
 
 - name: Get rh-certified Repo Status
@@ -31,4 +17,5 @@
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
     validate_certs: no
+    force_basic_auth: yes
   register: certifiedstatus
