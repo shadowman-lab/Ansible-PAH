@@ -6,6 +6,7 @@
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
     method: POST
+    force_basic_auth: yes
     validate_certs: no
     
 - name: Sync Certified Repo
