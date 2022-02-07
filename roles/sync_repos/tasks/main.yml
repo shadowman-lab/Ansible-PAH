@@ -27,8 +27,8 @@
     force_basic_auth: yes
   register: communitystatus
   until:  communitystatus.json.last_sync_task.state == "completed"
-  retries: 120
-  delay: 10
+  retries: 80
+  delay: 20
 
 - name: Verify rh-certified Repo Sync Completed
   uri:
@@ -39,5 +39,5 @@
     force_basic_auth: yes
   register: certifiedstatus
   until:  certifiedstatus.json.last_sync_task.state == "completed"
-  retries: 120
-  delay: 10
+  retries: 80
+  delay: 20
