@@ -3,6 +3,7 @@
   hosts: localhost
   gather_facts: false
   become: false
+  tags: sync
 
   roles:
     - sync_repos
@@ -10,6 +11,7 @@
 - name: Build new EE
   hosts: tower1.shadowman.dev
   gather_facts: false
+  tags: buildee
 
   roles:
     - build_ee
