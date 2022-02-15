@@ -8,15 +8,6 @@
     method: POST
     force_basic_auth: yes
     validate_certs: no
-    
-- name: Sync Certified Repo
-  uri:
-    url: https://towerpah.shadowman.dev/api/galaxy/content/rh-certified/v3/sync/
-    user: "{{ pah_user }}"
-    password: "{{ pah_pass }}"
-    method: POST
-    force_basic_auth: yes
-    validate_certs: no
 
 - name: Verify Community Repo Sync Completed
   uri:
@@ -29,6 +20,15 @@
   until:  communitystatus.json.last_sync_task.state == "completed"
   retries: 80
   delay: 20
+    
+- name: Sync Certified Repo
+  uri:
+    url: https://towerpah.shadowman.dev/api/galaxy/content/rh-certified/v3/sync/
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    method: POST
+    force_basic_auth: yes
+    validate_certs: no
 
 - name: Verify rh-certified Repo Sync Completed
   uri:
