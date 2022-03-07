@@ -1,7 +1,7 @@
 ---
 
 - name: Sync Community Repo
-  uri:
+  ansible.builtin.uri:
     url: https://towerpah.shadowman.dev/api/galaxy/content/community/v3/sync/
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
@@ -10,7 +10,7 @@
     validate_certs: no
 
 - name: Verify Community Repo Sync Completed
-  uri:
+  ansible.builtin.uri:
     url: https://towerpah.shadowman.dev/api/galaxy/content/community/v3/sync/config/
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
@@ -22,7 +22,7 @@
   delay: 20
     
 - name: Sync Certified Repo
-  uri:
+  ansible.builtin.uri:
     url: https://towerpah.shadowman.dev/api/galaxy/content/rh-certified/v3/sync/
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
@@ -31,7 +31,7 @@
     validate_certs: no
 
 - name: Verify rh-certified Repo Sync Completed
-  uri:
+  ansible.builtin.uri:
     url: https://towerpah.shadowman.dev/api/galaxy/content/rh-certified/v3/sync/config/
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
