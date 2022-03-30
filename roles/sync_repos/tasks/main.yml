@@ -6,16 +6,16 @@
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
     method: POST
-    force_basic_auth: yes
-    validate_certs: no
+    force_basic_auth: true
+    validate_certs: false
 
 - name: Verify Community Repo Sync Completed
   ansible.builtin.uri:
     url: https://towerpah.shadowman.dev/api/galaxy/content/community/v3/sync/config/
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
-    validate_certs: no
-    force_basic_auth: yes
+    validate_certs: false
+    force_basic_auth: true
   register: communitystatus
   until:  communitystatus.json.last_sync_task.state == "completed"
   retries: 80
@@ -27,16 +27,16 @@
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
     method: POST
-    force_basic_auth: yes
-    validate_certs: no
+    force_basic_auth: true
+    validate_certs: false
 
 - name: Verify rh-certified Repo Sync Completed
   ansible.builtin.uri:
     url: https://towerpah.shadowman.dev/api/galaxy/content/rh-certified/v3/sync/config/
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
-    validate_certs: no
-    force_basic_auth: yes
+    validate_certs: false
+    force_basic_auth: true
   register: certifiedstatus
   until:  certifiedstatus.json.last_sync_task.state == "completed"
   retries: 80
