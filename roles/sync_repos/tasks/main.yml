@@ -17,10 +17,10 @@
     validate_certs: false
     force_basic_auth: true
   register: communitystatus
-  until:  communitystatus.json.last_sync_task.state == "completed"
+  until: communitystatus.json.last_sync_task.state == "completed"
   retries: 80
   delay: 20
-    
+
 - name: Sync Certified Repo
   ansible.builtin.uri:
     url: https://towerpah.shadowman.dev/api/galaxy/content/rh-certified/v3/sync/
@@ -38,6 +38,6 @@
     validate_certs: false
     force_basic_auth: true
   register: certifiedstatus
-  until:  certifiedstatus.json.last_sync_task.state == "completed"
+  until: certifiedstatus.json.last_sync_task.state == "completed"
   retries: 80
   delay: 20
