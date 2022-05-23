@@ -18,9 +18,10 @@
   ignore_errors: true
 
 - name: Build new EE
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: "ansible-builder build -t towerpah.shadowman.dev/shadowmanee"
     chdir: /home/adworjan/ansible/execution/
+  become: true
   changed_when: true
 
 - name: Remove <none> images after build
