@@ -1,6 +1,6 @@
 ---
 - name: Build new EE
   ansible.builtin.command:
-    cmd: 'pwd'
+    cmd: 'ansible-navigator --help'
     chdir: /home/adworjan/ansible/execution/
   changed_when: true
