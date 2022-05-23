@@ -1,24 +1,6 @@
 ---
-- name: Pull latest minimal EE
-  ansible.builtin.command:
-    cmd: "podman pull --creds={{ portaluser }}:{{ portalpassword }} registry.redhat.io/ansible-automation-platform-21/ee-minimal-rhel8:latest"
-  changed_when: true
-  ignore_errors: true
-
-- name: Pull latest ansible-builder image
-  ansible.builtin.command:
-    cmd: "podman pull --creds={{ portaluser }}:{{ portalpassword }} registry.redhat.io/ansible-automation-platform-21/ansible-builder-rhel8:latest"
-  changed_when: true
-  ignore_errors: true
-
-- name: Ensure old EE is removed
-  ansible.builtin.command:
-    cmd: "podman rmi towerpah.shadowman.dev/shadowmanee"
-  changed_when: true
-  ignore_errors: true
-
 - name: Build new EE
   ansible.builtin.command:
-    cmd: 'hostname'
+    cmd: 'pwd'
     chdir: /home/adworjan/ansible/execution/
   changed_when: true
