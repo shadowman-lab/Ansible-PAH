@@ -9,7 +9,7 @@
     - sync_repos
 
 - name: Build new EE
-  hosts: tower1.shadowman.dev
+  hosts: ansibledev.shadowman.dev
   gather_facts: false
   tags: buildee
 
