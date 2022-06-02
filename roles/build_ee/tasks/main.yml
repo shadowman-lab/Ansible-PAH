@@ -9,3 +9,4 @@
     controller_password: "{{ lookup('env', 'TOWER_PASSWORD') }}"
     controller_host: "{{ lookup('env', 'TOWER_HOST') }}"
   delegate_to: localhost
+  ignore_errors: true
