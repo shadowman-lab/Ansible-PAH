@@ -3,7 +3,7 @@
 - name: Update Execution Environment Version in Controller with new version
   ansible.controller.execution_environment:
     name: "Automation Hub Default execution environment"
-    image: "towerpah.shadowman.dev/shadowmanee:2.7.0"
+    image: "towerpah.shadowman.dev/shadowmanee:2.8.0"
     validate_certs: no
     controller_username: "{{ lookup('env', 'TOWER_USERNAME') }}"
     controller_password: "{{ lookup('env', 'TOWER_PASSWORD') }}"
