@@ -17,7 +17,7 @@
     - latest
 
 - name: Remove extra tag
-  containers.podman.podman_container:
-    image: towerpah.shadowman.dev/shadowmanee
+  containers.podman.podman_image:
+    name: towerpah.shadowman.dev/shadowmanee
     tag: 2.9.0
     state: absent
