@@ -15,3 +15,9 @@
   loop:
     - "2.9.0"
     - latest
+
+- name: Remove extra tag
+  containers.podman.podman_container:
+    image: towerpah.shadowman.dev/shadowmanee
+    tag: 2.9.0
+    state: absent
