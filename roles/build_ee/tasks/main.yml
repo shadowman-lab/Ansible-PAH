@@ -59,7 +59,7 @@
   ansible.controller.execution_environment:
     name: "Automation Hub Default execution environment"
     image: "towerpah.shadowman.dev/shadowmanee:{{ new_version }}.0"
-    validate_certs: no
+    validate_certs: false
     controller_username: "{{ lookup('env', 'TOWER_USERNAME') }}"
     controller_password: "{{ lookup('env', 'TOWER_PASSWORD') }}"
     controller_host: "{{ lookup('env', 'TOWER_HOST') }}"
