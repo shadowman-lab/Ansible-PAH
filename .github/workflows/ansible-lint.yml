@@ -14,7 +14,6 @@ jobs:
     - name: Lint Ansible Playbook
       # replace "master" with any valid ref
       uses: ansible/ansible-lint-action@main
-      with:
-        # optional:
-        # with:
-        #   path: "playbooks/"  # <-- only one value is allowed
+      # optional:
+      # with:
+      #   path: "playbooks/"  # <-- only one value is allowed
