@@ -40,6 +40,7 @@
   containers.podman.podman_image:
     name: towerpah.shadowman.dev/shadowmanee
     tag: "{{ item }}"
+    push: yes
     username: "{{ pah_user }}"
     password: "{{ pah_pass }}"
   loop:
