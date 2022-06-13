@@ -5,8 +5,8 @@
     username: "{{ portaluser }}"
     password: "{{ portalpassword }}"
   loop:
-  - registry.redhat.io/ansible-automation-platform-22/ee-minimal-rhel8
-  - registry.redhat.io/ansible-automation-platform-22/ansible-builder-rhel8
+    - registry.redhat.io/ansible-automation-platform-22/ee-minimal-rhel8
+    - registry.redhat.io/ansible-automation-platform-22/ansible-builder-rhel8
 
 - name: Delete old EE
   containers.podman.podman_image:
@@ -44,8 +44,8 @@
     username: "{{ pah_user }}"
     password: "{{ pah_pass }}"
   loop:
-  - "{{ new_version }}.0"
-  - latest
+    - "{{ new_version }}.0"
+    - latest
 
 - name: Update Execution Environment Version in Controller with new version
   ansible.controller.execution_environment:
