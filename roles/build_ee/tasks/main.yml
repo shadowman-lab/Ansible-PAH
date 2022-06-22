@@ -16,7 +16,7 @@
 
 - name: Build new EE
   ansible.builtin.command:
-    cmd: 'ansible-builder build -t towerpah.shadowman.dev/shadowmanee --prune-images'
+    cmd: 'ansible-builder build -t towerpah.shadowman.dev/shadowmanee --prune-images --galaxy-keyring=/home/adworjan/ansible/execution/keyring.kbx'
     chdir: /home/adworjan/ansible/execution/
   changed_when: true
 
