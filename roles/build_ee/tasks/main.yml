@@ -18,6 +18,9 @@
   ansible.builtin.template:
     src: "{{ item }}.j2"
     dest: "{{ dest_dir }}{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
   loop:
     - ansible.cfg
     - bindep.txt
