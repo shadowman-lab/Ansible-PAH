@@ -50,7 +50,7 @@
 
 - name: Create new tag
   containers.podman.podman_tag:
-    image: {{ image_name }}
+    image: "{{ image_name }}"
     target_names:
       - "{{ image_name }}:{{ new_version }}.0"
 
