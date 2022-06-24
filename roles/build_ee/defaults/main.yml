@@ -1,5 +1,5 @@
 ---
-dest_directory: /home/adworjan/ansible/execution/
+dest_dir: /home/adworjan/ansible/execution/
 image_name: towerpah.shadowman.dev/shadowmanee
 bindep_file: bindep.txt
 python_requirements_file: requirements.txt
