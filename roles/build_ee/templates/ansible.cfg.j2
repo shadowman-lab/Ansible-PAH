@@ -3,13 +3,13 @@ server_list = automation_hub_cert,automation_hub_pub,automation_hub_comm
 ignore_certs = yes
 
 [galaxy_server.automation_hub_cert]
-url={{ AH_HOST }}/api/galaxy/content/rh-certified/
-token={{ AH_API_TOKEN }}
+url={{ lookup('env', 'AH_HOST') }}/api/galaxy/content/rh-certified/
+token={{ lookup('env', 'AH_API_TOKEN') }}
 
 [galaxy_server.automation_hub_pub]
-url={{ AH_HOST }}/api/galaxy/content/published/
-token={{ AH_API_TOKEN }}
+url={{ lookup('env', 'AH_HOST') }}/api/galaxy/content/published/
+token={{ lookup('env', 'AH_API_TOKEN') }}
 
 [galaxy_server.automation_hub_comm]
-url={{ AH_HOST }}/api/galaxy/content/community/
-token={{ AH_API_TOKEN }}
+url={{ lookup('env', 'AH_HOST') }}/api/galaxy/content/community/
+token={{ lookup('env', 'AH_API_TOKEN') }}
