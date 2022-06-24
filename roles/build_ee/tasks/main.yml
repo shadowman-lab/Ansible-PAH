@@ -11,18 +11,29 @@
 
 - name: Delete old EE
   containers.podman.podman_image:
-    name: towerpah.shadowman.dev/shadowmanee
+    name: "{{ image_name }}"
     state: absent
+
+- name: Template out builder files
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
+    dest: "{{ dest_dir }}{{ item }}"
+  loop:
+    - ansible.cfg
+    - bindep.txt
+    - execution-environment.yml
+    - requirements.txt
+    - requirements.yml
 
 - name: Build new EE
   ansible.builtin.command:
-    cmd: 'ansible-builder build -t towerpah.shadowman.dev/shadowmanee --prune-images --galaxy-keyring=/home/adworjan/ansible/execution/keyring.kbx'
-    chdir: /home/adworjan/ansible/execution/
+    cmd: 'ansible-builder build -t {{ image_name }} --prune-images --galaxy-keyring={{ galaxy_keyring }}'
+    chdir: "{{ dest_dir }}"
   changed_when: true
 
 - name: Get current version
   ansible.builtin.slurp:
-    src: '/home/adworjan/ansible/execution/version.txt'
+    src: "{{ dest_dir }}version.txt"
   register: version
 
 - name: get new tag version
@@ -32,20 +43,20 @@
 - name: overwrite version file
   ansible.builtin.copy:
     content: "{{ new_version }}\n"
-    dest: /home/adworjan/ansible/execution/version.txt
+    dest: "{{ dest_dir }}version.txt"
     owner: root
     group: root
     mode: '0644'
 
 - name: Create new tag
   containers.podman.podman_tag:
-    image: towerpah.shadowman.dev/shadowmanee
+    image: {{ image_name }}
     target_names:
-      - towerpah.shadowman.dev/shadowmanee:{{ new_version }}.0
+      - "{{ image_name }}:{{ new_version }}.0"
 
 - name: Push new EE
   containers.podman.podman_image:
-    name: towerpah.shadowman.dev/shadowmanee
+    name: "{{ image_name }}"
     tag: "{{ item }}"
     push: true
     username: "{{ pah_user }}"
@@ -56,14 +67,14 @@
 
 - name: Remove extra tag
   containers.podman.podman_image:
-    name: towerpah.shadowman.dev/shadowmanee
+    name: "{{ image_name }}"
     tag: "{{ new_version }}.0"
     state: absent
 
 - name: Update Execution Environment Version in Controller with new version
   ansible.controller.execution_environment:
     name: "Automation Hub Default execution environment"
-    image: "towerpah.shadowman.dev/shadowmanee:{{ new_version }}.0"
+    image: "{{ image_name }}:{{ new_version }}.0"
     validate_certs: false
     controller_username: "{{ lookup('env', 'TOWER_USERNAME') }}"
     controller_password: "{{ lookup('env', 'TOWER_PASSWORD') }}"

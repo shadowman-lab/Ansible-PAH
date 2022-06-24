@@ -1,10 +1,13 @@
 ---
+dest_directory: /home/adworjan/ansible/execution/
+image_name: towerpah.shadowman.dev/shadowmanee
 bindep_file: bindep.txt
 python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
 ee_base_image: registry.redhat.io/ansible-automation-platform-22/ee-minimal-rhel8:latest
 builder_image: registry.redhat.io/ansible-automation-platform-22/ansible-builder-rhel8:latest
 ansible_config: ansible.cfg
+galaxy_keyring: /home/adworjan/ansible/execution/keyring.kbx
 ee_bindep:
   - python3-jinja2 [platform:rpm]
 ee_python:
