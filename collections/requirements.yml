@@ -2,4 +2,4 @@ collections:
 
   - name: ansible.controller
 
-  - name: podman.container
+  - name: containers.podman
