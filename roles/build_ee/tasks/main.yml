@@ -13,6 +13,7 @@
   containers.podman.podman_image:
     name: "{{ image_name }}"
     state: absent
+    force: True
 
 - name: Template out builder files
   ansible.builtin.template:
