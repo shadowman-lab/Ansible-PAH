@@ -1,0 +1,49 @@
+---
+bindep_file: bindep.txt
+python_requirements_file: requirements.txt
+galaxy_requirements_file: requirements.yml
+ee_base_image: registry.redhat.io/ansible-automation-platform-22/ee-minimal-rhel8:latest
+builder_image: registry.redhat.io/ansible-automation-platform-22/ansible-builder-rhel8:latest
+ansible_config: ansible.cfg
+ee_bindep:
+  - python3-jinja2 [platform:rpm]
+ee_python:
+  - scp
+  - pyats
+  - genie
+ee_collections:
+  - name: amazon.aws
+  - name: community.aws
+  - name: ansible.windows
+  - name: community.windows
+  - name: ansible.posix
+  - name: vmware.vmware_rest
+    version: 1.0.1
+  - name: ansible.netcommon
+  - name: ansible.utils
+  - name: community.general
+  - name: community.vmware
+  - name: servicenow.servicenow
+  - name: servicenow.itsm
+  - name: chocolatey.chocolatey
+  - name: vyos.vyos
+  - name: cisco.ios
+  - name: arista.eos
+  - name: azure.azcollection
+  - name: f5networks.f5_modules
+  - name: citrix.adc
+  - name: shadowman.reports
+  - name: redhat.rhv
+  - name: redhat.satellite
+  - name: redhat.insights
+  - name: ansible.controller
+  - name: paloaltonetworks.panos
+  - name: ibm.qradar
+ee_append:
+  - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
+  - COPY /certs/shadowman_private.key /certs/shadowman_private.key
+  - COPY /certs/certificate.pfx /certs/certificate.pfx
+  - RUN microdnf reinstall tzdata -y
+  - RUN git clone https://github.com/citrix/citrix-adc-ansible-modules.git /tmp/citrix
+  - RUN pip3 install /tmp/citrix/deps/nitro-python-1.0_kamet.tar.gz
+  - RUN rm -rf /tmp/citrix/
