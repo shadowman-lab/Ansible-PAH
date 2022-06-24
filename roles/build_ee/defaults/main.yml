@@ -42,6 +42,7 @@ ee_collections:
   - name: ansible.controller
   - name: paloaltonetworks.panos
   - name: ibm.qradar
+ee_prepend: []
 ee_append:
   - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
   - COPY /certs/shadowman_private.key /certs/shadowman_private.key
