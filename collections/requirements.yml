@@ -3,3 +3,5 @@ collections:
   - name: ansible.controller
 
   - name: containers.podman
+
+  - name: community.general
