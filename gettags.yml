@@ -1,9 +1,0 @@
----
-- name: Get EE Tags
-  hosts: localhost
-  gather_facts: false
-  become: false
-  tags: gettags
-
-  roles:
-    - get_tags

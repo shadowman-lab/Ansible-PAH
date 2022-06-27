@@ -11,7 +11,7 @@
 
 - name: Delete old EE
   containers.podman.podman_image:
-    name: "{{ image_name }}"
+    name: "{{ pah_name }}/{{ image_name }}"
     state: absent
     force: true
 
@@ -31,54 +31,52 @@
 
 - name: Build new EE
   ansible.builtin.command:
-    cmd: 'ansible-builder build -t {{ image_name }} --prune-images --galaxy-keyring={{ galaxy_keyring }}'
+    cmd: 'ansible-builder build -t {{ pah_name }}/{{ image_name }} --prune-images --galaxy-keyring={{ galaxy_keyring }}'
     chdir: "{{ dest_dir }}"
   changed_when: true
 
-- name: Get current version
-  ansible.builtin.slurp:
-    src: "{{ dest_dir }}version.txt"
-  register: version
+- name: Get Current Tags
+  ansible.builtin.uri:
+    url: https://towerpah.shadowman.dev/api/galaxy/_ui/v1/execution-environments/repositories/{{ image_name }}/_content/images/?limit=100&offset=0
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    validate_certs: false
+    force_basic_auth: true
+  register: tags
 
-- name: get new tag version
+- name: Determine new tag version
   ansible.builtin.set_fact:
-    new_version: "{{ (version['content'] | b64decode |float + 0.1)| round(1,'common') }}"
+    new_version: "{{ (item[1]| float + 0.1) | round(1,'common') }}"
+  loop: "{{ tags.json.data | json_query('[*].tags') }}"
+  when: item[0]|default("no")=="latest"
 
-- name: overwrite version file
-  ansible.builtin.copy:
-    content: "{{ new_version }}\n"
-    dest: "{{ dest_dir }}version.txt"
-    owner: root
-    group: root
-    mode: '0644'
-
-- name: Create new tag
+- name: Create new tag on EE
   containers.podman.podman_tag:
-    image: "{{ image_name }}"
+    image: "{{ pah_name }}/{{ image_name }}"
     target_names:
-      - "{{ image_name }}:{{ new_version }}.0"
+      - "{{ pah_name }}/{{ image_name }}:{{ new_version }}"
 
 - name: Push new EE
   containers.podman.podman_image:
-    name: "{{ image_name }}"
+    name: "{{ pah_name }}/{{ image_name }}"
     tag: "{{ item }}"
     push: true
     username: "{{ pah_user }}"
     password: "{{ pah_pass }}"
   loop:
-    - "{{ new_version }}.0"
+    - "{{ new_version }}"
     - latest
 
 - name: Remove extra tag
   containers.podman.podman_image:
-    name: "{{ image_name }}"
-    tag: "{{ new_version }}.0"
+    name: "{{ pah_name }}/{{ image_name }}"
+    tag: "{{ new_version }}"
     state: absent
 
 - name: Update Execution Environment Version in Controller with new version
   ansible.controller.execution_environment:
     name: "Automation Hub Default execution environment"
-    image: "{{ image_name }}:{{ new_version }}.0"
+    image: "{{ pah_name }}/{{ image_name }}:{{ new_version }}"
     validate_certs: false
     controller_username: "{{ lookup('env', 'TOWER_USERNAME') }}"
     controller_password: "{{ lookup('env', 'TOWER_PASSWORD') }}"
