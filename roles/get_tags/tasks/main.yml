@@ -17,4 +17,4 @@
 
 - name: Add Version
   ansible.builtin.set_fact:
-    newtag: "{{ image_tags|float + 0.1 }}"
+    newtag: "{{ (image_tags|float + 0.1) | round(1,'common') }}"
