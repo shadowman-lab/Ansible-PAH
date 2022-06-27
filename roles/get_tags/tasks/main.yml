@@ -11,4 +11,5 @@
 
 - name: Store tags
   set_fact:
-    image_tags: "{{ tags.data | json_query('[*].tags') }}"
+    image_tags: "{{ image_tags | default([]) + [ item ] }}"
+  loop: "{{ tags.json.data | json_query('[*].tags') }}"
