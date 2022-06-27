@@ -1,0 +1,15 @@
+---
+
+- name: Get Tags
+  ansible.builtin.uri:
+    url: https://towerpah.shadowman.dev/api/galaxy/_ui/v1/execution-environments/repositories/shadowmanee/_content/images/?limit=100&offset=0
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    validate_certs: false
+    force_basic_auth: true
+  register: tags
+
+- name: Store tags
+  set_fact:
+    image_tags: "{{ image_tags | default([]) + [ item ] }}"
+  loop: "{{ tags.data | json_query('[*].tags') }}"
