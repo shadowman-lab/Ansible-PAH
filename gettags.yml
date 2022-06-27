@@ -1,17 +1,9 @@
 ---
-- name: Sync all PAH remote repos
+- name: Get EE Tags
   hosts: localhost
   gather_facts: false
   become: false
-  tags: sync
+  tags: gettags
 
   roles:
-    - sync_repos
-
-- name: Build new EE
-  hosts: ansibledev.shadowman.dev
-  gather_facts: false
-  tags: buildee
-
-  roles:
-    - build_ee
+    - get_tags
