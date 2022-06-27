@@ -37,7 +37,7 @@
 
 - name: Get Current Tags
   ansible.builtin.uri:
-    url: https://towerpah.shadowman.dev/api/galaxy/_ui/v1/execution-environments/repositories/{{ image_name }}/_content/images/?limit=100&offset=0
+    url: https://{{ pah_name }}/api/galaxy/_ui/v1/execution-environments/repositories/{{ image_name }}/_content/images/?limit=100&offset=0
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
     validate_certs: false
