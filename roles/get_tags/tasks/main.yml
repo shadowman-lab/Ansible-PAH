@@ -9,12 +9,8 @@
     force_basic_auth: true
   register: tags
 
-- name: Store tags
-  set_fact:
-    image_tags: "{{ item[1] }}"
+- name: Create new tag
+  ansible.builtin.set_fact:
+    new_version: "{{ (item[1]| float + 0.1) | round(1,'common') }}"
   loop: "{{ tags.json.data | json_query('[*].tags') }}"
   when: item[0]|default("no")=="latest"
-
-- name: Add Version
-  ansible.builtin.set_fact:
-    newtag: "{{ (image_tags|float + 0.1) | round(1,'common') }}"
