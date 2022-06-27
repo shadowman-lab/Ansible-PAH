@@ -14,3 +14,7 @@
     image_tags: "{{ item[1] }}"
   loop: "{{ tags.json.data | json_query('[*].tags') }}"
   when: item[0]|default("no")=="latest"
+
+- name: Add Version
+  ansible.builtin.set_fact:
+    newtag: "{{ image_tags|float + 0.1 }}"
