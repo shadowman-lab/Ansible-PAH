@@ -64,8 +64,8 @@
     username: "{{ pah_user }}"
     password: "{{ pah_pass }}"
   loop:
-    - "{{ new_version }}"
     - latest
+    - "{{ new_version }}"
 
 - name: Remove extra tag
   containers.podman.podman_image:
