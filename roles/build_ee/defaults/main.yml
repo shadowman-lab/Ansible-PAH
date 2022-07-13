@@ -45,7 +45,8 @@ ee_collections:
   - name: paloaltonetworks.panos
   - name: ibm.qradar
   - name: containers.podman
-ee_prepend: []
+ee_prepend: 
+  - ADD terraform /sbin
 ee_append:
   - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
   - COPY /certs/shadowman_private.key /certs/shadowman_private.key
