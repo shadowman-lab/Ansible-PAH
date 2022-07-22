@@ -5,7 +5,7 @@ image_name: shadowmanee
 bindep_file: bindep.txt
 python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
-ee_base_image: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:latest
+ee_base_image: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.13
 builder_image: registry.redhat.io/ansible-automation-platform-22/ansible-builder-rhel8:latest
 ansible_config: ansible.cfg
 galaxy_keyring: /home/adworjan/ansible/execution/keyring.kbx
