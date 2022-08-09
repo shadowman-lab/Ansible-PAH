@@ -45,6 +45,7 @@ ee_collections:
   - name: paloaltonetworks.panos
   - name: ibm.qradar
   - name: containers.podman
+  - name: community.postgresql
 ee_prepend:
   - ADD /sbin/terraform /sbin
 ee_append:
