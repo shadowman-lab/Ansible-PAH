@@ -11,6 +11,7 @@ ansible_config: ansible.cfg
 galaxy_keyring: /home/adworjan/ansible/execution/keyring.kbx
 ee_bindep:
   - python3-jinja2 [platform:rpm]
+  - which [platform:rpm]
   - git [platform:rpm]
 ee_python:
   - scp
