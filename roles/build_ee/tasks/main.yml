@@ -48,13 +48,13 @@
   ansible.builtin.set_fact:
     new_version: "{{ (item[1] | float + 0.1) | round(1,'common') }}"
   loop: "{{ tags.json.data | json_query('[*].tags') }}"
-  when: item[0] | default("no")=="latest"
+  when: item[0] | default("no") == "latest"
 
 - name: Determine new tag version if second position
   ansible.builtin.set_fact:
     new_version: "{{ (item[0] | float + 0.1) | round(1,'common') }}"
   loop: "{{ tags.json.data | json_query('[*].tags') }}"
-  when: item[1] | default("no")=="latest"
+  when: item[1] | default("no") == "latest"
 
 - name: Create new tag on EE
   containers.podman.podman_tag:
