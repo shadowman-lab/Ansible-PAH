@@ -81,7 +81,7 @@
 
 - name: Update Execution Environment Version in Controller with new version
   ansible.controller.execution_environment:
-    name: "Automation Hub Default execution environment"
+    name: "Automation Hub Shadowman execution environment"
     image: "{{ pah_name }}/{{ image_name }}:{{ new_version }}"
     validate_certs: false
     controller_username: "{{ lookup('env', 'TOWER_USERNAME') }}"
