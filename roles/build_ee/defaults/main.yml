@@ -19,6 +19,7 @@ ee_python:
   - genie
 ee_collections:
   - name: amazon.aws
+    version: 4.1.0
   - name: community.aws
   - name: ansible.windows
   - name: community.windows
