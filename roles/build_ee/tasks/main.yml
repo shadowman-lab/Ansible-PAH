@@ -30,9 +30,8 @@
     - requirements.yml
 
 - name: Build new EE
-# 'ansible-builder build -t {{ pah_name }}/{{ image_name }} --prune-images --galaxy-keyring={{ galaxy_keyring }}'
   ansible.builtin.command:
-    cmd: 'ansible-builder build -t {{ pah_name }}/{{ image_name }} --prune-images'
+    cmd: 'ansible-builder build -t {{ pah_name }}/{{ image_name }} --prune-images --galaxy-keyring={{ galaxy_keyring }}'
     chdir: "{{ dest_dir }}"
   changed_when: true
 
