@@ -83,8 +83,4 @@
   ansible.controller.execution_environment:
     name: "Automation Hub Shadowman execution environment"
     image: "{{ pah_name }}/{{ image_name }}:{{ new_version }}"
-    validate_certs: false
-    controller_username: "{{ lookup('env', 'TOWER_USERNAME') }}"
-    controller_password: "{{ lookup('env', 'TOWER_PASSWORD') }}"
-    controller_host: "{{ lookup('env', 'TOWER_HOST') }}"
   delegate_to: localhost
