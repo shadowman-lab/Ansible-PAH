@@ -1,5 +1,13 @@
 ---
-
+- name: Pull builder images
+  containers.podman.podman_image:
+    name: "{{ item }}"
+    username: "{{ portaluser }}"
+    password: "{{ portalpassword }}"
+    force: true
+  loop:
+    - "{{ ee_base_image }}"
+    - "{{ builder_image }}"
 
 - name: Delete old EE
   containers.podman.podman_image:
