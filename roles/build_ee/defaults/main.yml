@@ -17,7 +17,6 @@ ee_python:
   - scp
   - pyats
   - genie
-  - ansible-lint
 ee_collections:
   - name: amazon.aws
   - name: community.aws
