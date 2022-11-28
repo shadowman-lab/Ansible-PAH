@@ -29,6 +29,7 @@ ee_collections:
   - name: ansible.utils
   - name: community.general
   - name: community.vmware
+  - name: cloud.terraform
   - name: servicenow.itsm
   - name: chocolatey.chocolatey
   - name: vyos.vyos
