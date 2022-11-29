@@ -1,5 +1,5 @@
 [galaxy]
-server_list = automation_hub_cert,automation_hub_pub,automation_hub_comm
+server_list = automation_hub_cert,automation_hub_pub,automation_hub_comm,automation_hub_val
 ignore_certs = yes
 
 [galaxy_server.automation_hub_cert]
@@ -12,4 +12,8 @@ token={{ lookup('env', 'AH_API_TOKEN') }}
 
 [galaxy_server.automation_hub_comm]
 url={{ lookup('env', 'AH_HOST') }}api/galaxy/content/community/
+token={{ lookup('env', 'AH_API_TOKEN') }}
+
+[galaxy_server.automation_hub_val]
+url={{ lookup('env', 'AH_HOST') }}api/galaxy/content/validated/
 token={{ lookup('env', 'AH_API_TOKEN') }}
