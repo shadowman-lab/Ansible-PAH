@@ -50,6 +50,7 @@ ee_collections:
   - name: community.postgresql
 ee_prepend:
   - ADD /sbin/terraform /sbin
+  - ADD /sbin/packer /sbin
 ee_append:
   - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
   - COPY /certs/shadowman_private.key /certs/shadowman_private.key
