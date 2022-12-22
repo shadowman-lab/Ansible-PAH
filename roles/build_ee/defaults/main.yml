@@ -18,8 +18,6 @@ ee_python:
   - pyats
   - genie
 ee_collections:
-  - name: amazon.aws
-  - name: community.aws
   - name: ansible.windows
   - name: community.windows
   - name: ansible.posix
@@ -31,7 +29,6 @@ ee_collections:
   - name: community.vmware
   - name: cloud.terraform
   - name: servicenow.itsm
-  - name: chocolatey.chocolatey
   - name: vyos.vyos
   - name: cisco.ios
   - name: arista.eos
@@ -50,7 +47,6 @@ ee_collections:
   - name: community.postgresql
 ee_prepend:
   - ADD /sbin/terraform /sbin
-  - ADD /sbin/packer /sbin
 ee_append:
   - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
   - COPY /certs/shadowman_private.key /certs/shadowman_private.key
