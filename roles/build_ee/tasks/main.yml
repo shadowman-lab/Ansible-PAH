@@ -2,8 +2,8 @@
 - name: Pull builder images
   containers.podman.podman_image:
     name: "{{ item }}"
-    username: "{{ portaluser }}"
-    password: "{{ portalpassword }}"
+    username: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
     force: true
   loop:
     - "{{ ee_base_image }}"
