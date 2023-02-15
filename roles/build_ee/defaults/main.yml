@@ -17,6 +17,8 @@ ee_python:
   - scp
   - pyats
   - genie
+  - pan-os-python==1.8.0
+  - pan-python==0.17.0
 ee_collections:
   - name: ansible.windows
   - name: community.windows
