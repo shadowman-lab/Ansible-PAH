@@ -22,6 +22,7 @@ ee_python:
 ee_collections:
   - name: ansible.windows
   - name: community.windows
+  - name: microsoft.ad
   - name: ansible.posix
   - name: vmware.vmware_rest
     version: 1.0.1
