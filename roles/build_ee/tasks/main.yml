@@ -7,7 +7,7 @@
     force: true
   loop:
     - "{{ ee_base_image }}"
-    - "{{ builder_image }}"
+    - "{{ ee_builder_image }}"
 
 - name: Delete old EE
   containers.podman.podman_image:
