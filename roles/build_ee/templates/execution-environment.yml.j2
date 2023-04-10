@@ -11,7 +11,6 @@ build_arg_defaults:
 {%    endif %}
 {% endif %}
 {% endif %}
-
 {% if ee_version == 1 %}
 {% if ee_base_image is defined %}
 {%    if ee_base_image|length %}
@@ -53,11 +52,12 @@ dependencies:
 {% if ee_prepend|length or ee_append|length %}
 additional_build_steps:
 {% if ee_prepend|length %}  prepend: {% else %}{% endif %}
+
 {% for item in ee_prepend %}
     - {{ item }}
 {% endfor %}
-
 {% if ee_append|length %}  append: {% else %}{% endif %}
+
 {% for item in ee_append %}
     - {{ item }}
 {% endfor %}
@@ -67,16 +67,20 @@ additional_build_steps:
 {% if (ee_base_image is defined) or (ee_builder_image is defined) %}
 images:
   {%- if ee_base_image is defined %}
+
   base_image:
     name: {{ ee_base_image }}
     {%- if ee_base_sig_name is defined %}
+
     signature_original_name: {{ ee_base_sig_name }}
     {%- endif %}
   {%- endif %}
   {%- if ee_builder_image is defined %}
+
   builder_image:
     name: {{ ee_builder_image }}
     {%- if ee_builder_sig_name is defined %}
+
     signature_original_name: {{ ee_builder_sig_name }}
     {%- endif %}
   {%- endif %}
