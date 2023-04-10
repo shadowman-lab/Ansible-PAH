@@ -1,23 +1,26 @@
 ---
-version: 1
+version: {{ ee_version }}
 
 {% if ( (galaxy_cli_opts is defined) or
         (ee_base_image is defined) or
-        (builder_image is defined) ) %}
+        (ee_builder_image is defined) ) %}
 build_arg_defaults:
 {% if galaxy_cli_opts is defined %}
 {%    if galaxy_cli_opts|length %}
   ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: "{{ galaxy_cli_opts }}"
 {%    endif %}
 {% endif %}
+{% endif %}
+
+{% if ee_version == 1 %}
 {% if ee_base_image is defined %}
 {%    if ee_base_image|length %}
   EE_BASE_IMAGE: {{ ee_base_image }}
 {%    endif %}
 {% endif %}
-{% if builder_image is defined %}
-{%    if builder_image|length %}
-  EE_BUILDER_IMAGE: {{ builder_image }}
+{% if ee_builder_image is defined %}
+{%    if ee_builder_image|length %}
+  EE_BUILDER_IMAGE: {{ ee_builder_image }}
 {%    endif %}
 {% endif %}
 {% endif %}
@@ -50,13 +53,32 @@ dependencies:
 {% if ee_prepend|length or ee_append|length %}
 additional_build_steps:
 {% if ee_prepend|length %}  prepend: {% else %}{% endif %}
-
 {% for item in ee_prepend %}
     - {{ item }}
 {% endfor %}
-{% if ee_append|length %}  append: {% else %}{% endif %}
 
+{% if ee_append|length %}  append: {% else %}{% endif %}
 {% for item in ee_append %}
     - {{ item }}
 {% endfor %}
+{% endif %}
+
+{% if ee_version == 2 %}
+{% if (ee_base_image is defined) or (ee_builder_image is defined) %}
+images:
+  {%- if ee_base_image is defined %}
+  base_image:
+    name: {{ ee_base_image }}
+    {%- if ee_base_sig_name is defined %}
+    signature_original_name: {{ ee_base_sig_name }}
+    {%- endif %}
+  {%- endif %}
+  {%- if ee_builder_image is defined %}
+  builder_image:
+    name: {{ ee_builder_image }}
+    {%- if ee_builder_sig_name is defined %}
+    signature_original_name: {{ ee_builder_sig_name }}
+    {%- endif %}
+  {%- endif %}
+{% endif %}
 {% endif %}

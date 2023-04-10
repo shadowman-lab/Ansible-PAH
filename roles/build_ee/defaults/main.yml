@@ -1,4 +1,5 @@
 ---
+ee_version: 2
 dest_dir: /home/adworjan/ansible/execution/
 pah_name: towerpah.shadowman.dev
 image_name: shadowmanee
@@ -6,7 +7,9 @@ bindep_file: bindep.txt
 python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
 ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.14
-builder_image: towerpah.shadowman.dev/ansible-automation-platform-23/ansible-builder-rhel8:latest
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.14
+ee_builder_image: towerpah.shadowman.dev/ansible-automation-platform-23/ansible-builder-rhel8:latest
+ee_builder_sig_name: registry.redhat.io/ansible-automation-platform-23/ansible-builder-rhel8:latest
 ansible_config: ansible.cfg
 galaxy_keyring: /home/adworjan/ansible/execution/fullkeyring.kbx
 ee_bindep:
