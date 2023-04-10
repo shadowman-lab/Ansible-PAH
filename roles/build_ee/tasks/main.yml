@@ -9,7 +9,7 @@
     - "{{ ee_base_image }}"
     - "{{ ee_builder_image }}"
   when: ee_version == 1
-  
+
 - name: Login to PAH
   containers.podman.podman_login:
     username: "{{ pah_user }}"
