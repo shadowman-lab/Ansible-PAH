@@ -31,6 +31,7 @@ ee_collections:
     version: 1.0.1
   - name: ansible.netcommon
   - name: ansible.utils
+  - name: community.crypto
   - name: community.general
   - name: community.vmware
   - name: cloud.terraform
