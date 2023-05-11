@@ -68,3 +68,5 @@ ee_append:
   - RUN git clone https://github.com/citrix/citrix-adc-ansible-modules.git /tmp/citrix
   - RUN pip3 install /tmp/citrix/deps/nitro-python-1.0_kamet.tar.gz
   - RUN rm -rf /tmp/citrix/
+  - RUN microdnf clean all
+  - RUN dnf clean all
