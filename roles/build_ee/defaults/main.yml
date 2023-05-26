@@ -6,8 +6,8 @@ image_name: shadowmanee
 bindep_file: bindep.txt
 python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
-ee_base_image: towerpah.shadowman.dev/ansible-automation-platform-23/ee-minimal-rhel8:latest
-ee_base_sig_name: registry.redhat.io/ansible-automation-platform-23/ee-minimal-rhel8:latest
+ee_base_image: towerpah.shadowman.dev/ansible-automation-platform-23/ee-minimal-rhel8:1.0.0-294
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform-23/ee-minimal-rhel8:1.0.0-294
 ee_builder_image: towerpah.shadowman.dev/ansible-automation-platform-23/ansible-builder-rhel8:latest
 ee_builder_sig_name: registry.redhat.io/ansible-automation-platform-23/ansible-builder-rhel8:latest
 ansible_config: ansible.cfg
