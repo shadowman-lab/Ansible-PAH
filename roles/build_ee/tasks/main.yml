@@ -7,8 +7,8 @@
     force: true
   loop:
     - "{{ ee_base_image }}"
-    - "{{ ee_builder_image }}"
-  when: ee_version == 1
+    # - "{{ ee_builder_image }}"
+  when: ee_version == 1 or ee_version == 3
 
 - name: Login to PAH
   containers.podman.podman_login:
