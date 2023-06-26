@@ -58,7 +58,6 @@ dependencies:
   galaxy: {{ galaxy_requirements_file }}
 {%      endif %}
 {% endif %}
-{% endif %}
 {% if ee_python is defined %}
 {%      if ee_python|length %}
   python: {{ python_requirements_file }}
@@ -69,6 +68,7 @@ dependencies:
   system: {{ bindep_file }}
 {%      endif %}
 {% endif %}
+{% endif %}
 
 {% if ee_build_files is defined %}
 {%    if ee_build_files|length %}
@@ -77,6 +77,7 @@ additional_build_files:
   - src: {{ item.src }}
     dest: {{ item.dest }}
 {% endfor %}
+{%    endif %}
 {%    endif %}
 
 {% if ee_prepend|length or ee_append|length %}
