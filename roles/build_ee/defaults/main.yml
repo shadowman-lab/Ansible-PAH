@@ -1,21 +1,31 @@
 ---
-ee_version: 2
+ee_version: 3
 dest_dir: /home/adworjan/ansible/execution/
 pah_name: towerpah.shadowman.dev
 image_name: shadowmanee
 bindep_file: bindep.txt
 python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
-ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.14
-ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.14
-ee_builder_image: towerpah.shadowman.dev/ansible-automation-platform-23/ansible-builder-rhel8:latest
-ee_builder_sig_name: registry.redhat.io/ansible-automation-platform-23/ansible-builder-rhel8:latest
-ansible_config: ansible.cfg
+ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.15
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.15
+# ee_builder_image: towerpah.shadowman.dev/ansible-automation-platform-23/ansible-builder-rhel8:latest
+# ee_builder_sig_name: registry.redhat.io/ansible-automation-platform-23/ansible-builder-rhel8:latest
+# ansible_config: ansible.cfg
 galaxy_keyring: /home/adworjan/ansible/execution/fullkeyring.kbx
+ee_package_manager_path: /usr/bin/microdnf
+ee_build_files:
+  - src: /home/adworjan/ansible/execution/ansible.cfg
+    dest: configs
 ee_bindep:
   - python3-jinja2 [platform:rpm]
   - which [platform:rpm]
   - git [platform:rpm]
+  - libcurl-devel [platform:rpm]
+  - gcc [platform:rpm]
+  - python3-devel [platform:rpm]
+  - openssl-devel [platform:rpm]
+  - libxml2-devel [platform:rpm]
+  - libxslt-devel [platform:rpm]
 ee_python:
   - scp
   - pyats
@@ -52,11 +62,14 @@ ee_collections:
   - name: ibm.qradar
   - name: containers.podman
   - name: community.postgresql
-ee_prepend:
+# ee_prepend_base:
+#   - RUN microdnf upgrade -y
+ee_prepend_galaxy:
+  - ADD _build/configs/ansible.cfg ~/.ansible.cfg
+ee_append_final:
   - RUN microdnf install -y yum-utils
   - RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
   - RUN dnf install -y terraform
-ee_append:
   - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
   - COPY /certs/shadowman_private.key /certs/shadowman_private.key
   - COPY /certs/certificate.pfx /certs/certificate.pfx

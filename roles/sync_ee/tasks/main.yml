@@ -11,4 +11,4 @@
       - 202
   loop:
     - "{{ ee_base_image }}"
-    - "{{ builder_image }}"
+    # - "{{ builder_image }}"

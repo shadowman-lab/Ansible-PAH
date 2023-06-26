@@ -2,8 +2,8 @@
 version: {{ ee_version }}
 
 {% if ( (galaxy_cli_opts is defined) or
-        (ee_base_image is defined) or
-        (ee_builder_image is defined) ) %}
+        ( (ee_base_image is defined or ee_builder_image is defined) and
+        ee_version == 1 ) ) %}
 build_arg_defaults:
 {% if galaxy_cli_opts is defined %}
 {%    if galaxy_cli_opts|length %}
@@ -29,9 +29,30 @@ ansible_config: '{{ ansible_config }}'
 {% endif %}
 
 {% if (ee_bindep is defined and ee_bindep|length ) or
+      (ee_ansible_core is defined and ee_ansible_core|length ) or 
+      (ee_ansible_runner is defined and ee_ansible_runner|length ) or 
+      (ee_python_interpreter is defined and ee_python_interpreter|length ) or 
         (ee_python is defined and ee_python|length ) or
         (ee_collections is defined and ee_collections|length) %}
 dependencies:
+{% if ee_ansible_core is defined %}
+{%      if ee_ansible_core|length %}
+  ansible_core:
+    package_pip: {{ ee_ansible_core }}
+{%      endif %}
+{% endif %}
+{% if ee_ansible_runner is defined %}
+{%      if ee_ansible_runner|length %}
+  ansible_runner:
+    package_pip: {{ ee_ansible_runner }}
+{%      endif %}
+{% endif %}
+{% if ee_python_interpreter is defined %}
+{%      if ee_python_interpreter|length %}
+  python_interpreter:
+    package_system: {{ ee_python_interpreter }}
+{%      endif %}
+{% endif %}
 {% if ee_collections is defined %}
 {%      if ee_collections|length %}
   galaxy: {{ galaxy_requirements_file }}
@@ -49,6 +70,15 @@ dependencies:
 {%      endif %}
 {% endif %}
 
+{% if ee_build_files is defined %}
+{%    if ee_build_files|length %}
+additional_build_files:
+{% for item in ee_build_files %}
+  - src: {{ item.src }}
+    dest: {{ item.dest }}
+{% endfor %}
+{%    endif %}
+
 {% if ee_prepend|length or ee_append|length %}
 additional_build_steps:
 {% if ee_prepend|length %}  prepend: {% else %}{% endif %}
@@ -63,7 +93,84 @@ additional_build_steps:
 {% endfor %}
 {% endif %}
 
-{% if ee_version == 2 %}
+{% if ee_prepend_base|length or ee_append_base|length or
+      ee_prepend_galaxy|length or ee_append_galaxy|length or
+      ee_prepend_builder|length or ee_append_builder|length or
+      ee_prepend_final|length or ee_append_final|length  %}
+additional_build_steps:
+{% if ee_prepend_base|length %}  prepend_base: {% else %}{% endif %}
+
+{% for item in ee_prepend_base %}
+    - {{ item }}
+{% endfor %}
+{% if ee_append_base|length %}  append_base: {% else %}{% endif %}
+
+{% for item in ee_append_base %}
+    - {{ item }}
+{% endfor %}
+{% if ee_prepend_galaxy|length %}  prepend_galaxy: {% else %}{% endif %}
+
+{% for item in ee_prepend_galaxy %}
+    - {{ item }}
+{% endfor %}
+{% if ee_append_galaxy|length %}  append_galaxy: {% else %}{% endif %}
+
+{% for item in ee_append_galaxy %}
+    - {{ item }}
+{% endfor %}
+{% if ee_prepend_builder|length %}  prepend_builder: {% else %}{% endif %}
+
+{% for item in ee_prepend_builder %}
+    - {{ item }}
+{% endfor %}
+{% if ee_append_builder|length %}  append_builder: {% else %}{% endif %}
+
+{% for item in ee_append_builder %}
+    - {{ item }}
+{% endfor %}
+{% if ee_prepend_final|length %}  prepend_final: {% else %}{% endif %}
+
+{% for item in ee_prepend_final %}
+    - {{ item }}
+{% endfor %}
+{% if ee_append_final|length %}  append_final: {% else %}{% endif %}
+
+{% for item in ee_append_final %}
+    - {{ item }}
+{% endfor %}
+{% endif %}
+
+{% if ee_container_init is defined or
+      ee_package_manager_path is defined or
+      ee_skip_ansible_check is defined or
+      ee_relax_passwd_permissions is defined or
+      ee_workdir is defined or
+      ee_user is defined  %}
+options:
+  {% if ee_container_init is defined %}
+  container_init:
+    package_pip: ee_container_init.package_pip
+    entrypoint: ee_container_init.entrypoint
+    cmd: ee_container_init.cmd
+  {% endif %}
+  {% if ee_package_manager_path is defined %}
+  package_manager_path: {{ ee_package_manager_path }}
+  {% endif %}
+  {% if ee_skip_ansible_check is defined %}
+  skip_ansible_check: {{ ee_skip_ansible_check }}
+  {% endif %}
+  {% if ee_relax_passwd_permissions is defined %}
+  relax_passwd_permissions: {{ ee_relax_passwd_permissions }}
+  {% endif %}
+  {% if ee_workdir is defined %}
+  workdir: {{ ee_workdir }}
+  {% endif %}
+  {% if ee_user is defined %}
+  user: {{ ee_user }}
+  {% endif %}
+{% endif %}
+
+{% if ee_version == 2 or  ee_version == 3%}
 {% if (ee_base_image is defined) or (ee_builder_image is defined) %}
 images:
   {%- if ee_base_image is defined %}
