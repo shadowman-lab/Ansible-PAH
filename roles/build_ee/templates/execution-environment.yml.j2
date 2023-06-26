@@ -82,16 +82,16 @@ additional_build_files:
 
 {% if (ee_prepend is defined and ee_prepend|length) or (ee_append is defined and ee_append|length) %}
 additional_build_steps:
-{% if (ee_prepend is defined and ee_prepend|length) %}  prepend: {% else %}{% endif %}
-
+{% if (ee_prepend is defined and ee_prepend|length) %}  prepend: 
 {% for item in ee_prepend %}
     - {{ item }}
 {% endfor %}
-{% if (ee_append is defined and ee_append|length) %}  append: {% else %}{% endif %}
-
+{% endif %}
+{% if (ee_append is defined and ee_append|length) %}  append: 
 {% for item in ee_append %}
     - {{ item }}
 {% endfor %}
+{% endif %}
 {% endif %}
 
 {% if (ee_prepend_base is defined and ee_prepend_base|length) or 
@@ -103,46 +103,46 @@ additional_build_steps:
       (ee_prepend_final is defined and ee_prepend_final|length) or 
       (ee_append_final is defined and ee_append_final|length)  %}
 additional_build_steps:
-{% if ee_prepend_base is defined and ee_prepend_base|length %}  prepend_base: {% else %}{% endif %}
-
+{% if (ee_prepend_base is defined and ee_prepend_base|length) %}  prepend_base: 
 {% for item in ee_prepend_base %}
     - {{ item }}
 {% endfor %}
-{% if ee_append_base is defined and ee_append_base|length %}  append_base: {% else %}{% endif %}
-
+{% endif %}
+{% if (ee_append_base is defined and ee_append_base|length) %}  append_base: 
 {% for item in ee_append_base %}
     - {{ item }}
 {% endfor %}
-{% if ee_prepend_galaxy is defined and ee_prepend_galaxy|length %}  prepend_galaxy: {% else %}{% endif %}
-
+{% endif %}
+{% if (ee_prepend_galaxy is defined and ee_prepend_galaxy|length) %}  prepend_galaxy: 
 {% for item in ee_prepend_galaxy %}
     - {{ item }}
 {% endfor %}
-{% if ee_append_galaxy is defined and ee_append_galaxy|length %}  append_galaxy: {% else %}{% endif %}
-
+{% endif %}
+{% if (ee_append_galaxy is defined and ee_append_galaxy|length) %}  append_galaxy: 
 {% for item in ee_append_galaxy %}
     - {{ item }}
 {% endfor %}
-{% if ee_prepend_builder is defined and ee_prepend_builder|length %}  prepend_builder: {% else %}{% endif %}
-
+{% endif %}
+{% if (ee_prepend_builder is defined and ee_prepend_builder|length) %}  prepend_builder: 
 {% for item in ee_prepend_builder %}
     - {{ item }}
 {% endfor %}
-{% if ee_append_builder is defined and ee_append_builder|length %}  append_builder: {% else %}{% endif %}
-
+{% endif %}
+{% if (ee_append_builder is defined and ee_append_builder|length) %}  append_builder: 
 {% for item in ee_append_builder %}
     - {{ item }}
 {% endfor %}
-{% if ee_prepend_final is defined and ee_prepend_final|length %}  prepend_final: {% else %}{% endif %}
-
+{% endif %}
+{% if (ee_prepend_final is defined and ee_prepend_final|length) %}  prepend_final: 
 {% for item in ee_prepend_final %}
     - {{ item }}
 {% endfor %}
-{% if ee_append_final is defined and ee_append_final|length %}  append_final: {% else %}{% endif %}
-
+{% endif %}
+{% if (ee_append_final is defined and ee_append_final|length) %}  append_final: 
 {% for item in ee_append_final %}
     - {{ item }}
 {% endfor %}
+{% endif %}
 {% endif %}
 
 {% if ee_container_init is defined or
@@ -152,27 +152,27 @@ additional_build_steps:
       ee_workdir is defined or
       ee_user is defined  %}
 options:
-  {% if ee_container_init is defined %}
+{% if ee_container_init is defined %}
   container_init:
     package_pip: ee_container_init.package_pip
     entrypoint: ee_container_init.entrypoint
     cmd: ee_container_init.cmd
-  {% endif %}
-  {% if ee_package_manager_path is defined %}
+{% endif %}
+{% if ee_package_manager_path is defined %}
   package_manager_path: {{ ee_package_manager_path }}
-  {% endif %}
-  {% if ee_skip_ansible_check is defined %}
+{% endif %}
+{% if ee_skip_ansible_check is defined %}
   skip_ansible_check: {{ ee_skip_ansible_check }}
-  {% endif %}
-  {% if ee_relax_passwd_permissions is defined %}
+{% endif %}
+{% if ee_relax_passwd_permissions is defined %}
   relax_passwd_permissions: {{ ee_relax_passwd_permissions }}
-  {% endif %}
-  {% if ee_workdir is defined %}
+{% endif %}
+{% if ee_workdir is defined %}
   workdir: {{ ee_workdir }}
-  {% endif %}
-  {% if ee_user is defined %}
+{% endif %}
+{% if ee_user is defined %}
   user: {{ ee_user }}
-  {% endif %}
+{% endif %}
 {% endif %}
 
 {% if ee_version == 2 or  ee_version == 3%}
