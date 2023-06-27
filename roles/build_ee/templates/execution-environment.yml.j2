@@ -38,19 +38,24 @@ dependencies:
 {% if ee_ansible_core is defined %}
 {%      if ee_ansible_core|length %}
   ansible_core:
-    package_pip: {{ ee_ansible_core }}
+      package_pip: {{ ee_ansible_core }}
 {%      endif %}
 {% endif %}
 {% if ee_ansible_runner is defined %}
 {%      if ee_ansible_runner|length %}
   ansible_runner:
-    package_pip: {{ ee_ansible_runner }}
+      package_pip: {{ ee_ansible_runner }}
 {%      endif %}
 {% endif %}
-{% if ee_python_interpreter is defined %}
+{% if ee_python_interpreter.package_system is defined or ee_python_interpreter.python_path is defined %}
 {%      if ee_python_interpreter|length %}
   python_interpreter:
-    package_system: {{ ee_python_interpreter }}
+{% if ee_python_interpreter.package_system is defined %}
+      package_system: {{ ee_python_interpreter.package_system }}
+{% endif %}
+{% if ee_python_interpreter.python_path is defined %}
+      python_path: {{ ee_python_interpreter.python_path }}
+{% endif %}
 {%      endif %}
 {% endif %}
 {% if ee_collections is defined %}
@@ -80,6 +85,7 @@ additional_build_files:
 {%    endif %}
 {%    endif %}
 
+{% if ee_version == 1 or ee_version == 2 %}
 {% if (ee_prepend is defined and ee_prepend|length) or (ee_append is defined and ee_append|length) %}
 additional_build_steps:
 {% if (ee_prepend is defined and ee_prepend|length) %}  prepend: 
@@ -93,7 +99,8 @@ additional_build_steps:
 {% endfor %}
 {% endif %}
 {% endif %}
-
+{% endif %}
+{% if ee_version == 3 %}
 {% if (ee_prepend_base is defined and ee_prepend_base|length) or 
       (ee_append_base is defined and ee_append_base|length) or
       (ee_prepend_galaxy is defined and ee_prepend_galaxy|length) or 
@@ -172,6 +179,7 @@ options:
 {% endif %}
 {% if ee_user is defined %}
   user: {{ ee_user }}
+{% endif %}
 {% endif %}
 {% endif %}
 

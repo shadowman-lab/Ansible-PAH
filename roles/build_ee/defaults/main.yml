@@ -64,6 +64,9 @@ ee_collections:
   - name: community.postgresql
 # ee_prepend_base:
 #   - RUN microdnf upgrade -y
+# ee_python_interpreter:
+#  package_system: "python310"
+#  python_path: "/usr/bin/python3.10"
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg ~/.ansible.cfg
 # ee_prepend_builder:
