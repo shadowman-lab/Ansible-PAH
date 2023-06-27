@@ -6,7 +6,7 @@
   tags: sync
 
   roles:
-    - sync_ee
+    # - sync_ee
     - sync_repos
 
 - name: Build new EE
