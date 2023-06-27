@@ -1,0 +1,22 @@
+---
+
+- name: Sync Repo {{ item }}
+  ansible.builtin.uri:
+    url: https://{{ pah_name }}/api/galaxy/content/{{ item }}/v3/sync/
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    method: POST
+    force_basic_auth: true
+    validate_certs: false
+
+- name: Verify Repo Sync Completed {{ item }}
+  ansible.builtin.uri:
+    url: https://{{ pah_name }}/api/galaxy/content/{{ item }}/v3/sync/config/
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    validate_certs: false
+    force_basic_auth: true
+  register: certifiedstatus
+  until: certifiedstatus.json.last_sync_task.state == "completed"
+  retries: 80
+  delay: 20
