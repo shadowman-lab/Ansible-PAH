@@ -69,7 +69,7 @@ ee_collections:
 #  package_system: "python310"
 #  python_path: "/usr/bin/python3.10"
 ee_prepend_galaxy:
-  - ADD _build/configs/ansible.cfg ~/.ansible.cfg
+  - ADD _build/configs/ansible.cfg /home/runner/.ansible.cfg
 ee_prepend_builder:
   - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
 ee_prepend_final:
