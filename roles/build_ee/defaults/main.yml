@@ -71,9 +71,9 @@ ee_collections:
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg ~/.ansible.cfg
 ee_prepend_builder:
-  - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=ansible-automation-platform-2.4-for-rhel-8-x86_64-rpms"
+  - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
 ee_prepend_final:
-  - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=ansible-automation-platform-2.4-for-rhel-8-x86_64-rpms"
+  - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
 ee_append_final:
   - RUN microdnf install -y yum-utils
   - RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
