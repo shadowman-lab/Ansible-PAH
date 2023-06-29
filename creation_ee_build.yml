@@ -9,9 +9,9 @@
     - sync_ee
     - sync_repos
 
-- name: Build new EE
+- name: Build new shadowmancreationee
   hosts: ansibledev.shadowman.dev
   tags: buildee
 
   roles:
-    - build_ee
+    - build_creationee
