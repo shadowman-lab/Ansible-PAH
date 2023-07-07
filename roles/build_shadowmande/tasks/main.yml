@@ -17,7 +17,7 @@
     registry: "{{ pah_name }}"
   when: ee_version == 2
 
-- name: Delete old EE
+- name: Delete old DE
   containers.podman.podman_image:
     name: "{{ pah_name }}/{{ image_name }}"
     state: absent
