@@ -1,0 +1,14 @@
+---
+- name: Sync Remote EE
+  ansible.builtin.uri:
+    url: https://{{ pah_name }}/api/galaxy/v3/plugin/execution-environments/repositories/{{ item }}/_content/sync/
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    method: POST
+    force_basic_auth: true
+    validate_certs: false
+    status_code:
+      - 202
+  loop:
+    - "{{ ee_base_image }}"
+    # - "{{ builder_image }}"

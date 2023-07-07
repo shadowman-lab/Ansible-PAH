@@ -1,0 +1,4 @@
+---
+pah_name: towerpah.shadowman.dev
+ee_base_image: ansible-automation-platform-24/de-minimal-rhel8
+builder_image: ansible-automation-platform-24/ansible-builder-rhel8
