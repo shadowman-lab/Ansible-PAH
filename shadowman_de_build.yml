@@ -1,5 +1,5 @@
 ---
-- name: Sync all PAH EE and Remote Repos
+- name: Sync all PAH DE and Remote Repos
   hosts: localhost
   gather_facts: false
   become: false
@@ -11,7 +11,7 @@
 
 - name: Build new Shadowmande
   hosts: ansibledev.shadowman.dev
-  tags: buildee
+  tags: buildde
 
   roles:
     - build_shadowmande
