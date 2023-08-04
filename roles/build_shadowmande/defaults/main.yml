@@ -21,5 +21,6 @@ ee_bindep:
 ee_collections:
   - name: ansible.eda
   - name: redhat.insights_eda
+  - name: dynatrace.event_driven_ansible
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
