@@ -29,7 +29,7 @@ ee_bindep:
 ee_python:
   - scp
   - pyats
-  - genie
+  - genie==23.7
   - pan-os-python==1.8.0
   - pan-python==0.17.0
   - requests-credssp > 1.2.0
