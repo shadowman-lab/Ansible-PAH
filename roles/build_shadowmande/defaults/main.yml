@@ -24,3 +24,6 @@ ee_collections:
   - name: dynatrace.event_driven_ansible
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+ee_append_final:
+  - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
+  - COPY /certs/shadowman_private.key /certs/shadowman_private.key
