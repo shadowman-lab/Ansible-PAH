@@ -72,11 +72,15 @@ ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_prepend_builder:
   - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
+#  - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms --disablerepo=ubi-8-baseos-rpms --disablerepo=ubi-8-appstream-rpms"
 ee_prepend_final:
   - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
+#  - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms --disablerepo=ubi-8-baseos-rpms --disablerepo=ubi-8-appstream-rpms"
 ee_append_final:
+#  - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms --disablerepo=ubi-8-baseos-rpms --disablerepo=ubi-8-appstream-rpms"
   - RUN microdnf install -y yum-utils
   - RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+#  - RUN dnf config-manager --disable *ubi*
   - RUN dnf install -y terraform
   - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
   - COPY /certs/shadowman_private.key /certs/shadowman_private.key
