@@ -30,6 +30,7 @@ ee_python:
   - scp
   - pyats
   - genie
+  - python-jenkins
   - pan-os-python==1.8.0
   - pan-python==0.17.0
 ee_collections:
