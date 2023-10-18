@@ -18,6 +18,7 @@ ee_bindep:
   - systemd-devel [platform:rpm]
   - gcc [platform:rpm]
   - python39-devel [platform:rpm]
+  # if using RHEL9 DE use - python3-devel [platform:rpm]
 ee_collections:
   - name: ansible.eda
   - name: redhat.insights_eda
