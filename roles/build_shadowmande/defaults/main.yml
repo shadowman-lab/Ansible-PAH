@@ -28,3 +28,4 @@ ee_prepend_galaxy:
 ee_append_final:
   - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
   - COPY /certs/shadowman_private.key /certs/shadowman_private.key
+  - RUN rm -f /etc/ansible/ansible.cfg
