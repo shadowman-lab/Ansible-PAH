@@ -1,0 +1,89 @@
+---
+ee_version: 3
+dest_dir: /home/adworjan/ansible/builder/shadowmaneedev/
+pah_name: towerpah.shadowman.dev
+image_name: shadowmaneedev
+bindep_file: bindep.txt
+python_requirements_file: requirements.txt
+galaxy_requirements_file: requirements.yml
+ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.15
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.15
+galaxy_keyring: /home/adworjan/ansible/builder/shadowmanee/fullkeyring.kbx
+ee_package_manager_path: /usr/bin/microdnf
+ee_build_files:
+  - src: /home/adworjan/ansible/builder/shadowmaneedev/ansible.cfg
+    dest: configs
+  - src: /home/adworjan/ansible/builder/shadowmaneedev/.bashrc
+    dest: configs
+  - src: /home/adworjan/ansible/builder/shadowmaneedev/shells
+    dest: configs
+ee_bindep:
+  - python3-jinja2 [platform:rpm]
+  - which [platform:rpm]
+  - git [platform:rpm]
+  - libcurl-devel [platform:rpm]
+  - gcc [platform:rpm]
+  - python39-devel [platform:rpm]
+  - openssl-devel [platform:rpm]
+  - libxml2-devel [platform:rpm]
+  - libxslt-devel [platform:rpm]
+ee_python:
+  - scp
+  - pyats
+  - genie
+  - python-jenkins
+  - pan-os-python==1.8.0
+  - pan-python==0.17.0
+  - panos-upgrade-assurance==0.3.0
+ee_collections:
+  - name: ansible.windows
+  - name: community.windows
+  - name: microsoft.ad
+  - name: ansible.posix
+  - name: vmware.vmware_rest
+    version: 1.0.1
+  - name: ansible.netcommon
+  - name: ansible.utils
+  - name: community.crypto
+  - name: community.general
+  - name: community.vmware
+  - name: cloud.terraform
+  - name: servicenow.itsm
+  - name: vyos.vyos
+  - name: cisco.ios
+  - name: arista.eos
+  - name: infra.osbuild
+  - name: azure.azcollection
+  - name: f5networks.f5_modules
+  - name: citrix.adc
+  - name: shadowman.reports
+  - name: redhat.rhv
+  - name: redhat.satellite
+  - name: redhat.insights
+  - name: ansible.controller
+  - name: paloaltonetworks.panos
+  - name: ibm.qradar
+  - name: containers.podman
+  - name: community.postgresql
+  - name: redhat.openshift
+ee_prepend_galaxy:
+  - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+ee_prepend_builder:
+  - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
+ee_prepend_final:
+  - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
+ee_append_final:
+  - RUN microdnf install -y yum-utils
+  - RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+  - RUN dnf install -y terraform
+  - RUN microdnf reinstall tzdata -y
+  - RUN git clone -b citrix.adc --single-branch https://github.com/netscaler/ansible-collection-netscaleradc.git /tmp/citrix
+  - RUN pip3 install /tmp/citrix/deps/nitro-python-1.0_kamet.tar.gz
+  - RUN rm -rf /tmp/citrix/
+  - RUN rm -f /etc/ansible/ansible.cfg
+  - RUN microdnf clean all
+  - RUN dnf clean all
+  - COPY _build/configs/shells /etc/shells
+  - COPY _build/configs/.bashrc /home/runner/.bashrc
+  - RUN printf "export CONTAINER_NAME=ansibleee\n" >> /home/runner/.bashrc
+  - RUN for dir in /home/runner /home/runner/.ansible /home/runner/.ansible/tmp /runner /home/runner /runner/env /runner/inventory /runner/project /runner/artifacts ; do mkdir -m 0775 -p $dir ; chmod -R g+rwx $dir ; chgrp -R root $dir ; done && for file in /home/runner/.ansible/galaxy_token /etc/passwd /etc/group ; do touch $file ; chmod g+rw $file ; chgrp root $file ; done
