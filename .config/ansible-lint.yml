@@ -18,3 +18,4 @@ warn_list:
   - skip_this_tag
   - no-changed-when
   - git-latest
+  - syntax-check[unknown-module]
