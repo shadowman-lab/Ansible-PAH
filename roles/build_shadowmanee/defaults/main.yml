@@ -87,6 +87,7 @@ ee_append_final:
   - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
   - COPY /certs/shadowman_private.key /certs/shadowman_private.key
   - COPY /certs/certificate.pfx /certs/certificate.pfx
+  - COPY /certs/service-ca-cert.crt /certs/service-ca-cert.crt
   - RUN microdnf reinstall tzdata -y
   - RUN git clone -b citrix.adc --single-branch https://github.com/netscaler/ansible-collection-netscaleradc.git /tmp/citrix
   - RUN pip3 install /tmp/citrix/deps/nitro-python-1.0_kamet.tar.gz
