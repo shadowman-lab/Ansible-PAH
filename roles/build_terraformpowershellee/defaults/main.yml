@@ -1,0 +1,39 @@
+---
+ee_version: 3
+dest_dir: /home/adworjan/ansible/builder/terraformpowershellee/
+pah_name: towerpah.shadowman.dev
+image_name: terraformpowershellee
+bindep_file: bindep.txt
+galaxy_requirements_file: requirements.yml
+ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.15
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.15
+galaxy_keyring: /home/adworjan/ansible/builder/terraformpowershellee/fullkeyring.kbx
+ee_package_manager_path: /usr/bin/microdnf
+ee_build_files:
+  - src: /home/adworjan/ansible/builder/terraformpowershellee/ansible.cfg
+    dest: configs
+ee_bindep:
+  - git [platform:rpm]
+ee_collections:
+  - name: vmware.vmware_rest
+    version: 1.0.1
+  - name: community.vmware
+  - name: cloud.terraform
+ee_prepend_galaxy:
+  - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+ee_append_final:
+  - RUN microdnf install -y yum-utils
+  - RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+  - RUN dnf install -y terraform
+  - RUN dnf install -y https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-1.rh.x86_64.rpm
+  - RUN /opt/microsoft/powershell/7/pwsh -Command 'Install-Module VMware.PowerCLI -Scope AllUsers -Confirm:$False -Force'
+  - RUN /opt/microsoft/powershell/7/pwsh -Command 'Set-PowerCLIConfiguration -Scope AllUsers -ParticipateInCEIP $false -Confirm:$False'
+  - RUN /opt/microsoft/powershell/7/pwsh -Command 'Set-PowerCLIConfiguration -Scope AllUsers -InvalidCertificateAction Ignore -Confirm:$False'
+  - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
+  - COPY /certs/shadowman_private.key /certs/shadowman_private.key
+  - COPY /certs/certificate.pfx /certs/certificate.pfx
+  - COPY /certs/service-ca-cert.crt /certs/service-ca-cert.crt
+  - RUN microdnf reinstall tzdata -y
+  - RUN rm -f /etc/ansible/ansible.cfg
+  - RUN microdnf clean all
+  - RUN dnf clean all

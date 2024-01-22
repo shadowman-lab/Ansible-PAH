@@ -80,14 +80,7 @@ ee_prepend_final:
 #  - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms --disablerepo=ubi-8-baseos-rpms --disablerepo=ubi-8-appstream-rpms"
 ee_append_final:
 #  - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms --disablerepo=ubi-8-baseos-rpms --disablerepo=ubi-8-appstream-rpms"
-  - RUN microdnf install -y yum-utils
-  - RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 #  - RUN dnf config-manager --disable *ubi*
-  - RUN dnf install -y terraform
-  - RUN dnf install -y https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-1.rh.x86_64.rpm
-  - RUN /opt/microsoft/powershell/7/pwsh -Command 'Install-Module VMware.PowerCLI -Scope AllUsers -Confirm:$False -Force'
-  - RUN /opt/microsoft/powershell/7/pwsh -Command 'Set-PowerCLIConfiguration -Scope AllUsers -ParticipateInCEIP $false -Confirm:$False'
-  - RUN /opt/microsoft/powershell/7/pwsh -Command 'Set-PowerCLIConfiguration -Scope AllUsers -InvalidCertificateAction Ignore -Confirm:$False'
   - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
   - COPY /certs/shadowman_private.key /certs/shadowman_private.key
   - COPY /certs/certificate.pfx /certs/certificate.pfx
@@ -98,4 +91,3 @@ ee_append_final:
   - RUN rm -rf /tmp/citrix/
   - RUN rm -f /etc/ansible/ansible.cfg
   - RUN microdnf clean all
-  - RUN dnf clean all
