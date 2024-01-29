@@ -1,0 +1,111 @@
+---
+- name: Sync all PAH EE and Remote Repos
+  hosts: localhost
+  gather_facts: false
+  become: false
+  tags: sync
+
+  roles:
+    - sync_ee
+    - sync_repos
+
+- name: Build new Shadowmanee using EE Utils collection
+  hosts: ansibledev.shadowman.dev
+  tags: buildee
+
+  vars:
+    ee_builder_dir_clean: false
+    ee_builder_dir: "/home/adworjan/ansible/builder/shadowmanee/"
+    ee_galaxy_keyring: "/home/adworjan/ansible/builder/shadowmanee/fullkeyring.kbx"
+    ee_update_base_images: true
+    ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.15
+    ee_base_registry_username: "{{ pah_user }}"
+    ee_base_registry_password: "{{ pah_pass }}"
+    ee_prune_images: true
+    ee_pull_collections_from_hub: true
+    ee_ah_host: "{{ lookup('env', 'AH_HOST') }}"
+    ee_ah_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
+
+    alt_name: "Automation Hub Shadowman execution environment"
+    ee_reg_credential: Automation Hub Container Registry
+
+    ee_registry_dest: "{{ lookup('env', 'AH_HOST') }}"
+    ee_registry_username: "{{ pah_user }}"
+    ee_registry_password: "{{ pah_pass }}"
+    
+    ee_verbosity: 1
+    ee_list:
+      - name: shadowmanee
+        alt_name: "Automation Hub Shadowman execution environment"
+        tag: "{{ ansible_date_time.iso8601_basic_short }}"
+        dependencies:
+          system:
+            - python3-jinja2 [platform:rpm]
+            - which [platform:rpm]
+            - git [platform:rpm]
+            - libcurl-devel [platform:rpm]
+            - gcc [platform:rpm]
+            - python39-devel [platform:rpm]
+            - openssl-devel [platform:rpm]
+            - libxml2-devel [platform:rpm]
+            - libxslt-devel [platform:rpm]
+          python:
+            - scp
+            - pyats
+            - genie
+            - python-jenkins
+            - pan-os-python==1.8.0
+            - pan-python==0.17.0
+            - panos-upgrade-assurance==0.3.0
+          galaxy:
+            collections:
+              - name: ansible.windows
+              - name: community.windows
+              - name: microsoft.ad
+              - name: ansible.posix
+              - name: vmware.vmware_rest
+                version: 1.0.1
+              - name: ansible.netcommon
+              - name: ansible.utils
+              - name: community.crypto
+              - name: community.general
+              - name: community.vmware
+              - name: cloud.terraform
+              - name: servicenow.itsm
+              - name: vyos.vyos
+              - name: cisco.ios
+              - name: arista.eos
+              - name: infra.osbuild
+              - name: azure.azcollection
+              - name: f5networks.f5_modules
+              - name: netscaler.adc
+              - name: shadowman.reports
+              - name: redhat.rhv
+              - name: redhat.satellite
+              - name: redhat.insights
+              - name: ansible.controller
+              - name: paloaltonetworks.panos
+              - name: ibm.qradar
+              - name: containers.podman
+              - name: community.postgresql
+              - name: redhat.openshift
+        build_files:
+          - src: /home/adworjan/ansible/builder/shadowmanee/ansible.cfg
+            dest: configs
+        build_steps:
+          prepend_galaxy:
+            - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+          prepend_builder:
+            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
+          prepend_final:
+            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
+          append_final:
+            - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
+            - COPY /certs/shadowman_private.key /certs/shadowman_private.key
+            - COPY /certs/certificate.pfx /certs/certificate.pfx
+            - COPY /certs/service-ca-cert.crt /certs/service-ca-cert.crt
+            - RUN microdnf reinstall tzdata -y
+            - RUN rm -f /etc/ansible/ansible.cfg
+            - RUN microdnf clean all
+  roles:
+    - infra.ee_utilities.ee_builder
