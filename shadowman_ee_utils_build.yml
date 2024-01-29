@@ -6,8 +6,8 @@
   tags: sync
 
   roles:
-    - sync_ee
-    - sync_repos
+    - ah_sync_ee
+    - ah_sync_repos
 
 - name: Build new Shadowmanee using EE Utils collection
   hosts: ansibledev.shadowman.dev

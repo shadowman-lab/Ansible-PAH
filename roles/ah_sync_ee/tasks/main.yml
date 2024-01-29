@@ -1,0 +1,6 @@
+---
+- name: Sync Remote EE using AH Configuration collection
+  infra.ah_configuration.ah_ee_repository_sync:
+    name: "{{ ee_base_image }}"
+    wait: true
+    timeout: 300

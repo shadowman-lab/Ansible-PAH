@@ -1,0 +1,56 @@
+---
+- name: Sync all PAH EE and Remote Repos
+  hosts: localhost
+  gather_facts: false
+  become: false
+  tags: sync
+
+  roles:
+    - ah_sync_ee
+    - ah_sync_repos
+
+- name: Build new Basic using EE Utils collection
+  hosts: ansibledev.shadowman.dev
+  tags: buildee
+
+  vars:
+    ee_version: 3
+    ee_builder_dir_clean: false
+    ee_builder_dir: "/home/adworjan/ansible/builder/testee/"
+    ee_galaxy_keyring: "/home/adworjan/ansible/builder/testee/fullkeyring.kbx"
+    ee_update_base_images: true
+    ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.15
+    ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.15
+    # ee_container_policy: system
+    ee_base_registry_username: "{{ pah_user }}"
+    ee_base_registry_password: "{{ pah_pass }}"
+    ee_prune_images: true
+    ee_pull_collections_from_hub: true
+    ee_ah_host: "{{ lookup('env', 'AH_HOST') }}"
+    ee_ah_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
+    alt_name: "Automation Hub Test execution environment"
+    ee_reg_credential: Automation Hub Container Registry
+    ee_registry_dest: "{{ lookup('env', 'AH_HOST') }}"
+    ee_registry_username: "{{ pah_user }}"
+    ee_registry_password: "{{ pah_pass }}"
+    ee_verbosity: 1
+    ee_list:
+      - name: testee
+        alt_name: "Automation Hub Test execution environment"
+        tag: "{{ ansible_date_time.iso8601_basic_short }}"
+        dependencies:
+          system:
+            - which [platform:rpm]
+          python:
+            - scp
+          galaxy:
+            collections:
+              - name: ansible.windows
+              - name: community.windows
+              - name: microsoft.ad
+        build_steps:
+          append_final:
+            - COPY /certs/certificate.pfx /certs/certificate.pfx
+            - RUN rm -f /etc/ansible/ansible.cfg
+  roles:
+    - infra.ee_utilities.ee_builder
