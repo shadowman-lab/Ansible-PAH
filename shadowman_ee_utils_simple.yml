@@ -16,7 +16,7 @@
   vars:
     ee_version: 3
     ee_builder_dir_clean: false
-    ee_builder_dir: "/home/adworjan/ansible/builder/testee/"
+    ee_builder_dir: "/home/adworjan/ansible/builder/testee"
     ee_galaxy_keyring: "/home/adworjan/ansible/builder/testee/fullkeyring.kbx"
     ee_update_base_images: true
     ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.15
