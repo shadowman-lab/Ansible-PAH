@@ -1,0 +1,119 @@
+---
+- name: Configure community collection_remote
+  infra.ah_configuration.collection_remote:
+    name: community
+    url: https://galaxy.ansible.com/api/
+    requirements:
+      - name: community.windows
+        version: '>=1.13.0'
+      - name: community.general
+        version: '>=7.3.0'
+      - name: community.vmware
+        version: '>=3.8.0'
+      - name: community.aws
+        version: '>=6.2.0'
+      - name: containers.podman
+        version: '>=1.10.2'
+      - name: community.postgresql
+        version: '>=3.1.0'
+      - name: community.crypto
+        version: '>=2.15.0'
+
+- name: Configure rh-certified collection_remote
+  infra.ah_configuration.collection_remote:
+    name: rh-certified
+    url: https://console.redhat.com/api/automation-hub/content/published/
+    token: "{{ automation_hub_token }}"
+    auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
+    requirements:
+      - name: ansible.controller
+        version: '>=4.4.2'
+      - name: paloaltonetworks.panos
+        version: '>=2.17.6'
+      - name: redhat.insights_eda
+        version: '>=1.2.0'
+      - name: redhat.rhel_idm
+        version: '>=1.11.0'
+      - name: cisco.ios
+        version: '>=5.0.0'
+      - name: ansible.windows
+        version: '>=2.0.0'
+      - name: redhat.eap
+        version: '>=1.4.3'
+      - name: azure.azcollection
+        version: '>=1.17.0'
+      - name: ansible.receptor
+        version: '>=2.0.0'
+      - name: amazon.aws
+        version: '>=6.4.0'
+      - name: vyos.vyos
+        version: '>=4.1.0'
+      - name: ansible.scm
+        version: '>=1.2.2'
+      - name: ansible.posix
+        version: '>=1.5.4'
+      - name: servicenow.itsm
+        version: '>=2.2.0'
+      - name: ansible.utils
+        version: '>=2.10.0'
+      - name: cloud.terraform
+        version: '>=1.1.1'
+      - name: ansible.netcommon
+        version: '>=5.1.0'
+      - name: redhat.runtimes_common
+        version: '>=1.1.0'
+      - name: redhat.satellite
+        version: '>=3.14.0'
+      - name: f5networks.f5_modules
+        version: '>=1.24.0'
+      - name: f5networks.f5_bigip
+        version: '>=2.1.0'
+      - name: arista.eos
+        version: '>=6.1.0'
+      - name: redhat.rhel_system_roles
+        version: '>=1.22.0'
+      - name: vmware.vmware_rest
+        version: '>=1.0.1'
+      - name: redhat.rhv
+        version: '>=2.4.2'
+      - name: redhat.openshift
+        version: '>=2.3.0'
+      - name: kubernetes.core
+        version: '>=2.4.0'
+      - name: redhat.satellite_operations
+        version: '>=2.0.0'
+      - name: google.cloud
+        version: '>=1.1.2'
+      - name: chocolatey.chocolatey
+        version: '>=1.5.0'
+      - name: ansible.snmp
+        version: '>=1.0.1'
+      - name: ibm.qradar
+        version: '>=2.1.0'
+      - name: netscaler.adc
+        version: '>=2.3.0'
+      - name: cloud.common
+        version: '>=2.1.2'
+      - name: redhat.redhat_csp_download
+        version: '>=1.2.2'
+      - name: ansible.yang
+        version: '>=1.0.0'
+      - name: redhat.insights
+        version: '>=1.0.7'
+      - name: microsoft.ad
+        version: '>=1.2.0'
+      - name: ansible.eda
+        version: '>=1.4.2'
+      - name: dynatrace.event_driven_ansible
+        version: '>=1.1.2'
+      - name: netscaler.adc
+        version: '>=2.0.2'
+      - name: cisco.meraki
+        version: '>=2.16.12'
+
+- name: Configure validated collection_remote
+  infra.ah_configuration.collection_remote:
+    name: validated
+    url: https://console.redhat.com/api/automation-hub/content/validated/
+    token: "{{ automation_hub_token }}"
+    auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
