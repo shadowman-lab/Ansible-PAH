@@ -14,6 +14,8 @@ ee_build_files:
 ee_collections:
   - name: ansible.controller
   - name: containers.podman
+  - name: infra.ah_configuration
+  - name: infra.ee_utilities
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:
