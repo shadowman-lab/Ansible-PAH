@@ -4,3 +4,6 @@
     name: "{{ ee_base_image }}"
     wait: true
     timeout: 300
+    ah_username: "{{ pah_user }}"
+    ah_password: "{{ pah_pass }}"
+    ah_host: "{{ lookup('env', 'AH_HOST') }}"

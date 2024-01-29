@@ -4,15 +4,24 @@
     name: rh-certified
     wait: true
     timeout: 300
+    ah_username: "{{ pah_user }}"
+    ah_password: "{{ pah_pass }}"
+    ah_host: "{{ lookup('env', 'AH_HOST') }}"
 
 - name: Sync validated repo and wait up to 300 seconds
   infra.ah_configuration.collection_repository_sync:
     name: validated
     wait: true
     timeout: 300
+    ah_username: "{{ pah_user }}"
+    ah_password: "{{ pah_pass }}"
+    ah_host: "{{ lookup('env', 'AH_HOST') }}"
 
 - name: Sync community repo and wait up to 300 seconds
   infra.ah_configuration.collection_repository_sync:
     name: community
     wait: true
     timeout: 300
+    ah_username: "{{ pah_user }}"
+    ah_password: "{{ pah_pass }}"
+    ah_host: "{{ lookup('env', 'AH_HOST') }}"
