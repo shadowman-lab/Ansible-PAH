@@ -3,4 +3,5 @@
   ansible.controller.execution_environment:
     name: "{{ alt_name }}"
     image: "{{ lookup('env', 'AH_HOST') }}/{{ ee_name }}:{{ ansible_date_time.iso8601_basic_short }}"
+    credential: "{{ ee_reg_credential }}"
   delegate_to: localhost
