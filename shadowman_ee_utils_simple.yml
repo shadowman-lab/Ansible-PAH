@@ -29,6 +29,7 @@
     ee_ah_host: "{{ lookup('env', 'AH_HOST') }}"
     ee_ah_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
     alt_name: "Automation Hub Test execution environment"
+    ee_name: testee
     ee_reg_credential: Automation Hub Container Registry
     ee_registry_dest: "{{ lookup('env', 'AH_HOST') }}"
     ee_registry_username: "{{ pah_user }}"
@@ -54,3 +55,4 @@
             - RUN rm -f /etc/ansible/ansible.cfg
   roles:
     - infra.ee_utilities.ee_builder
+    - ah_update_controller

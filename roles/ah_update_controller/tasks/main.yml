@@ -1,0 +1,6 @@
+---
+- name: Update Execution Environment Version in Controller with new version
+  ansible.controller.execution_environment:
+    name: "{{ alt_name }}"
+    image: "{{ lookup('env', 'AH_HOST') }}/{{ ee_name }}:{{ ansible_date_time.iso8601_basic_short }}"
+  delegate_to: localhost
