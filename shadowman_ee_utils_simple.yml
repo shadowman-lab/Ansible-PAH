@@ -51,7 +51,6 @@
               - name: microsoft.ad
         build_steps:
           append_final:
-            - COPY /certs/certificate.pfx /certs/certificate.pfx
             - RUN rm -f /etc/ansible/ansible.cfg
   roles:
     - infra.ee_utilities.ee_builder
