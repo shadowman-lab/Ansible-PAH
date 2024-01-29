@@ -14,25 +14,25 @@
   tags: buildee
 
   vars:
+    ee_version: 3
     ee_builder_dir_clean: false
     ee_builder_dir: "/home/adworjan/ansible/builder/shadowmanee/"
     ee_galaxy_keyring: "/home/adworjan/ansible/builder/shadowmanee/fullkeyring.kbx"
     ee_update_base_images: true
     ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.15
+    ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.15
+    # ee_container_policy: system
     ee_base_registry_username: "{{ pah_user }}"
     ee_base_registry_password: "{{ pah_pass }}"
     ee_prune_images: true
     ee_pull_collections_from_hub: true
     ee_ah_host: "{{ lookup('env', 'AH_HOST') }}"
     ee_ah_token: "{{ lookup('env', 'AH_API_TOKEN') }}"
-
     alt_name: "Automation Hub Shadowman execution environment"
     ee_reg_credential: Automation Hub Container Registry
-
     ee_registry_dest: "{{ lookup('env', 'AH_HOST') }}"
     ee_registry_username: "{{ pah_user }}"
     ee_registry_password: "{{ pah_pass }}"
-    
     ee_verbosity: 1
     ee_list:
       - name: shadowmanee
@@ -89,12 +89,7 @@
               - name: containers.podman
               - name: community.postgresql
               - name: redhat.openshift
-        build_files:
-          - src: /home/adworjan/ansible/builder/shadowmanee/ansible.cfg
-            dest: configs
         build_steps:
-          prepend_galaxy:
-            - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
           prepend_builder:
             - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
           prepend_final:
