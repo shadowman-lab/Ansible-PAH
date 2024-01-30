@@ -5,6 +5,9 @@
   become: false
   tags: sync
 
+  vars:
+    ee_image: ansible-automation-platform/ee-minimal-rhel8
+
   roles:
     - ah_sync_ee
     - ah_sync_repos
