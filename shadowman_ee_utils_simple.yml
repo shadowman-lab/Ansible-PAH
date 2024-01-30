@@ -9,6 +9,7 @@
     ee_image: ansible-automation-platform/ee-minimal-rhel8
 
   roles:
+    - update_collection_remote
     - ah_sync_ee
     - ah_sync_repos
 
