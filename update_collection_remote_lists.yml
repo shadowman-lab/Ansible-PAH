@@ -1,0 +1,7 @@
+---
+- name: Update Collection Remote Requirements
+  hosts: localhost
+  gather_facts: false
+
+  roles:
+    - update_collection_remote
