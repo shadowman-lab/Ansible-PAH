@@ -3,6 +3,9 @@
   infra.ah_configuration.collection_remote:
     name: community
     url: https://galaxy.ansible.com/api/
+    ah_username: "{{ pah_user }}"
+    ah_password: "{{ pah_pass }}"
+    ah_host: "{{ lookup('env', 'AH_HOST') }}"
     requirements:
       - name: community.windows
         version: '>=1.13.0'
@@ -23,7 +26,9 @@
   infra.ah_configuration.collection_remote:
     name: rh-certified
     url: https://console.redhat.com/api/automation-hub/content/published/
-    token: "{{ automation_hub_token }}"
+    ah_username: "{{ pah_user }}"
+    ah_password: "{{ pah_pass }}"
+    ah_host: "{{ lookup('env', 'AH_HOST') }}"
     auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
     requirements:
       - name: ansible.controller
@@ -115,5 +120,7 @@
   infra.ah_configuration.collection_remote:
     name: validated
     url: https://console.redhat.com/api/automation-hub/content/validated/
-    token: "{{ automation_hub_token }}"
+    ah_username: "{{ pah_user }}"
+    ah_password: "{{ pah_pass }}"
+    ah_host: "{{ lookup('env', 'AH_HOST') }}"
     auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
