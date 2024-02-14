@@ -36,19 +36,19 @@
     - execution-environment.yml
     - requirements.yml
 
-- name: Build new EE on version 1 or 3 without signature verification
+- name: Build new EE on version 1 without signature verification
   ansible.builtin.command:
     cmd: 'ansible-builder build -t {{ pah_name }}/{{ image_name }} --prune-images --galaxy-keyring={{ galaxy_keyring }}'
     chdir: "{{ dest_dir }}"
   changed_when: true
-  when: ee_version == 1 or ee_version == 3
+  when: ee_version == 1
 
-- name: Build new EE with container signature verification on version 2
+- name: Build new EE with container signature verification on version 2 or 3
   ansible.builtin.command:
     cmd: 'ansible-builder build -t {{ pah_name }}/{{ image_name }} --prune-images --galaxy-keyring={{ galaxy_keyring }} --container-policy=system'
     chdir: "{{ dest_dir }}"
   changed_when: true
-  when: ee_version == 2
+  when: ee_version == 2 or ee_version == 3
 
 - name: Create new tag on EE based on date time of creation
   containers.podman.podman_tag:
