@@ -73,3 +73,9 @@
     name: "{{ pah_name }}/{{ image_name }}"
     tag: "{{ ansible_date_time.iso8601_basic_short }}"
     state: absent
+
+- name: Delete completed EE to free space
+  containers.podman.podman_image:
+    name: "{{ pah_name }}/{{ image_name }}"
+    state: absent
+    force: true
