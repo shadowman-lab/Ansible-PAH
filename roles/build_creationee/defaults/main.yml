@@ -3,6 +3,7 @@ ee_version: 3
 dest_dir: /home/adworjan/ansible/builder/creation/
 pah_name: towerpah.shadowman.dev
 image_name: shadowmancreationee
+bindep_file: bindep.txt
 galaxy_requirements_file: requirements.yml
 ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
 ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.16
