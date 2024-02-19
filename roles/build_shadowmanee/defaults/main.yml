@@ -26,6 +26,7 @@ ee_bindep:
   - openssl-devel [platform:rpm]
   - libxml2-devel [platform:rpm]
   - libxslt-devel [platform:rpm]
+  - sshpass [platform:rpm]
 ee_python:
   - scp
   - pyats

@@ -14,6 +14,7 @@ ee_build_files:
     dest: configs
 ee_bindep:
   - git [platform:rpm]
+  - sshpass [platform:rpm]
 ee_collections:
   - name: vmware.vmware_rest
     version: 1.0.1
