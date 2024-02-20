@@ -74,6 +74,40 @@
     tag: "{{ ansible_date_time.iso8601_basic_short }}"
     state: absent
 
+- name: Build and push devee
+  containers.podman.podman_image:
+    name: "towerpah.shadowman.dev/devee:latest"
+    path: /home/adworjan/ansible/builder/creatoree
+    push: true
+    username: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+
+- name: Create new tag on devee based on date time of creation
+  containers.podman.podman_tag:
+    image: "towerpah.shadowman.dev/devee"
+    target_names:
+      - "towerpah.shadowman.dev/devee:{{ ansible_date_time.iso8601_basic_short }}"
+
+- name: Push dev EE date and time tag
+  containers.podman.podman_image:
+    name: "towerpah.shadowman.dev/devee"
+    tag: "{{ ansible_date_time.iso8601_basic_short }}"
+    push: true
+    username: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+
+- name: Remove extra tag from dev EE
+  containers.podman.podman_image:
+    name: "towerpah.shadowman.dev/devee"
+    tag: "{{ ansible_date_time.iso8601_basic_short }}"
+    state: absent
+
+- name: Delete dev EE to free space
+  containers.podman.podman_image:
+    name: "towerpah.shadowman.dev/devee"
+    state: absent
+    force: true
+
 - name: Update Execution Environment Version in Controller with new version
   ansible.controller.execution_environment:
     name: "Automation Hub Shadowman execution environment"
