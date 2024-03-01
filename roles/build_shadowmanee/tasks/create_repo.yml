@@ -1,3 +1,4 @@
+---
 - name: Get list of collections built into EE
   containers.podman.podman_container:
     name: executionenvironment
