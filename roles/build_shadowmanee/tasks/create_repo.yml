@@ -1,0 +1,41 @@
+- name: Get list of collections built into EE
+  containers.podman.podman_container:
+    name: executionenvironment
+    image: "{{ pah_name }}/{{ image_name }}"
+    rm: true
+    detach: false
+    command: ansible-galaxy collection list
+  register: collections
+
+- name: Delete repository if present of {{ repository }}
+  infra.ah_configuration.collection_repository:
+    name: "{{ repository }}"
+    state: absent
+    ah_username: "{{ pah_user }}"
+    ah_password: "{{ pah_pass }}"
+    ah_host: "{{ lookup('env', 'AH_HOST') }}"
+  delegate_to: localhost
+
+- name: Create repository with distribution for {{ repository }}
+  infra.ah_configuration.collection_repository:
+    name: "{{ repository }}"
+    distribution:
+      name: "{{ repository }}"
+      state: present
+    ah_username: "{{ pah_user }}"
+    ah_password: "{{ pah_pass }}"
+    ah_host: "{{ lookup('env', 'AH_HOST') }}"
+  delegate_to: localhost
+
+- name: Add collection specific versions to repository
+  ansible.builtin.uri:
+    url: https://{{ pah_name }}/api/galaxy/content/{{ repository }}/v3/collections/{{ item.split('.')[0] }}/{{ item.split('.')[1].split()[0] }}/versions/{{ item.split('.')[1].split()[-1] }}.{{ item.split('.')[2] }}.{{ item.split('.')[3] | trim }}/copy/{{ repository }}/{{ repository }}/
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    method: POST
+    status_code:
+      - 202
+    force_basic_auth: true
+    validate_certs: false
+  loop: "{{ collections.stdout_lines[4:] }}"
+  delegate_to: localhost

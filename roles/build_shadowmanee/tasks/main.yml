@@ -113,3 +113,6 @@
     name: "Automation Hub Shadowman execution environment"
     image: "{{ pah_name }}/{{ image_name }}:{{ ansible_date_time.iso8601_basic_short }}"
   delegate_to: localhost
+
+- name: Create repo in Private Automation Hub
+  ansible.builtin.include_tasks: create_repo.yml
