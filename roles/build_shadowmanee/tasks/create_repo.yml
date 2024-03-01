@@ -13,7 +13,7 @@
     state: absent
     ah_username: "{{ pah_user }}"
     ah_password: "{{ pah_pass }}"
-    ah_host: "{{ lookup('env', 'AH_HOST') }}"
+    ah_host: "{{ pah_name }}"
   delegate_to: localhost
 
 - name: Create repository with distribution for {{ repository }}
@@ -24,7 +24,7 @@
       state: present
     ah_username: "{{ pah_user }}"
     ah_password: "{{ pah_pass }}"
-    ah_host: "{{ lookup('env', 'AH_HOST') }}"
+    ah_host: "{{ pah_name }}"
   delegate_to: localhost
 
 - name: Add collection specific versions to repository
