@@ -30,7 +30,7 @@
 
 - name: Add collection specific versions to repository
   ansible.builtin.uri:
-    url: https://{{ pah_name }}/api/galaxy/content/{{ repository }}/v3/collections/{{ item.split('.')[0] }}/{{ item.split('.')[1].split()[0] }}/versions/{{ item.split('.')[1].split()[-1] }}.{{ item.split('.')[2] }}.{{ item.split('.')[3] | trim }}/copy/{{ repository }}/{{ repository }}/
+    url: https://{{ pah_name }}/api/galaxy/content/{{ repository }}/v3/collections/{{ item.split('.')[0] }}/{{ item.split('.')[1].split()[0] }}/versions/{{ item.split('.')[1].split()[-1] }}.{{ item.split('.')[2] }}.{{ item.split('.')[3] | trim }}/copy/{{ repository }}/{{ repository }}/  # noqa yaml[line-length]
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
     method: POST
