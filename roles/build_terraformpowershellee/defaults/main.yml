@@ -20,6 +20,7 @@ ee_collections:
     version: 1.0.1
   - name: community.vmware
   - name: cloud.terraform
+  - name: community.general
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:
