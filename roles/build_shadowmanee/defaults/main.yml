@@ -52,7 +52,7 @@ ee_collections:
   - name: vyos.vyos
   - name: cisco.ios
   - name: arista.eos
-  # - name: infra.osbuild
+  - name: infra.osbuild
   - name: azure.azcollection
   - name: f5networks.f5_modules
   - name: netscaler.adc
