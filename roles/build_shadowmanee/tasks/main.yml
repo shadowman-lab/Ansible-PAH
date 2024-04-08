@@ -116,3 +116,9 @@
 
 - name: Create repo in Private Automation Hub
   ansible.builtin.include_tasks: create_repo.yml
+
+- name: Delete completed EE to free space
+  containers.podman.podman_image:
+    name: "{{ pah_name }}/{{ image_name }}"
+    state: absent
+    force: true
