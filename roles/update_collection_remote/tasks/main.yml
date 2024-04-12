@@ -115,6 +115,8 @@
         version: '>=2.0.2'
       - name: cisco.meraki
         version: '>=2.16.12'
+      - name: datadog.dd
+        version: '>=5.2.0'
 
 - name: Configure validated collection_remote
   infra.ah_configuration.collection_remote:
