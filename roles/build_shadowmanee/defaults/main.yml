@@ -66,6 +66,7 @@ ee_collections:
   - name: containers.podman
   - name: community.postgresql
   - name: redhat.openshift
+  - name: datadog.dd
 # ee_prepend_base:
 #   - RUN microdnf upgrade -y
 # ee_python_interpreter:
