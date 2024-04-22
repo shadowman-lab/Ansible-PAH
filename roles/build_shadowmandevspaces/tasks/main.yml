@@ -27,8 +27,8 @@
   ansible.builtin.template:
     src: "{{ item }}.j2"
     dest: "{{ dest_dir }}{{ item }}"
-    owner: root
-    group: root
+    owner: ansible
+    group: ansible
     mode: '0644'
   loop:
     - ansible.cfg
