@@ -77,7 +77,7 @@
 - name: Build and push devee
   containers.podman.podman_image:
     name: "towerpah.shadowman.dev/devee:latest"
-    path: /home/adworjan/ansible/builder/creatoree
+    path: /home/ansible/ansible/builder/creatoree
     push: true
     username: "{{ pah_user }}"
     password: "{{ pah_pass }}"
