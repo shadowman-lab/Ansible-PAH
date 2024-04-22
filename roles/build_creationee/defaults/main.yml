@@ -1,16 +1,16 @@
 ---
 ee_version: 3
-dest_dir: /home/adworjan/ansible/builder/creation/
+dest_dir: /home/ansible/ansible/builder/creation/
 pah_name: towerpah.shadowman.dev
 image_name: shadowmancreationee
 bindep_file: bindep.txt
 galaxy_requirements_file: requirements.yml
 ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
 ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.16
-galaxy_keyring: /home/adworjan/ansible/builder/creation/fullkeyring.kbx
+galaxy_keyring: /home/ansible/ansible/builder/creation/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
 ee_build_files:
-  - src: /home/adworjan/ansible/builder/creation/ansible.cfg
+  - src: /home/ansible/ansible/builder/creation/ansible.cfg
     dest: configs
 ee_bindep:
   - sshpass [platform:rpm]

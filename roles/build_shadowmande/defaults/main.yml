@@ -1,6 +1,6 @@
 ---
 ee_version: 3
-dest_dir: /home/adworjan/ansible/builder/shadowmande/
+dest_dir: /home/ansible/ansible/builder/shadowmande/
 pah_name: towerpah.shadowman.dev
 image_name: shadowmande
 bindep_file: bindep.txt
@@ -8,10 +8,10 @@ python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
 ee_base_image: towerpah.shadowman.dev/ansible-automation-platform-24/de-minimal-rhel8:latest
 ee_base_sig_name: registry.redhat.io/ansible-automation-platform-24/de-minimal-rhel8:latest
-galaxy_keyring: /home/adworjan/ansible/builder/shadowmande/fullkeyring.kbx
+galaxy_keyring: /home/ansible/ansible/builder/shadowmande/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
 ee_build_files:
-  - src: /home/adworjan/ansible/builder/shadowmande/ansible.cfg
+  - src: /home/ansible/ansible/builder/shadowmande/ansible.cfg
     dest: configs
 ee_bindep:
   - pkgconf-pkg-config [platform:rpm]

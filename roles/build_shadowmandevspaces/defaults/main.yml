@@ -1,6 +1,6 @@
 ---
 ee_version: 3
-dest_dir: /home/adworjan/ansible/builder/shadowmaneedev/
+dest_dir: /home/ansible/ansible/builder/shadowmaneedev/
 pah_name: towerpah.shadowman.dev
 image_name: shadowmaneedev
 bindep_file: bindep.txt
@@ -8,14 +8,14 @@ python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
 ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
 ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.16
-galaxy_keyring: /home/adworjan/ansible/builder/shadowmanee/fullkeyring.kbx
+galaxy_keyring: /home/ansible/ansible/builder/shadowmanee/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
 ee_build_files:
-  - src: /home/adworjan/ansible/builder/shadowmaneedev/ansible.cfg
+  - src: /home/ansible/ansible/builder/shadowmaneedev/ansible.cfg
     dest: configs
-  - src: /home/adworjan/ansible/builder/shadowmaneedev/.bashrc
+  - src: /home/ansible/ansible/builder/shadowmaneedev/.bashrc
     dest: configs
-  - src: /home/adworjan/ansible/builder/shadowmaneedev/shells
+  - src: /home/ansible/ansible/builder/shadowmaneedev/shells
     dest: configs
 ee_bindep:
   - python3-jinja2 [platform:rpm]
