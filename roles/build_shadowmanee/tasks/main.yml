@@ -142,3 +142,23 @@
     ah_password: "{{ pah_pass }}"
     ah_host: "{{ pah_name }}"
   when: executionenvironmentinfo.json.data | length > 2
+
+- name: Update Ansible Extension Settings to Update EE with new Tag
+  ansible.builtin.lineinfile:
+    path: /home/adworjan/.local/share/code-server/User/settings.json
+    search_string: '    "ansible.executionEnvironment.image"'
+    line: '    "ansible.executionEnvironment.image": "{{ pah_host }}/{{ image_name }}:{{ ansible_date_time.iso8601_basic_short }}",'
+    owner: adworjan
+    group: adworjan
+    mode: '0644'
+  become: true
+
+- name: Update Ansible Navigator Settings to Update EE with new Tag
+  ansible.builtin.lineinfile:
+    path: /home/adworjan/ansible/playbooks/AnsibleGit/ansible-navigator.yml
+    search_string: '    image:'
+    line: '    image: {{ pah_host }}/{{ image_name }}:{{ ansible_date_time.iso8601_basic_short }}'
+    owner: adworjan
+    group: adworjan
+    mode: '0664'
+  become: true
