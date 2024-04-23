@@ -84,3 +84,23 @@
     name: "{{ pah_name }}/{{ image_name }}"
     state: absent
     force: true
+
+- name: Get all current Execution Environment Images
+  ansible.builtin.uri:
+    url: https://{{ pah_name }}/api/galaxy/v3/plugin/execution-environments/repositories/{{ image_name }}/_content/images/?sort=created_at
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    status_code:
+      - 200
+    force_basic_auth: true
+    validate_certs: false
+  register: executionenvironmentinfo
+
+- name: Delete the image if more than two exist
+  infra.ah_configuration.ah_ee_image:
+    name: "{{ image_name }}:{{ executionenvironmentinfo.json.data[0].tags[0] }}"
+    state: absent
+    ah_username: "{{ pah_user }}"
+    ah_password: "{{ pah_pass }}"
+    ah_host: "{{ pah_name }}"
+  when: executionenvironmentinfo.json.data | length > 2
