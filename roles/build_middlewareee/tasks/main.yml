@@ -95,7 +95,7 @@
     validate_certs: false
   register: executionenvironmentinfo
 
-- name: Delete the image if more than two exist
+- name: Delete the oldest image if more than two exist
   infra.ah_configuration.ah_ee_image:
     name: "{{ image_name }}:{{ executionenvironmentinfo.json.data[0].tags[0] }}"
     state: absent

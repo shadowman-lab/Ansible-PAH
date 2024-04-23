@@ -108,6 +108,28 @@
     state: absent
     force: true
 
+- name: Get all current Dev EE Images
+  ansible.builtin.uri:
+    url: https://{{ pah_name }}/api/galaxy/v3/plugin/execution-environments/repositories/devee/_content/images/?sort=created_at
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    status_code:
+      - 200
+    force_basic_auth: true
+    validate_certs: false
+  register: executionenvironmentinfodevee
+  delegate_to: localhost
+
+- name: Delete the oldest devee images if more than two exist
+  infra.ah_configuration.ah_ee_image:
+    name: "{{ image_name }}:{{ executionenvironmentinfodevee.json.data[0].tags[0] }}"
+    state: absent
+    ah_username: "{{ pah_user }}"
+    ah_password: "{{ pah_pass }}"
+    ah_host: "{{ pah_name }}"
+  delegate_to: localhost
+  when: executionenvironmentinfodevee.json.data | length > 2
+
 - name: Update Execution Environment Version in Controller with new version
   ansible.controller.execution_environment:
     name: "Automation Hub Shadowman execution environment"
@@ -135,7 +157,7 @@
   register: executionenvironmentinfo
   delegate_to: localhost
 
-- name: Delete the image if more than two exist
+- name: Delete the oldest image if more than two exist
   infra.ah_configuration.ah_ee_image:
     name: "{{ image_name }}:{{ executionenvironmentinfo.json.data[0].tags[0] }}"
     state: absent
