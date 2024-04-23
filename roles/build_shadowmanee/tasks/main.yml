@@ -133,6 +133,7 @@
     force_basic_auth: true
     validate_certs: false
   register: executionenvironmentinfo
+  delegate_to: localhost
 
 - name: Delete the image if more than two exist
   infra.ah_configuration.ah_ee_image:
@@ -141,6 +142,7 @@
     ah_username: "{{ pah_user }}"
     ah_password: "{{ pah_pass }}"
     ah_host: "{{ pah_name }}"
+  delegate_to: localhost
   when: executionenvironmentinfo.json.data | length > 2
 
 - name: Update Ansible Extension Settings to Update EE with new Tag
