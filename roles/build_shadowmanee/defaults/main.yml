@@ -12,11 +12,19 @@ repository: shadowman
 # ee_builder_image: towerpah.shadowman.dev/ansible-automation-platform-23/ansible-builder-rhel8:latest
 # ee_builder_sig_name: registry.redhat.io/ansible-automation-platform-23/ansible-builder-rhel8:latest
 # ansible_config: ansible.cfg
-galaxy_keyring: /home/ansible/ansible/builder/shadowmanee/fullkeyring.kbx
+galaxy_keyring: /certs/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
 ee_build_files:
   - src: /home/ansible/ansible/builder/shadowmanee/ansible.cfg
     dest: configs
+  - src: /certs/shadowman_cert.cer
+    dest: certs
+  - src: /certs/shadowman_private.key
+    dest: certs
+  - src: /certs/certificate.pfx
+    dest: certs
+  - src: /certs/service-ca-cert.crt
+    dest: certs
 ee_bindep:
   - python3-jinja2 [platform:rpm]
   - which [platform:rpm]
