@@ -23,7 +23,7 @@ ee_collections:
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:
-  - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
-  - COPY /certs/shadowman_private.key /certs/shadowman_private.key
+  - COPY _build/certs/shadowman_cert.cer /certs/shadowman_cert.cer
+  - COPY _build/certs/shadowman_private.key /certs/shadowman_private.key
   - RUN rm -f /etc/ansible/ansible.cfg
   - RUN microdnf clean all

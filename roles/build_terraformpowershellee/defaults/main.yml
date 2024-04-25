@@ -39,10 +39,10 @@ ee_append_final:
   - RUN /opt/microsoft/powershell/7/pwsh -Command 'Install-Module VMware.PowerCLI -Scope AllUsers -Confirm:$False -Force'
   - RUN /opt/microsoft/powershell/7/pwsh -Command 'Set-PowerCLIConfiguration -Scope AllUsers -ParticipateInCEIP $false -Confirm:$False'
   - RUN /opt/microsoft/powershell/7/pwsh -Command 'Set-PowerCLIConfiguration -Scope AllUsers -InvalidCertificateAction Ignore -Confirm:$False'
-  - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
-  - COPY /certs/shadowman_private.key /certs/shadowman_private.key
-  - COPY /certs/certificate.pfx /certs/certificate.pfx
-  - COPY /certs/service-ca-cert.crt /certs/service-ca-cert.crt
+  - COPY _build/certs/shadowman_cert.cer /certs/shadowman_cert.cer
+  - COPY _build/certs/shadowman_private.key /certs/shadowman_private.key
+  - COPY _build/certs/certificate.pfx /certs/certificate.pfx
+  - COPY _build/certs/service-ca-cert.crt /certs/service-ca-cert.crt
   - RUN microdnf reinstall tzdata -y
   - RUN rm -f /etc/ansible/ansible.cfg
   - RUN microdnf clean all
