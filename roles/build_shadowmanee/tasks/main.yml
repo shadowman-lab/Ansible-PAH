@@ -179,7 +179,7 @@
 
 - name: Update Ansible Navigator Settings to Update EE with new Tag
   ansible.builtin.lineinfile:
-    path: /home/adworjan/ansible/playbooks/AnsibleGit/ansible-navigator.yml
+    path: /home/adworjan/ansible/AnsibleGit/ansible-navigator.yml
     search_string: '    image:'
     line: '    image: {{ pah_host }}/{{ image_name }}:{{ ansible_date_time.iso8601_basic_short }}'
     owner: adworjan
