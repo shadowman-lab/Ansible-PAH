@@ -94,6 +94,7 @@
       - 200
     force_basic_auth: true
     validate_certs: false
+  delegate_to: localhost
   register: executionenvironmentinfo
 
 - name: Delete the oldest image if more than two exist
@@ -103,4 +104,5 @@
     ah_username: "{{ pah_user }}"
     ah_password: "{{ pah_pass }}"
     ah_host: "{{ pah_name }}"
+  delegate_to: localhost
   when: executionenvironmentinfo.json.data | length > 2
