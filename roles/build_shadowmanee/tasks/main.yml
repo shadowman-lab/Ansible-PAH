@@ -167,13 +167,23 @@
   delegate_to: localhost
   when: executionenvironmentinfo.json.data | length > 2
 
-- name: Update Ansible Extension Settings to Update EE with new Tag
+- name: Update Ansible Extension Settings to Update EE with new Tag for code-server
   ansible.builtin.lineinfile:
     path: /home/adworjan/.local/share/code-server/User/settings.json
     search_string: '    "ansible.executionEnvironment.image"'
     line: '    "ansible.executionEnvironment.image": "{{ pah_host }}/{{ image_name }}:{{ ansible_date_time.iso8601_basic_short }}",'
     owner: adworjan
     group: adworjan
+    mode: '0644'
+  become: true
+
+- name: Update Ansible Extension Settings to Update EE with new Tag for VSCode
+  ansible.builtin.lineinfile:
+    path: /home/adworjan/.vscode-server/data/Machine/settings.json
+    search_string: '    "ansible.executionEnvironment.image"'
+    line: '    "ansible.executionEnvironment.image": "{{ pah_host }}/{{ image_name }}:{{ ansible_date_time.iso8601_basic_short }}",'
+    owner: adworjan
+    group: root
     mode: '0644'
   become: true
 
