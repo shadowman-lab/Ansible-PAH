@@ -1,5 +1,5 @@
 # Ansible-PAH
-[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://devspaces.apps.hypershift.shadowman.dev/#https://github.com/shadowman-lab/Ansible-Config)
+[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://devspaces.apps.hypershift.shadowman.dev/#https://github.com/shadowman-lab/Ansible-PAH)
 
 Repo to sync PAH and push new EE
 
