@@ -44,9 +44,10 @@
             - python3-jinja2 [platform:rpm]
             - which [platform:rpm]
             - git [platform:rpm]
+            - sshpass [platform:rpm]
             - libcurl-devel [platform:rpm]
             - gcc [platform:rpm]
-            - python39-devel [platform:rpm]
+            - python3.11-devel [platform:rpm]
             - openssl-devel [platform:rpm]
             - libxml2-devel [platform:rpm]
             - libxslt-devel [platform:rpm]
@@ -90,6 +91,8 @@
               - name: containers.podman
               - name: community.postgresql
               - name: redhat.openshift
+              - name: datadog.dd
+              - name: infra.ah_configuration
         build_steps:
           prepend_builder:
             - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"

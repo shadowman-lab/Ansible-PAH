@@ -6,8 +6,8 @@ image_name: shadowmanee
 bindep_file: bindep.txt
 python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
-ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.15
-ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.15
+ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.16
 repository: shadowman
 # ee_builder_image: towerpah.shadowman.dev/ansible-automation-platform-23/ansible-builder-rhel8:latest
 # ee_builder_sig_name: registry.redhat.io/ansible-automation-platform-23/ansible-builder-rhel8:latest
@@ -29,9 +29,10 @@ ee_bindep:
   - python3-jinja2 [platform:rpm]
   - which [platform:rpm]
   - git [platform:rpm]
+  - sshpass [platform:rpm]
   - libcurl-devel [platform:rpm]
   - gcc [platform:rpm]
-  - python39-devel [platform:rpm]
+  - python3.11-devel [platform:rpm]
   - openssl-devel [platform:rpm]
   - libxml2-devel [platform:rpm]
   - libxslt-devel [platform:rpm]
