@@ -1,0 +1,23 @@
+---
+ee_version: 3
+dest_dir: /home/ansible/ansible/builder/netscalaree/
+pah_name: towerpah.shadowman.dev
+image_name: netscalaree
+bindep_file: bindep.txt
+galaxy_requirements_file: requirements.yml
+ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.16
+galaxy_keyring: /certs/fullkeyring.kbx
+ee_package_manager_path: /usr/bin/microdnf
+ee_build_files:
+  - src: /home/ansible/ansible/builder/netscalaree/ansible.cfg
+    dest: configs
+ee_bindep:
+  - sshpass [platform:rpm]
+ee_collections:
+  - name: netscaler.adc
+ee_prepend_galaxy:
+  - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+ee_append_final:
+  - RUN rm -f /etc/ansible/ansible.cfg
+  - RUN microdnf clean all

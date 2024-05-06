@@ -64,7 +64,6 @@ ee_collections:
   - name: infra.osbuild
   - name: azure.azcollection
   - name: f5networks.f5_modules
-  - name: netscaler.adc
   - name: shadowman.reports
   - name: redhat.rhv
   - name: redhat.satellite
