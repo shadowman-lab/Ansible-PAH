@@ -34,6 +34,7 @@
     - ansible.cfg
     - bindep.txt
     - execution-environment.yml
+    - requirements.txt
     - requirements.yml
 
 - name: Build new EE on version 1 without signature verification
