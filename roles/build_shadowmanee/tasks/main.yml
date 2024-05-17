@@ -76,7 +76,7 @@
 
 - name: Build and push devee
   containers.podman.podman_image:
-    name: "towerpah.shadowman.dev/devee:latest"
+    name: "{{ pah_name }}/{{ dev_image_name }}:latest"
     path: /home/ansible/ansible/builder/creatoree
     push: true
     username: "{{ pah_user }}"
@@ -84,13 +84,13 @@
 
 - name: Create new tag on devee based on date time of creation
   containers.podman.podman_tag:
-    image: "towerpah.shadowman.dev/devee"
+    image: "{{ pah_name }}/{{ dev_image_name }}"
     target_names:
-      - "towerpah.shadowman.dev/devee:{{ ansible_date_time.iso8601_basic_short }}"
+      - "{{ pah_name }}/{{ dev_image_name }}:{{ ansible_date_time.iso8601_basic_short }}"
 
 - name: Push dev EE date and time tag
   containers.podman.podman_image:
-    name: "towerpah.shadowman.dev/devee"
+    name: "{{ pah_name }}/{{ dev_image_name }}"
     tag: "{{ ansible_date_time.iso8601_basic_short }}"
     push: true
     username: "{{ pah_user }}"
@@ -98,19 +98,19 @@
 
 - name: Remove extra tag from dev EE
   containers.podman.podman_image:
-    name: "towerpah.shadowman.dev/devee"
+    name: "{{ pah_name }}/{{ dev_image_name }}"
     tag: "{{ ansible_date_time.iso8601_basic_short }}"
     state: absent
 
 - name: Delete dev EE to free space
   containers.podman.podman_image:
-    name: "towerpah.shadowman.dev/devee"
+    name: "{{ pah_name }}/{{ dev_image_name }}"
     state: absent
     force: true
 
 - name: Get all current Dev EE Images
   ansible.builtin.uri:
-    url: https://{{ pah_name }}/api/galaxy/v3/plugin/execution-environments/repositories/devee/_content/images/?sort=created_at
+    url: https://{{ pah_name }}/api/galaxy/v3/plugin/execution-environments/repositories/{{ dev_image_name }}/_content/images/?sort=created_at
     user: "{{ pah_user }}"
     password: "{{ pah_pass }}"
     status_code:
@@ -122,7 +122,7 @@
 
 - name: Delete the oldest devee images if more than two exist
   infra.ah_configuration.ah_ee_image:
-    name: "{{ image_name }}:{{ executionenvironmentinfodevee.json.data[0].tags[0] }}"
+    name: "{{ dev_image_name }}:{{ executionenvironmentinfodevee.json.data[0].tags[0] }}"
     state: absent
     ah_username: "{{ pah_user }}"
     ah_password: "{{ pah_pass }}"
@@ -171,7 +171,7 @@
   ansible.builtin.lineinfile:
     path: /home/adworjan/.local/share/code-server/User/settings.json
     search_string: '    "ansible.executionEnvironment.image"'
-    line: '    "ansible.executionEnvironment.image": "{{ pah_name }}/{{ image_name }}:{{ ansible_date_time.iso8601_basic_short }}",'
+    line: '    "ansible.executionEnvironment.image": "{{ pah_name }}/{{ dev_image_name }}:{{ ansible_date_time.iso8601_basic_short }}",'
     owner: adworjan
     group: adworjan
     mode: '0644'
@@ -181,7 +181,7 @@
   ansible.builtin.lineinfile:
     path: /home/adworjan/.vscode-server/data/Machine/settings.json
     search_string: '    "ansible.executionEnvironment.image"'
-    line: '    "ansible.executionEnvironment.image": "{{ pah_name }}/{{ image_name }}:{{ ansible_date_time.iso8601_basic_short }}",'
+    line: '    "ansible.executionEnvironment.image": "{{ pah_name }}/{{ dev_image_name }}:{{ ansible_date_time.iso8601_basic_short }}",'
     owner: adworjan
     group: root
     mode: '0644'
@@ -191,7 +191,7 @@
   ansible.builtin.lineinfile:
     path: /home/adworjan/ansible/AnsibleGit/ansible-navigator.yml
     search_string: '    image:'
-    line: '    image: {{ pah_name }}/{{ image_name }}:{{ ansible_date_time.iso8601_basic_short }}'
+    line: '    image: {{ pah_name }}/{{ dev_image_name }}:{{ ansible_date_time.iso8601_basic_short }}'
     owner: adworjan
     group: adworjan
     mode: '0664'
