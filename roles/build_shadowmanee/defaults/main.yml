@@ -98,7 +98,7 @@ ee_append_final:
   - COPY _build/certs/shadowman_private.key /certs/shadowman_private.key
   - COPY _build/certs/certificate.pfx /certs/certificate.pfx
   - COPY _build/certs/service-ca-cert.crt /certs/service-ca-cert.crt
-  - RUN $PYCMD -m pip install --no-cache-dir --upgrade ansible-core # added because of netscalar.adc
+  - RUN $PYCMD -m pip install --no-cache-dir --upgrade 'ansible-core<2.17.0' # added because of netscalar.adc
   - RUN microdnf reinstall tzdata -y
   - RUN rm -f /etc/ansible/ansible.cfg
   - RUN microdnf clean all
