@@ -46,7 +46,6 @@
         dependencies:
           system:
             - which [platform:rpm]
-            - sshpass [platform:rpm]
           python:
             - scp
           galaxy:

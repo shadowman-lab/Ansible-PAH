@@ -23,7 +23,6 @@ ee_build_files:
     dest: certs
 ee_bindep:
   - git [platform:rpm]
-  - sshpass [platform:rpm]
 ee_python:
   - jmespath
 ee_collections:

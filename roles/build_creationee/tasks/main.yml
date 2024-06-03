@@ -32,7 +32,6 @@
     mode: '0644'
   loop:
     - ansible.cfg
-    - bindep.txt
     - execution-environment.yml
     - requirements.txt
     - requirements.yml
