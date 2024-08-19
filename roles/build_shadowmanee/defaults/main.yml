@@ -76,6 +76,7 @@ ee_collections:
   - name: community.postgresql
   - name: redhat.openshift
   - name: datadog.dd
+  - name: dynatrace.oneagent
   - name: infra.ah_configuration
 # ee_prepend_base:
 #   - RUN microdnf upgrade -y
