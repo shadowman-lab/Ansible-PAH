@@ -81,6 +81,8 @@ ee_append_final:
   - RUN pip3 install /tmp/citrix/deps/nitro-python-1.0_kamet.tar.gz
   - RUN rm -rf /tmp/citrix/
   - RUN rm -f /etc/ansible/ansible.cfg
+  - RUN /usr/bin/microdnf install python3.11 python3.11-pip -y
+  - RUN /usr/bin/python3.11 -m pip install --no-cache-dir ansible-dev-tools
   - RUN microdnf clean all
   - RUN dnf clean all
 # Provide shell and bash set up for the workspace
