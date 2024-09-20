@@ -43,9 +43,6 @@ ee_python:
   - pyats
   - genie
   - python-jenkins
-  - pan-os-python==1.8.0
-  - pan-python==0.17.0
-  - panos-upgrade-assurance==0.3.0
 ee_collections:
   - name: ansible.windows
   - name: community.windows
