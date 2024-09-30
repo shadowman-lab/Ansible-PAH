@@ -6,8 +6,8 @@ image_name: shadowmande
 bindep_file: bindep.txt
 python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
-ee_base_image: towerpah.shadowman.dev/ansible-automation-platform-24/de-minimal-rhel8:latest
-ee_base_sig_name: registry.redhat.io/ansible-automation-platform-24/de-minimal-rhel8:latest
+ee_base_image: towerpah.shadowman.dev/ansible-automation-platform-25/de-minimal-rhel8:latest
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform-25/de-minimal-rhel8:latest
 galaxy_keyring: /certs/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
 ee_build_files:
@@ -23,8 +23,6 @@ ee_bindep:
   - gcc [platform:rpm]
   - python39-devel [platform:rpm]
   # if using RHEL9 DE use - python3-devel [platform:rpm]
-ee_python:
-  - psycopg[binary,pool]
 ee_collections:
   - name: ansible.eda
   - name: redhat.insights_eda
