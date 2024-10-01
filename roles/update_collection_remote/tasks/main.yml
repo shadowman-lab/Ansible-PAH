@@ -117,6 +117,10 @@
         version: '>=5.2.0'
       - name: vmware.vmware
         version: '>=1.0.0'
+      - name: ansible.platform
+        version: '>=2.5.0'
+      - name: ansible.hub
+        version: '>=1.0.0'
 
 - name: Configure validated collection_remote
   ansible.hub.collection_remote:

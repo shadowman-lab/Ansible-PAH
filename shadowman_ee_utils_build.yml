@@ -91,7 +91,7 @@
               - name: community.postgresql
               - name: redhat.openshift
               - name: datadog.dd
-              - name: infra.ah_configuration
+              - name: ansible.hub
         build_steps:
           prepend_builder:
             - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
