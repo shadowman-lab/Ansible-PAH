@@ -15,7 +15,7 @@ ee_collections:
   - name: ansible.controller
     version: 4.5.12
   - name: containers.podman
-  - name: infra.ah_configuration
+  - name: ansible.hub
   - name: infra.controller_configuration
   - name: infra.ee_utilities
 ee_prepend_galaxy:
