@@ -19,3 +19,5 @@ ee_collections:
   - name: infra.ee_utilities
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+ee_append_final:
+  - RUN rm -f /etc/ansible/ansible.cfg
