@@ -121,7 +121,7 @@
   delegate_to: localhost
 
 - name: Delete the oldest devee images if more than two exist
-  infra.ah_configuration.ah_ee_image:
+  ansible.hub.ah_ee_image:
     name: "{{ dev_image_name }}:{{ executionenvironmentinfodevee.json.data[0].tags[0] }}"
     state: absent
     ah_username: "{{ pah_user }}"
@@ -158,7 +158,7 @@
   delegate_to: localhost
 
 - name: Delete the oldest image if more than two exist
-  infra.ah_configuration.ah_ee_image:
+  ansible.hub.ah_ee_image:
     name: "{{ image_name }}:{{ executionenvironmentinfo.json.data[0].tags[0] }}"
     state: absent
     ah_username: "{{ pah_user }}"

@@ -9,7 +9,7 @@
   register: collections
 
 - name: Delete repository if present of {{ repository }}
-  infra.ah_configuration.collection_repository:
+  ansible.hub.collection_repository:
     name: "{{ repository }}"
     state: absent
     ah_username: "{{ pah_user }}"
@@ -18,7 +18,7 @@
   delegate_to: localhost
 
 - name: Create repository with distribution for {{ repository }}
-  infra.ah_configuration.collection_repository:
+  ansible.hub.collection_repository:
     name: "{{ repository }}"
     distribution:
       name: "{{ repository }}"

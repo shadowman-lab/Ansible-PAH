@@ -1,6 +1,6 @@
 ---
 - name: Configure community collection_remote
-  infra.ah_configuration.collection_remote:
+  ansible.hub.collection_remote:
     name: community
     url: https://galaxy.ansible.com/api/
     ah_username: "{{ pah_user }}"
@@ -23,7 +23,7 @@
         version: '>=2.18.0'
 
 - name: Configure rh-certified collection_remote
-  infra.ah_configuration.collection_remote:
+  ansible.hub.collection_remote:
     name: rh-certified
     url: https://console.redhat.com/api/automation-hub/content/published/
     ah_username: "{{ pah_user }}"
@@ -119,7 +119,7 @@
         version: '>=1.0.0'
 
 - name: Configure validated collection_remote
-  infra.ah_configuration.collection_remote:
+  ansible.hub.collection_remote:
     name: validated
     url: https://console.redhat.com/api/automation-hub/content/validated/
     sync_dependencies: false
