@@ -34,4 +34,4 @@ ee_append_final:
   - COPY _build/certs/shadowman_private.key /certs/shadowman_private.key
   - RUN rm -f /etc/ansible/ansible.cfg
   # Temporary fix due to DE issue
-  - ENV PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.11/site-packages
+  - ENV PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.11/site-packages:/usr/local/lib64/python3.11/site-packages
