@@ -34,6 +34,7 @@ ee_collections:
   - name: cloud.terraform
   - name: community.general
   - name: ansible.controller
+    version: 4.5.12
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:
