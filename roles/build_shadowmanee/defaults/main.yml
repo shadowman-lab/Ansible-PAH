@@ -69,7 +69,6 @@ ee_collections:
   - name: redhat.satellite
   - name: redhat.insights
   - name: ansible.controller
-    version: 4.5.12
   - name: paloaltonetworks.panos
   - name: ibm.qradar
   - name: containers.podman

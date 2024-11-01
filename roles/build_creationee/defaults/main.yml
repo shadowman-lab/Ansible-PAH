@@ -13,7 +13,6 @@ ee_build_files:
     dest: configs
 ee_collections:
   - name: ansible.controller
-    version: 4.5.12
   - name: containers.podman
   - name: ansible.hub
   - name: infra.controller_configuration
