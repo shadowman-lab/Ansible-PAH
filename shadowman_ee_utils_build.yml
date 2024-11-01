@@ -19,7 +19,7 @@
     ee_builder_dir: "/home/ansible/ansible/builder/shadowmanee"
     ee_galaxy_keyring: "/certs/fullkeyring.kbx"
     ee_update_base_images: true
-    ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
+    ee_base_image: tower.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
     ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.16
     ee_container_policy: system
     ee_base_registry_username: "{{ pah_user }}"

@@ -1,12 +1,12 @@
 ---
 ee_version: 3
 dest_dir: /home/ansible/ansible/builder/shadowmaneedev/
-pah_name: towerpah.shadowman.dev
+pah_name: tower.shadowman.dev
 image_name: shadowmaneedev
 bindep_file: bindep.txt
 python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
-ee_base_image: towerpah.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
+ee_base_image: tower.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
 ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.16
 galaxy_keyring: /home/ansible/ansible/builder/shadowmanee/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
