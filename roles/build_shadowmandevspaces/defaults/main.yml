@@ -61,6 +61,10 @@ ee_collections:
   - name: redhat.satellite
   - name: redhat.insights
   - name: ansible.controller
+  - name: ansible.hub
+  - name: ansible.eda
+  - name: ansible.platform
+  - name: infra.aap_configuration
   - name: paloaltonetworks.panos
   - name: ibm.qradar
   - name: containers.podman

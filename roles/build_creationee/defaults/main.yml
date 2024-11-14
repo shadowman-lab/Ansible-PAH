@@ -13,10 +13,12 @@ ee_build_files:
     dest: configs
 ee_collections:
   - name: ansible.controller
-  - name: containers.podman
   - name: ansible.hub
-  - name: infra.controller_configuration
+  - name: ansible.eda
+  - name: ansible.platform
+  - name: infra.aap_configuration
   - name: infra.ee_utilities
+  - name: containers.podman
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:
