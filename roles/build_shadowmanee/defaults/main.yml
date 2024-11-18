@@ -35,6 +35,7 @@ ee_bindep:
   - libcurl-devel [platform:rpm]
   - gcc [platform:rpm]
   - python3.11-devel [platform:rpm]
+  - pkgconf-pkg-config [platform:rpm]
   - openssl-devel [platform:rpm]
   - libxml2-devel [platform:rpm]
   - libxslt-devel [platform:rpm]

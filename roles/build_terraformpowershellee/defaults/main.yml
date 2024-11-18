@@ -25,6 +25,7 @@ ee_build_files:
     dest: certs
 ee_bindep:
   - git [platform:rpm]
+  - pkgconf-pkg-config [platform:rpm]
 ee_python:
   - jmespath
 ee_collections:
