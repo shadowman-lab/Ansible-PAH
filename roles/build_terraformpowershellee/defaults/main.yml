@@ -32,16 +32,16 @@ ee_bindep:
 ee_python:
   - jmespath
 ee_collections:
-  - name: vmware.vmware_rest
-    version: 1.0.1
-  - name: community.vmware
+  - name: ansible.controller
+  - name: ansible.eda
+  - name: ansible.hub
+  - name: ansible.platform
   - name: cloud.terraform
   - name: community.general
-  - name: ansible.controller
-  - name: ansible.hub
-  - name: ansible.eda
-  - name: ansible.platform
+  - name: community.vmware
   - name: infra.aap_configuration
+  - name: vmware.vmware_rest
+    version: 1.0.1
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:

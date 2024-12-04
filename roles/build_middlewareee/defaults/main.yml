@@ -16,10 +16,10 @@ ee_build_files:
   - src: /certs/shadowman_private.key
     dest: certs
 ee_collections:
-  - name: redhat.jbcs
-  - name: redhat.eap
-  - name: community.postgresql
   - name: ansible.posix
+  - name: community.postgresql
+  - name: redhat.eap
+  - name: redhat.jbcs
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:

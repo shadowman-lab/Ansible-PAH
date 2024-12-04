@@ -21,8 +21,8 @@ ee_bindep:
   # if using RHEL9 DE use - python3-devel [platform:rpm]
 ee_collections:
   - name: ansible.eda
-  - name: redhat.insights_eda
   - name: dynatrace.event_driven_ansible
+  - name: redhat.insights_eda
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:

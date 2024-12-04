@@ -19,12 +19,12 @@ ee_bindep:
   - python3.11-devel [platform:rpm]
 ee_collections:
   - name: ansible.controller
-  - name: ansible.hub
   - name: ansible.eda
+  - name: ansible.hub
   - name: ansible.platform
+  - name: containers.podman
   - name: infra.aap_configuration
   - name: infra.ee_utilities
-  - name: containers.podman
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:

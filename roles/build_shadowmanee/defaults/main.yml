@@ -46,41 +46,42 @@ ee_python:
   - genie
   - python-jenkins
 ee_collections:
-  - name: ansible.windows
-  - name: community.windows
-  - name: microsoft.ad
-  - name: ansible.posix
-  - name: vmware.vmware_rest
-    version: 1.0.1
+  - name: amazon.aws
+  - name: ansible.controller
+  - name: ansible.eda
+  - name: ansible.hub
   - name: ansible.netcommon
+  - name: ansible.posix
+  - name: ansible.platform
   - name: ansible.utils
+  - name: ansible.windows
+  - name: arista.eos
+  - name: azure.azcollection
+  - name: cisco.ios
+  - name: cloud.terraform
+  - name: community.postgresql
   - name: community.crypto
   - name: community.general
   - name: community.vmware
-  - name: cloud.terraform
-  - name: servicenow.itsm
-  - name: vyos.vyos
-  - name: cisco.ios
-  - name: arista.eos
-  - name: azure.azcollection
-  - name: f5networks.f5_modules
-  - name: netscaler.adc
-  - name: shadowman.reports
-  - name: redhat.rhv
-  - name: redhat.satellite
-  - name: redhat.insights
-  - name: ansible.controller
-  - name: ansible.hub
-  - name: ansible.eda
-  - name: ansible.platform
-  - name: infra.aap_configuration
-  - name: paloaltonetworks.panos
-  - name: ibm.qradar
+  - name: community.windows
   - name: containers.podman
-  - name: community.postgresql
-  - name: redhat.openshift
   - name: datadog.dd
   - name: dynatrace.oneagent
+  - name: f5networks.f5_modules
+  - name: ibm.qradar
+  - name: infra.aap_configuration
+  - name: microsoft.ad
+  - name: netscaler.adc
+  - name: paloaltonetworks.panos
+  - name: redhat.insights
+  - name: redhat.openshift
+  - name: redhat.rhv
+  - name: redhat.satellite
+  - name: servicenow.itsm
+  - name: shadowman.reports
+  - name: vmware.vmware_rest
+    version: 1.0.1
+  - name: vyos.vyos
 # ee_prepend_base:
 #   - RUN microdnf upgrade -y
 # ee_python_interpreter:
