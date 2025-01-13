@@ -41,7 +41,6 @@ ee_collections:
   - name: community.vmware
   - name: infra.aap_configuration
   - name: vmware.vmware_rest
-    version: 1.0.1
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:

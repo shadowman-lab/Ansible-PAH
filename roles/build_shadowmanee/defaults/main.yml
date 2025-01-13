@@ -80,7 +80,6 @@ ee_collections:
   - name: servicenow.itsm
   - name: shadowman.reports
   - name: vmware.vmware_rest
-    version: 1.0.1
   - name: vyos.vyos
 # ee_prepend_base:
 #   - RUN microdnf upgrade -y
