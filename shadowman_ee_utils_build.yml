@@ -96,7 +96,6 @@
               - name: servicenow.itsm
               - name: shadowman.reports
               - name: vmware.vmware_rest
-                version: 1.0.1
               - name: vyos.vyos
         build_files:
           - src: /home/ansible/ansible/builder/shadowmanee/ansible.cfg
