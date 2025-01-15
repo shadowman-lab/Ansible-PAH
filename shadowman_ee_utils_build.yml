@@ -118,7 +118,6 @@
             - COPY /certs/shadowman_private.key /certs/shadowman_private.key
             - COPY /certs/certificate.pfx /certs/certificate.pfx
             - COPY /certs/service-ca-cert.crt /certs/service-ca-cert.crt
-            - RUN $PYCMD -m pip install --no-cache-dir --upgrade 'ansible-core<2.17.0'
             - RUN microdnf reinstall tzdata -y
             - RUN rm -f /etc/ansible/ansible.cfg
             - RUN microdnf clean all
