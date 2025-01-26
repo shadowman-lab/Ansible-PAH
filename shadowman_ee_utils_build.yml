@@ -110,9 +110,9 @@
             dest: certs
         build_steps:
           prepend_builder:
-            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
+            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.17-for-rhel-8-x86_64-rpms"
           prepend_final:
-            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.13-for-rhel-8-x86_64-rpms"
+            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.17-for-rhel-8-x86_64-rpms"
           append_final:
             - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
             - COPY /certs/shadowman_private.key /certs/shadowman_private.key
