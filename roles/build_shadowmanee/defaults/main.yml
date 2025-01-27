@@ -18,7 +18,7 @@ ee_package_manager_path: /usr/bin/microdnf
 # ee_python_interpreter:
 #  python_path: "/usr/bin/python3.11"
 ee_build_files:
-  - src: /home/ansible/ansible/builder/shadowmanee/ansible.cfg
+  - src: /certs/ansible.cfg
     dest: configs
   - src: /certs/shadowman_cert.cer
     dest: certs

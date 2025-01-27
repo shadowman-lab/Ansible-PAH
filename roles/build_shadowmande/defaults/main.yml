@@ -11,7 +11,7 @@ ee_base_sig_name: registry.redhat.io/ansible-automation-platform-25/de-minimal-r
 galaxy_keyring: /certs/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
 ee_build_files:
-  - src: /home/ansible/ansible/builder/shadowmande/ansible.cfg
+  - src: /certs/ansible.cfg
     dest: configs
 ee_bindep:
   - pkgconf-pkg-config [platform:rpm]

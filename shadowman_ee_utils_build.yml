@@ -98,7 +98,7 @@
               - name: vmware.vmware_rest
               - name: vyos.vyos
         build_files:
-          - src: /home/ansible/ansible/builder/shadowmanee/ansible.cfg
+          - src: /certs/ansible.cfg
             dest: configs
           - src: /certs/shadowman_cert.cer
             dest: certs
