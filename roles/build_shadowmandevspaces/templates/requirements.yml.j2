@@ -13,6 +13,9 @@ roles:
 collections:
 {% for item in ee_collections %}
 - name: {{ item.name }}
+{% if item.type is defined %}
+  type: {{ item.type }}
+{% endif %}
 {% if item.version is defined %}
   version: {{ item.version }}
 {% endif %}
