@@ -45,6 +45,7 @@ ee_python:
   - pyats
   - genie
   - python-jenkins
+  - pynautobot
 ee_collections:
   - name: amazon.aws
   - name: ansible.controller
