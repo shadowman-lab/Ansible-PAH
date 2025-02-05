@@ -60,6 +60,7 @@
             - pyats
             - genie
             - python-jenkins
+            - pynautobot
           galaxy:
             collections:
               - name: amazon.aws
@@ -72,6 +73,7 @@
               - name: ansible.utils
               - name: ansible.windows
               - name: arista.eos
+              - name: arubanetworks.aoscx
               - name: azure.azcollection
               - name: cisco.ios
               - name: cloud.terraform
@@ -87,11 +89,12 @@
               - name: ibm.qradar
               - name: infra.aap_configuration
               - name: microsoft.ad
+              - name: netbox.netbox
               - name: netscaler.adc
+              - name: networktocode.nautobot
               - name: paloaltonetworks.panos
               - name: redhat.insights
               - name: redhat.openshift
-              - name: redhat.rhv
               - name: redhat.satellite
               - name: servicenow.itsm
               - name: shadowman.reports
@@ -109,6 +112,8 @@
           - src: /certs/service-ca-cert.crt
             dest: certs
         build_steps:
+          prepend_galaxy:
+            - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
           prepend_builder:
             - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.17-for-rhel-8-x86_64-rpms"
           prepend_final:
