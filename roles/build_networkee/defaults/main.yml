@@ -19,6 +19,7 @@ ee_python:
   - scp
 ee_collections:
   - name: ansible.netcommon
+  - name: ansible.scm
   - name: ansible.utils
   - name: arista.eos
   - name: arubanetworks.aoscx
