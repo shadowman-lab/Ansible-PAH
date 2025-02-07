@@ -13,7 +13,7 @@ ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel
 galaxy_keyring: /certs/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
 ee_build_files:
-  - src: /certs/ansible.cfg
+  - src: /home/ansible/ansible/builder/terraformpowershellee/ansible.cfg
     dest: configs
   - src: /certs/shadowman_cert.cer
     dest: certs

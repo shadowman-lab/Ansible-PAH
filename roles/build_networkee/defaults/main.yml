@@ -1,0 +1,41 @@
+---
+ee_version: 3
+dest_dir: /home/ansible/ansible/builder/networkee/
+pah_name: tower.shadowman.dev
+image_name: networkee
+galaxy_requirements_file: requirements.yml
+ee_base_image: tower.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.16
+galaxy_keyring: /certs/fullkeyring.kbx
+ee_package_manager_path: /usr/bin/microdnf
+ee_build_files:
+  - src: /home/ansible/ansible/builder/networkee/ansible.cfg
+    dest: configs
+ee_python:
+  - pynautobot
+ee_collections:
+  - name: ansible.netcommon
+  - name: ansible.utils
+  - name: arista.eos
+  - name: arubanetworks.aoscx
+  - name: cisco.ios
+  - name: f5networks.f5_modules
+  - name: netbox.netbox
+  - name: netscaler.adc
+  - name: networktocode.nautobot
+  - name: network.acls
+  - name: network.backup
+  - name: network.base
+  - name: network.bgp
+  - name: network.interfaces
+  - name: network.ospf
+  - name: network.telemetry
+  - name: network.vpn
+  - name: paloaltonetworks.panos
+  - name: shadowman.reports
+  - name: vyos.vyos
+ee_prepend_galaxy:
+  - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+ee_append_final:
+  - RUN rm -f /etc/ansible/ansible.cfg
+  - RUN microdnf clean all
