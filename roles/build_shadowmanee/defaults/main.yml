@@ -51,15 +51,11 @@ ee_collections:
   - name: ansible.controller
   - name: ansible.eda
   - name: ansible.hub
-  - name: ansible.netcommon
   - name: ansible.posix
   - name: ansible.platform
   - name: ansible.utils
   - name: ansible.windows
-  - name: arista.eos
-  - name: arubanetworks.aoscx
   - name: azure.azcollection
-  - name: cisco.ios
   - name: cloud.terraform
   - name: community.postgresql
   - name: community.crypto
@@ -69,21 +65,14 @@ ee_collections:
   - name: containers.podman
   - name: datadog.dd
   - name: dynatrace.oneagent
-  - name: f5networks.f5_modules
-  - name: ibm.qradar
   - name: infra.aap_configuration
   - name: microsoft.ad
-  - name: netbox.netbox
-  - name: netscaler.adc
-  - name: networktocode.nautobot
-  - name: paloaltonetworks.panos
   - name: redhat.insights
   - name: redhat.openshift
   - name: redhat.satellite
   - name: servicenow.itsm
   - name: shadowman.reports
   - name: vmware.vmware_rest
-  - name: vyos.vyos
 # ee_prepend_base:
 #   - RUN microdnf upgrade -y
 # ee_python_interpreter:

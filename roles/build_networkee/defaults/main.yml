@@ -13,7 +13,10 @@ ee_build_files:
   - src: /home/ansible/ansible/builder/networkee/ansible.cfg
     dest: configs
 ee_python:
+  - genie
+  - pyats
   - pynautobot
+  - scp
 ee_collections:
   - name: ansible.netcommon
   - name: ansible.utils
@@ -21,6 +24,7 @@ ee_collections:
   - name: arubanetworks.aoscx
   - name: cisco.ios
   - name: f5networks.f5_modules
+  - name: ibm.qradar
   - name: netbox.netbox
   - name: netscaler.adc
   - name: networktocode.nautobot
