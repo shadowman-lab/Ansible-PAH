@@ -24,7 +24,6 @@ ee_collections:
   - name: arubanetworks.aoscx
   - name: cisco.ios
   - name: f5networks.f5_modules
-  - name: ibm.qradar
   - name: netbox.netbox
   - name: netscaler.adc
   - name: networktocode.nautobot
@@ -36,7 +35,6 @@ ee_collections:
   - name: network.ospf
   - name: network.telemetry
   - name: network.vpn
-  - name: paloaltonetworks.panos
   - name: shadowman.reports
   - name: vyos.vyos
 ee_prepend_galaxy:

@@ -65,8 +65,10 @@ ee_collections:
   - name: containers.podman
   - name: datadog.dd
   - name: dynatrace.oneagent
+  - name: ibm.qradar
   - name: infra.aap_configuration
   - name: microsoft.ad
+  - name: paloaltonetworks.panos
   - name: redhat.insights
   - name: redhat.openshift
   - name: redhat.satellite
