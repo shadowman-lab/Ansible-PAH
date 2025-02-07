@@ -41,11 +41,7 @@ ee_bindep:
   - libxml2-devel [platform:rpm]
   - libxslt-devel [platform:rpm]
 ee_python:
-  - scp
-  - pyats
-  - genie
   - python-jenkins
-  - pynautobot
 ee_collections:
   - name: amazon.aws
   - name: ansible.controller
