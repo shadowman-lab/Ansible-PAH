@@ -18,6 +18,7 @@ ee_python:
   - pynautobot
   - scp
 ee_collections:
+  - name: ansible.controller
   - name: ansible.netcommon
   - name: ansible.scm
   - name: ansible.utils
