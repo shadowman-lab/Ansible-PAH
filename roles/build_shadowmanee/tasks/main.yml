@@ -87,6 +87,10 @@
     password: "{{ pah_pass }}"
     build:
       extra_args: "--squash"
+  register: podmandevee_output
+  retries: 10
+  delay: 1
+  until: podmandevee_output.stderr is not defined
 
 - name: Create new tag on devee based on date time of creation
   containers.podman.podman_tag:
@@ -101,6 +105,10 @@
     push: true
     username: "{{ pah_user }}"
     password: "{{ pah_pass }}"
+  register: podmandeveetime_output
+  retries: 10
+  delay: 1
+  until: podmandeveetime_output.stderr is not defined
 
 - name: Remove extra tag from dev EE
   containers.podman.podman_image:
