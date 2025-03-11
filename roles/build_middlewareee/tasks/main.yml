@@ -62,13 +62,9 @@
     push: true
     username: "{{ pah_user }}"
     password: "{{ pah_pass }}"
-  register: podman_output
   loop:
     - "{{ ansible_date_time.iso8601_basic_short }}"
     - latest
-  retries: 10
-  delay: 1
-  until: podman_output.stderr is not defined
 
 - name: Remove extra tag
   containers.podman.podman_image:
