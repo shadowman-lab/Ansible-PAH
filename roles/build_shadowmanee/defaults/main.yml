@@ -64,6 +64,7 @@ ee_collections:
   - name: ibm.qradar
   - name: infra.aap_configuration
   - name: microsoft.ad
+  - name: microsoft.iis
   - name: paloaltonetworks.panos
   - name: redhat.insights
   - name: redhat.openshift
