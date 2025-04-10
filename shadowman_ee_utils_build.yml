@@ -49,6 +49,7 @@
             - which [platform:rpm]
             - git [platform:rpm]
             - libcurl-devel [platform:rpm]
+            - systemd-devel [platform:rpm]
             - gcc [platform:rpm]
             - python3.11-devel [platform:rpm]
             - pkgconf-pkg-config [platform:rpm]
@@ -56,26 +57,18 @@
             - libxml2-devel [platform:rpm]
             - libxslt-devel [platform:rpm]
           python:
-            - scp
-            - pyats
-            - genie
             - python-jenkins
-            - pynautobot
           galaxy:
             collections:
               - name: amazon.aws
               - name: ansible.controller
               - name: ansible.eda
               - name: ansible.hub
-              - name: ansible.netcommon
               - name: ansible.posix
               - name: ansible.platform
               - name: ansible.utils
               - name: ansible.windows
-              - name: arista.eos
-              - name: arubanetworks.aoscx
               - name: azure.azcollection
-              - name: cisco.ios
               - name: cloud.terraform
               - name: community.postgresql
               - name: community.crypto
@@ -85,13 +78,10 @@
               - name: containers.podman
               - name: datadog.dd
               - name: dynatrace.oneagent
-              - name: f5networks.f5_modules
               - name: ibm.qradar
               - name: infra.aap_configuration
               - name: microsoft.ad
-              - name: netbox.netbox
-              - name: netscaler.adc
-              - name: networktocode.nautobot
+              - name: microsoft.iis
               - name: paloaltonetworks.panos
               - name: redhat.insights
               - name: redhat.openshift
@@ -99,7 +89,6 @@
               - name: servicenow.itsm
               - name: shadowman.reports
               - name: vmware.vmware_rest
-              - name: vyos.vyos
         build_files:
           - src: /certs/ansible.cfg
             dest: configs
