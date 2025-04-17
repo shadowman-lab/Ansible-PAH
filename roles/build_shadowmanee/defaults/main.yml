@@ -68,6 +68,7 @@ ee_collections:
   - name: paloaltonetworks.panos
   - name: redhat.insights
   - name: redhat.openshift
+  - name: redhat.openshift_virtualization
   - name: redhat.satellite
   - name: servicenow.itsm
   - name: shadowman.reports
