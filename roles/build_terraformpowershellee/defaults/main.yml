@@ -49,6 +49,7 @@ ee_append_final:
   - RUN dnf install -y terraform
   - RUN dnf install -y https://github.com/PowerShell/PowerShell/releases/download/v{{ version }}/powershell-{{ version }}-1.rh.x86_64.rpm
   - RUN /opt/microsoft/powershell/7/pwsh -Command 'Install-Module VMware.PowerCLI -Scope AllUsers -Confirm:$False -Force'
+  - RUN /opt/microsoft/powershell/7/pwsh -Command 'Install-Module -Name VMware.Vim -RequiredVersion 8.3.0.24145081 -Scope AllUsers -Confirm:$False -Force'
   - RUN /opt/microsoft/powershell/7/pwsh -Command 'Set-PowerCLIConfiguration -Scope AllUsers -ParticipateInCEIP $false -Confirm:$False'
   - RUN /opt/microsoft/powershell/7/pwsh -Command 'Set-PowerCLIConfiguration -Scope AllUsers -InvalidCertificateAction Ignore -Confirm:$False'
   - COPY _build/certs/shadowman_cert.cer /certs/shadowman_cert.cer
