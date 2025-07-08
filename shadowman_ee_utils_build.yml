@@ -47,7 +47,7 @@
           system:
             - python3-jinja2 [platform:rpm]
             - which [platform:rpm]
-            - git [platform:rpm]
+            - git-core [platform:rpm]
             - libcurl-devel [platform:rpm]
             - systemd-devel [platform:rpm]
             - gcc [platform:rpm]
