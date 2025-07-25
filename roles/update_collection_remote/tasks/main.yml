@@ -89,6 +89,8 @@
         version: '>=1.6.0'
       - name: ibm.qradar
         version: '>=4.0.0'
+      - name: juniper.eda
+        version: '>=1.4.4'
       - name: kubernetes.core
         version: '>=6.0.0'
       - name: microsoft.ad
