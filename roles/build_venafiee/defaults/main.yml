@@ -16,6 +16,7 @@ ee_collections:
   - name: ansible.windows
   - name: community.windows
   - name: microsoft.iis
+  - name: venafi.machine_identity
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:
