@@ -1,0 +1,17 @@
+---
+- name: Sync all PAH EE and Remote Repos
+  hosts: localhost
+  gather_facts: false
+  become: false
+  tags: sync
+
+  roles:
+    - sync_ee
+    - sync_repos
+
+- name: Build new venafiee
+  hosts: ansibledev.shadowman.dev
+  tags: buildee
+
+  roles:
+    - build_venafiee
