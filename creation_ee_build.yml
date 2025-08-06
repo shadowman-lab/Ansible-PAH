@@ -1,5 +1,5 @@
 ---
-- name: Sync all PAH EE and Remote Repos
+- name: Sync all PAH EE and Remote Repos for testing
   hosts: localhost
   gather_facts: false
   become: false
