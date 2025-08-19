@@ -21,5 +21,6 @@ ee_collections:
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:
+  - RUN $PYCMD -m pip install --no-cache-dir --upgrade vcert
   - RUN rm -f /etc/ansible/ansible.cfg
   - RUN microdnf clean all
