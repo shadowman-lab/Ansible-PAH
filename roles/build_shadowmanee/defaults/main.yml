@@ -56,7 +56,6 @@ ee_collections:
   - name: community.postgresql
   - name: community.crypto
   - name: community.general
-  - name: community.hashi_vault
   - name: community.vmware
   - name: community.windows
   - name: containers.podman
