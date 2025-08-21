@@ -74,7 +74,7 @@
 
 - name: Update Execution Environment Version in Controller with new version
   ansible.controller.execution_environment:
-    name: "Automation Hub Shadowman Venafi EE"
+    name: "Automation Hub Shadowman Cert EE"
     image: "{{ pah_name }}/{{ image_name }}:{{ ansible_date_time.iso8601_basic_short }}"
   delegate_to: localhost
 

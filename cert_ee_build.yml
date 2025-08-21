@@ -9,9 +9,9 @@
     - sync_ee
     - sync_repos
 
-- name: Build new venafiee
+- name: Build new certee
   hosts: ansibledev.shadowman.dev
   tags: buildee
 
   roles:
-    - build_venafiee
+    - build_certee
