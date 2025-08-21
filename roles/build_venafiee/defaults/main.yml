@@ -18,6 +18,7 @@ ee_collections:
   - name: microsoft.iis
   - name: venafi.machine_identity
   - name: community.crypto
+  - name: community.hashi_vault
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:
