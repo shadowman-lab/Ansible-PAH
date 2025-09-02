@@ -24,6 +24,7 @@ ee_collections:
   - name: dynatrace.event_driven_ansible
   - name: juniper.eda
   - name: redhat.insights_eda
+  - name: servicenow.itsm
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:
