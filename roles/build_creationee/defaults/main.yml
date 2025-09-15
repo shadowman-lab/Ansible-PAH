@@ -19,6 +19,7 @@ ee_bindep:
   - systemd-devel [platform:rpm]
   - gcc [platform:rpm]
   - python3.11-devel [platform:rpm]
+  - sshpass [platform:rpm]
 ee_collections:
   - name: ansible.controller
   - name: ansible.eda
