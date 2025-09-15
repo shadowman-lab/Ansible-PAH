@@ -12,8 +12,6 @@ ee_base_image: tower.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:
 ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.16
 galaxy_keyring: /certs/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
-ee_python_interpreter:
-  python_path: "/usr/bin/python3.11"
 ee_build_files:
   - src: /home/ansible/ansible/builder/terraformpowershellee/ansible.cfg
     dest: configs
@@ -31,7 +29,6 @@ ee_bindep:
   - systemd-devel [platform:rpm]
   - gcc [platform:rpm]
   - python3.11-devel [platform:rpm]
-  - sshpass [platform:rpm]
 ee_python:
   - jmespath
 ee_collections:

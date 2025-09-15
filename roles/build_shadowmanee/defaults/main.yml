@@ -15,8 +15,8 @@ repository: shadowman
 # ansible_config: ansible.cfg
 galaxy_keyring: /certs/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
-ee_python_interpreter:
-  python_path: "/usr/bin/python3.11"
+# ee_python_interpreter:
+#  python_path: "/usr/bin/python3.11"
 ee_build_files:
   - src: /home/ansible/ansible/builder/shadowmanee/ansible.cfg
     dest: configs
@@ -40,7 +40,6 @@ ee_bindep:
   - openssl-devel [platform:rpm]
   - libxml2-devel [platform:rpm]
   - libxslt-devel [platform:rpm]
-  - sshpass [platform:rpm]
 ee_python:
   - python-jenkins
 ee_collections:
