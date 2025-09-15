@@ -10,7 +10,7 @@ ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel
 galaxy_keyring: /certs/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
 ee_python_interpreter:
- python_path: "/usr/bin/python3.11"
+  python_path: "/usrå/bin/python3.11"
 ee_build_files:
   - src: /home/ansible/ansible/builder/creation/ansible.cfg
     dest: configs
