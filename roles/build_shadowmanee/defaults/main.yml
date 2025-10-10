@@ -62,6 +62,7 @@ ee_collections:
   - name: containers.podman
   - name: datadog.dd
   - name: dynatrace.oneagent
+  - name: hashicorp.terraform
   - name: ibm.qradar
   - name: infra.aap_configuration
   - name: microsoft.ad
