@@ -86,6 +86,13 @@
     state: absent
     force: true
 
+- name: Update Decision Environment Version in EDA with new version
+  ansible.eda.decision_environment:
+    name: "Shadowman DE"
+    organization_name: Infrastructure
+    image_url: "{{ pah_name }}/{{ image_name }}:{{ ansible_date_time.iso8601_basic_short }}"
+  delegate_to: localhost
+
 - name: Get all current Execution Environment Images
   ansible.builtin.uri:
     url: https://{{ pah_name }}/api/galaxy/v3/plugin/execution-environments/repositories/{{ image_name }}/_content/images/?sort=created_at
