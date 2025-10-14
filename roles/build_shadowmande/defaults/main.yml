@@ -6,10 +6,12 @@ image_name: shadowmande
 bindep_file: bindep.txt
 python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
-ee_base_image: aap.shadowman.dev/ansible-automation-platform-25/de-minimal-rhel8:latest
-ee_base_sig_name: registry.redhat.io/ansible-automation-platform-25/de-minimal-rhel8:latest
+ee_base_image: aap.shadowman.dev/ansible-automation-platform-26/de-minimal-rhel9:latest
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform-26/de-minimal-rhel9:latest
 galaxy_keyring: /certs/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
+ee_python_interpreter:
+  python_path: "/usr/bin/python3.11"
 ee_build_files:
   - src: /home/ansible/ansible/builder/shadowmande/ansible.cfg
     dest: configs
@@ -18,7 +20,6 @@ ee_bindep:
   - systemd-devel [platform:rpm]
   - gcc [platform:rpm]
   - python3.11-devel [platform:rpm]
-  # if using RHEL9 DE use - python3-devel [platform:rpm]
 ee_collections:
   - name: ansible.eda
   - name: dynatrace.event_driven_ansible
