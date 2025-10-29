@@ -1,0 +1,7 @@
+---
+- name: Login to PAH
+  containers.podman.podman_login:
+    username: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    registry: "{{ lookup('env', 'AH_HOST') }}"
+  when: ee_version == 2 or ee_version == 3

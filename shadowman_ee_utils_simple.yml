@@ -57,5 +57,6 @@
           append_final:
             - RUN rm -f /etc/ansible/ansible.cfg
   roles:
+    - ah_login
     - infra.ee_utilities.ee_builder
     - ah_update_controller

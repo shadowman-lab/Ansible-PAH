@@ -116,5 +116,6 @@
             - RUN rm -f /etc/ansible/ansible.cfg
             - RUN microdnf clean all
   roles:
+    - ah_login
     - infra.ee_utilities.ee_builder
     - ah_update_controller
