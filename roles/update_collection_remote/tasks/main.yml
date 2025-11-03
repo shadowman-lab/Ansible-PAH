@@ -13,6 +13,8 @@
         version: '>=2.26.3'
       - name: community.general
         version: '>=11.0.0'
+      - name: community.hashi_vault
+        version: '>=7.1.0'
       - name: community.postgresql
         version: '>=4.1.0'
       - name: community.vmware
@@ -87,6 +89,8 @@
         version: '>=1.34.1'
       - name: google.cloud
         version: '>=1.6.0'
+      - name: hashicorp.terraform
+        version: '>=1.1.0'
       - name: ibm.qradar
         version: '>=4.0.0'
       - name: juniper.eda
