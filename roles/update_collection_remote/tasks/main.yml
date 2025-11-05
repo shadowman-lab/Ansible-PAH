@@ -10,21 +10,21 @@
       - name: community.aws
         version: '>=10.0.0'
       - name: community.crypto
-        version: '>=2.26.3'
+        version: '>=3.0.5'
       - name: community.general
-        version: '>=11.0.0'
+        version: '>=12.0.0'
       - name: community.hashi_vault
         version: '>=7.1.0'
       - name: community.postgresql
         version: '>=4.1.0'
       - name: community.vmware
-        version: '>=5.7.0'
+        version: '>=6.1.0'
       - name: community.windows
-        version: '>=3.0.0'
+        version: '>=3.0.1'
       - name: containers.podman
-        version: '>=1.16.4'
+        version: '>=1.18.0'
       - name: networktocode.nautobot
-        version: '>=5.12.0'
+        version: '>=5.16.0'
 
 - name: Configure rh-certified collection_remote
   ansible.hub.collection_remote:
@@ -36,19 +36,19 @@
     auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
     requirements:
       - name: amazon.aws
-        version: '>=10.0.0'
+        version: '>=10.1.2'
       - name: ansible.controller
-        version: '>=4.6.14'
+        version: '>=4.7.4'
       - name: ansible.eda
-        version: '>=2.8.0'
+        version: '>=2.10.0'
       - name: ansible.hub
-        version: '>=1.0.0'
+        version: '>=1.0.3'
       - name: ansible.netcommon
-        version: '>=7.2.0'
+        version: '>=8.0.0'
       - name: ansible.platform
-        version: '>=2.5.0'
+        version: '>=2.6.0'
       - name: ansible.posix
-        version: '>=2.0.0'
+        version: '>=2.1.0'
       - name: ansible.receptor
         version: '>=2.0.5'
       - name: ansible.scm
@@ -58,37 +58,37 @@
       - name: ansible.utils
         version: '>=6.0.0'
       - name: ansible.windows
-        version: '>=3.1.0'
+        version: '>=3.2.0'
       - name: ansible.yang
         version: '>=3.0.0'
       - name: arista.eos
-        version: '>=11.0.0'
+        version: '>=12.0.0'
       - name: arubanetworks.aoscx
         version: '>=4.4.0'
       - name: azure.azcollection
-        version: '>=3.5.0'
+        version: '>=3.9.0'
       - name: chocolatey.chocolatey
         version: '>=1.5.3'
       - name: cisco.ios
-        version: '>=10.1.0'
+        version: '>=11.1.1'
       - name: cisco.meraki
         version: '>=2.21.0'
       - name: cloud.common
         version: '>=4.1.0'
       - name: cloud.terraform
-        version: '>=3.1.0'
+        version: '>=4.0.0'
       - name: datadog.dd
-        version: '>=6.1.0'
+        version: '>=6.3.1'
       - name: dynatrace.event_driven_ansible
-        version: '>=1.2.2'
+        version: '>=1.2.3'
       - name: dynatrace.oneagent
         version: '>=1.2.4'
       - name: f5networks.f5_bigip
-        version: '>=3.13.0'
+        version: '>=3.14.0'
       - name: f5networks.f5_modules
-        version: '>=1.34.1'
+        version: '>=1.38.0'
       - name: google.cloud
-        version: '>=1.6.0'
+        version: '>=1.9.0'
       - name: hashicorp.terraform
         version: '>=1.1.0'
       - name: ibm.qradar
@@ -96,21 +96,21 @@
       - name: juniper.eda
         version: '>=1.4.4'
       - name: kubernetes.core
-        version: '>=6.0.0'
+        version: '>=6.1.0'
       - name: microsoft.ad
-        version: '>=1.9.0'
+        version: '>=1.9.2'
       - name: microsoft.iis
-        version: '>=1.0.2'
+        version: '>=1.0.3'
       - name: netbox.netbox
         version: '>=3.21.0'
       - name: netscaler.adc
-        version: '>=2.9.0'
+        version: '>=2.10.1'
       - name: paloaltonetworks.panos
-        version: '>=3.0.0'
+        version: '>=3.2.0'
       - name: redhat.ai
         version: '>=1.0.0'
       - name: redhat.eap
-        version: '>=1.5.7'
+        version: '>=1.5.8'
       - name: redhat.insights
         version: '>=1.3.0'
       - name: redhat.insights_eda
@@ -122,23 +122,23 @@
       - name: redhat.openshift_virtualization
         version: '>=2.2.3'
       - name: redhat.rhel_idm
-        version: '>=1.14.7'
+        version: '>=1.15.1'
       - name: redhat.rhel_system_roles
-        version: '>=1.95.7'
+        version: '>=1.108.6'
       - name: redhat.runtimes_common
         version: '>=1.2.2'
       - name: redhat.satellite
-        version: '>=5.4.0'
+        version: '>=5.7.0'
       - name: redhat.satellite_operations
         version: '>=3.0.0'
       - name: servicenow.itsm
-        version: '>=2.9.3'
+        version: '>=2.13.0'
       - name: vmware.vmware
-        version: '>=2.2.0'
+        version: '>=2.4.0'
       - name: vmware.vmware_rest
-        version: '>=4.7.0'
+        version: '>=4.9.0'
       - name: vyos.vyos
-        version: '>=5.0.0'
+        version: '>=6.0.0'
 
 - name: Configure validated collection_remote
   ansible.hub.collection_remote:
@@ -151,11 +151,11 @@
     auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
     requirements:
       - name: cloud.aws_ops
-        version: '>=3.1.0'
+        version: '>=4.0.0'
       - name: cloud.aws_troubleshooting
-        version: '>=3.0.0'
+        version: '>=4.0.0'
       - name: cloud.azure_ops
-        version: '>=5.0.0'
+        version: '>=6.1.2'
       - name: cloud.gcp_ops
         version: '>=2.0.0'
       - name: cloud.terraform_ops
@@ -165,23 +165,23 @@
       - name: edge.microshift
         version: '>=1.0.3'
       - name: infra.aap_configuration
-        version: '>=3.4.0'
+        version: '>=3.8.0'
       - name: infra.aap_configuration_extended
-        version: '>=1.1.0'
+        version: '>=3.0.0'
       - name: infra.aap_utilities
-        version: '>=2.6.0'
+        version: '>=2.8.0'
       - name: infra.ah_configuration
         version: '>=2.1.0'
       - name: infra.controller_configuration
-        version: '>=3.1.0'
+        version: '>=3.2.0'
       - name: infra.eda_configuration
         version: '>=1.1.0'
       - name: infra.ee_utilities
-        version: '>=4.0.0'
+        version: '>=4.2.0'
       - name: infra.leapp
-        version: '>=1.5.1'
+        version: '>=1.6.1'
       - name: infra.lvm_snapshots
-        version: '>=2.1.1'
+        version: '>=2.1.3'
       - name: infra.middleware_ocpv
         version: '>=1.0.0'
       - name: infra.osbuild
@@ -189,16 +189,16 @@
       - name: network.acls
         version: '>=4.0.0'
       - name: network.backup
-        version: '>=4.0.0'
+        version: '>=5.0.0'
       - name: network.base
-        version: '>=7.0.0'
+        version: '>=8.0.0'
       - name: network.bgp
-        version: '>=7.0.0'
+        version: '>=8.0.0'
       - name: network.interfaces
-        version: '>=6.0.0'
+        version: '>=7.0.0'
       - name: network.ospf
-        version: '>=6.0.0'
+        version: '>=7.0.0'
       - name: network.telemetry
         version: '>=3.0.0'
       - name: network.vpn
-        version: '>=5.0.0'
+        version: '>=6.0.0'
