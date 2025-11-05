@@ -133,6 +133,8 @@
         version: '>=3.0.0'
       - name: servicenow.itsm
         version: '>=2.13.0'
+      - name: venafi.machine_identity
+        version: '>=1.1.1'
       - name: vmware.vmware
         version: '>=2.4.0'
       - name: vmware.vmware_rest
