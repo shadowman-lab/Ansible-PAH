@@ -38,6 +38,7 @@
     ee_registry_dest: "{{ lookup('env', 'AH_HOST') }}"
     ee_registry_username: "{{ pah_user }}"
     ee_registry_password: "{{ pah_pass }}"
+    ee_squash: new
     ee_verbosity: 1
     ee_list:
       - name: shadowmanee
