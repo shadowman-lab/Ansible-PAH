@@ -1,4 +1,12 @@
 ---
+- name: Create the directory if it does not exist
+  ansible.builtin.file:
+    path: "{{ dest_dir }}"
+    state: directory
+    mode: '0755'
+    owner: ansible
+    group: ansible
+
 - name: Discover latest version of Powershell
   ansible.builtin.set_fact:
     version: "{{ (lookup('url', 'https://api.github.com/repos/PowerShell/PowerShell/releases/latest', headers=_github_api_headers, split_lines=False) | from_json).get('tag_name')
