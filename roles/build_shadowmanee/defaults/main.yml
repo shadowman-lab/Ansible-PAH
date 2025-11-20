@@ -64,7 +64,6 @@ ee_collections:
   - name: datadog.dd
   - name: dynatrace.oneagent
   - name: hashicorp.terraform
-  - name: ibm.qradar
   - name: infra.aap_configuration
   - name: microsoft.ad
   - name: microsoft.iis
