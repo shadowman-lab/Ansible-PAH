@@ -37,7 +37,6 @@ ee_collections:
   - name: network.ospf
   - name: network.telemetry
   - name: network.vpn
-  - name: paloaltonetworks.panos
   - name: shadowman.reports
   - name: vyos.vyos
 ee_prepend_galaxy:
