@@ -15,6 +15,7 @@ ee_collections:
   - name: paloaltonetworks.panos
   - name: community.crypto
   - name: ibm.qradar
+  - name: shadowman.reports
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:
