@@ -25,6 +25,8 @@ ee_collections:
   - name: arista.eos
   - name: arubanetworks.aoscx
   - name: cisco.ios
+  - name: community.general
+    version: 11.4.1
   - name: f5networks.f5_modules
   - name: netbox.netbox
   - name: netscaler.adc
