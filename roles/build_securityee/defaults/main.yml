@@ -12,9 +12,10 @@ ee_build_files:
   - src: /home/ansible/ansible/builder/securityee/ansible.cfg
     dest: configs
 ee_collections:
-  - name: paloaltonetworks.panos
+  - name: ansible.windows
   - name: community.crypto
   - name: ibm.qradar
+  - name: paloaltonetworks.panos
   - name: shadowman.reports
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
