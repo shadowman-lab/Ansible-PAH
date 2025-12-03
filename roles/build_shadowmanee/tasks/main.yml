@@ -193,7 +193,7 @@
 
 - name: Update Ansible Extension Settings to Update EE with new Tag for VSCode
   ansible.builtin.lineinfile:
-    path: /home/adworjan/.vscode-server/data/Machine/settings.json
+    path: /home/adworjan/.local/share/code-server/Machine/settings.json
     search_string: '    "ansible.executionEnvironment.image"'
     line: '    "ansible.executionEnvironment.image": "{{ pah_name }}/{{ dev_image_name }}:{{ ansible_date_time.iso8601_basic_short }}",'
     owner: adworjan
