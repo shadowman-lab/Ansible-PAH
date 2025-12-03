@@ -6,7 +6,7 @@
   tags: sync
 
   vars:
-    ee_image: ansible-automation-platform/ee-minimal-rhel8
+    ee_image: ansible-automation-platform/ee-minimal-rhel9
 
   roles:
     - update_collection_remote
@@ -23,8 +23,8 @@
     ee_builder_dir: "/home/ansible/ansible/builder/testee"
     ee_galaxy_keyring: "/certs/fullkeyring.kbx"
     ee_update_base_images: true
-    ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
-    ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.16
+    ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel9:2.16
+    ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel9:2.16
     ee_container_policy: system
     ee_base_registry_username: "{{ pah_user }}"
     ee_base_registry_password: "{{ pah_pass }}"
@@ -53,6 +53,8 @@
               - name: ansible.windows
               - name: community.windows
               - name: microsoft.ad
+          python_interpreter:
+            python_path: "/usr/bin/python3.11"
         build_steps:
           append_final:
             - RUN rm -f /etc/ansible/ansible.cfg

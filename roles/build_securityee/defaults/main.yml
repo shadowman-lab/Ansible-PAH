@@ -4,10 +4,12 @@ dest_dir: /home/ansible/ansible/builder/securityee/
 pah_name: aap.shadowman.dev
 image_name: securityee
 galaxy_requirements_file: requirements.yml
-ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
-ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.16
+ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel9:2.16
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel9:2.16
 galaxy_keyring: /certs/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
+ee_python_interpreter:
+  python_path: "/usr/bin/python3.11"
 ee_build_files:
   - src: /home/ansible/ansible/builder/securityee/ansible.cfg
     dest: configs

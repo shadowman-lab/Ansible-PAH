@@ -1,2 +1,2 @@
 ---
-ee_image: ansible-automation-platform/ee-minimal-rhel8
+ee_image: ansible-automation-platform/ee-minimal-rhel9

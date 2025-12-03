@@ -6,7 +6,7 @@
   tags: sync
 
   vars:
-    ee_image: ansible-automation-platform/ee-minimal-rhel8
+    ee_image: ansible-automation-platform/ee-minimal-rhel9
 
   roles:
     - update_collection_remote
@@ -23,8 +23,8 @@
     ee_builder_dir: "/home/ansible/ansible/builder/shadowmanee"
     ee_galaxy_keyring: "/certs/fullkeyring.kbx"
     ee_update_base_images: true
-    ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel8:2.16
-    ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.16
+    ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel9:2.16
+    ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel9:2.16
     ee_container_policy: system
     ee_base_registry_username: "{{ pah_user }}"
     ee_base_registry_password: "{{ pah_pass }}"
@@ -45,6 +45,8 @@
         alt_name: "Automation Hub Shadowman execution environment"
         tag: "{{ ansible_date_time.iso8601_basic_short }}"
         dependencies:
+          python_interpreter:
+            python_path: "/usr/bin/python3.11"
           system:
             - python3-jinja2 [platform:rpm]
             - which [platform:rpm]
@@ -106,9 +108,9 @@
           prepend_galaxy:
             - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
           prepend_builder:
-            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.17-for-rhel-8-x86_64-rpms"
+            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.20-for-rhel-9-x86_64-rpms"
           prepend_final:
-            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.17-for-rhel-8-x86_64-rpms"
+            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.20-for-rhel-9-x86_64-rpms"
           append_final:
             - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
             - COPY /certs/shadowman_private.key /certs/shadowman_private.key

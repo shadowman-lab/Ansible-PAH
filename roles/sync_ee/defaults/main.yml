@@ -1,4 +1,4 @@
 ---
 pah_name: aap.shadowman.dev
-ee_base_image: ansible-automation-platform/ee-minimal-rhel8
+ee_base_image: ansible-automation-platform/ee-minimal-rhel9
 builder_image: ansible-automation-platform-23/ansible-builder-rhel8
