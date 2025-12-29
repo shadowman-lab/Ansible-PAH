@@ -40,7 +40,6 @@ ee_collections:
   - name: ansible.platform
   - name: cloud.terraform
   - name: community.general
-    version: 11.4.1
   - name: community.vmware
   - name: hashicorp.terraform
   - name: infra.aap_configuration

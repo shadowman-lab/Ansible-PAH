@@ -7,8 +7,8 @@ dev_image_name: devee
 bindep_file: bindep.txt
 python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
-ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel9:2.16
-ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel9:2.16
+ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel9:2.18
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel9:2.18
 repository: shadowman
 # ee_builder_image: towerpah.shadowman.dev/ansible-automation-platform-23/ansible-builder-rhel8:latest
 # ee_builder_sig_name: registry.redhat.io/ansible-automation-platform-23/ansible-builder-rhel8:latest
@@ -56,7 +56,6 @@ ee_collections:
   - name: community.postgresql
   - name: community.crypto
   - name: community.general
-    version: 11.4.1
   - name: community.hashi_vault
   - name: community.vmware
   - name: community.windows

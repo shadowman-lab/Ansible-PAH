@@ -17,7 +17,6 @@ ee_collections:
   - name: ansible.windows
   - name: community.crypto
   - name: community.general
-    version: 11.4.1
   - name: ibm.qradar
   - name: paloaltonetworks.panos
   - name: shadowman.reports
