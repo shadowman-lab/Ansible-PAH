@@ -5,8 +5,8 @@ pah_name: aap.shadowman.dev
 image_name: networkee
 galaxy_requirements_file: requirements.yml
 python_requirements_file: requirements.txt
-ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel9:2.16
-ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel9:2.16
+ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel9:2.18
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel9:2.18
 galaxy_keyring: /certs/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
 ee_python_interpreter:
