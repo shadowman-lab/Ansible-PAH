@@ -188,6 +188,8 @@
         version: '>=1.0.0'
       - name: infra.osbuild
         version: '>=2.3.0'
+      - name: infra.windows_ops
+        version: '>=1.2.0'
       - name: network.acls
         version: '>=4.0.0'
       - name: network.backup

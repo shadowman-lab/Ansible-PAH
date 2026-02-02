@@ -64,6 +64,7 @@ ee_collections:
   - name: dynatrace.oneagent
   - name: hashicorp.terraform
   - name: infra.aap_configuration
+  - name: infra.windows_ops
   - name: microsoft.ad
   - name: microsoft.iis
   - name: redhat.insights
