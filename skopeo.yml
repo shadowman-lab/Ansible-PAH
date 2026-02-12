@@ -1,0 +1,25 @@
+---
+- name: Use Skopeo to move EEs
+  hosts: ansibledev.shadowman.dev
+  gather_facts: false
+
+  vars:
+    hub_source: aap.shadowman.dev
+    hub_dest: shadowman-aap.apps.ocp.shadowman.dev
+
+  tasks:
+    - name: Push EE image to Automation Hub registry
+      ansible.builtin.command: skopeo copy --retry-times 5 \
+              --src-creds {{ aap_hub_username }}:{{ aap_hub_password }} \
+              docker://{{ hub_source }}/{{ item }} \
+              --dest-creds {{ aap_hub_username }}:{{ aap_hub_password }} \
+              docker://{{ hub_dest }}/{{ item }}
+      register: result
+      changed_when: result.rc == 0
+      loop:
+        - shadowmanee:20260211T083720
+        - certee:20251229T100717
+        - middlewareee:20260207T070228
+        - networkee:20260207T080229
+        - securityee:20260207T083147
+        - terraformpowershellee:20260207T053130
