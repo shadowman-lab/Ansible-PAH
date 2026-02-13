@@ -8,6 +8,13 @@
     hub_dest: shadowman-aap.apps.ocp.shadowman.dev
 
   tasks:
+
+    - name: Ensure skopeo installed
+      ansible.builtin.dnf:
+        name: skopeo
+        state: present
+      become: true
+
     - name: Push EE image to Automation Hub registry
       ansible.builtin.command: skopeo copy --retry-times 5 \
               --src-creds {{ aap_hub_username }}:{{ aap_hub_password }} \
