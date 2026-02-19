@@ -1,0 +1,7 @@
+---
+- name: Build new shadowman nmap ee
+  hosts: ansibledev.shadowman.dev
+  tags: buildee
+
+  roles:
+    - build_nmapee
