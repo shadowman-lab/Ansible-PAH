@@ -24,4 +24,4 @@ ee_prepend_galaxy:
 ee_append_final:
   - RUN rm -f /etc/ansible/ansible.cfg
   - RUN microdnf clean all
-  - LABEL io.containers.capabilities="CAP_NET_RAW,CAP_NET_ADMIN"
+  - LABEL io.containers.capabilities="CAP_NET_RAW"
