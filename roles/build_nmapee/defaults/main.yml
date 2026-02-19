@@ -16,6 +16,7 @@ ee_build_files:
     dest: configs
 ee_bindep:
   - nmap [platform:rpm]
+  - sudo [platform:rpm]
 ee_collections:
   - name: community.general
 ee_prepend_galaxy:
