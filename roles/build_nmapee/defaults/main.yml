@@ -24,3 +24,5 @@ ee_prepend_galaxy:
 ee_append_final:
   - RUN rm -f /etc/ansible/ansible.cfg
   - RUN microdnf clean all
+  - CAP_ADD CAP_NET_RAW
+  - CAP_ADD NET_RAW
