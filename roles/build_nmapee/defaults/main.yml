@@ -19,6 +19,7 @@ ee_bindep:
   - sudo [platform:rpm]
 ee_collections:
   - name: community.general
+  - name: ansible.windows
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:
