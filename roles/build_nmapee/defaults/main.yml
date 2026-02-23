@@ -20,6 +20,7 @@ ee_bindep:
 ee_collections:
   - name: community.general
   - name: ansible.windows
+  - name: servicenow.itsm
 ee_prepend_galaxy:
   - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
 ee_append_final:
