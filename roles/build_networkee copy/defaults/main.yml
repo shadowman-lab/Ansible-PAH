@@ -24,7 +24,6 @@ ee_collections:
   - name: ansible.netcommon
   - name: ansible.scm
   - name: ansible.utils
-  - name: arista.avd
   - name: arista.eos
   - name: arubanetworks.aoscx
   - name: cisco.ios
