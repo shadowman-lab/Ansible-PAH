@@ -9,9 +9,9 @@
     - sync_ee
     - sync_repos
 
-- name: Build new networkee
+- name: Build new aristaee
   hosts: ansibledev.shadowman.dev
   tags: buildee
 
   roles:
-    - build_networkee
+    - build_aristaee
