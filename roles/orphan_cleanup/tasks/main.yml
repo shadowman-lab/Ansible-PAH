@@ -1,0 +1,15 @@
+---
+- name: Trigger PAH to clean orphaned content
+  ansible.builtin.uri:
+    url: https://{{ pah_name }}/api/galaxy/pulp/api/v3/orphans/cleanup/
+    user: "{{ pah_user }}"
+    password: "{{ pah_pass }}"
+    method: POST
+    body_format: json
+    body:
+      orphan_protection_time: 0
+    status_code:
+      - 200
+      - 202
+    force_basic_auth: true
+    validate_certs: false

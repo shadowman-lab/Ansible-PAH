@@ -1,0 +1,7 @@
+---
+- name: Trigger PAH to clean orphaned content
+  hosts: localhost
+  gather_facts: false
+
+  roles:
+    - orphan_cleanup
