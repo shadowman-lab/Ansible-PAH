@@ -6,12 +6,12 @@ image_name: shadowmaneedev
 bindep_file: bindep.txt
 python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
-ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel9:2.16
-ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel9:2.16
+ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel9:2.18
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel9:2.18
 galaxy_keyring: /home/ansible/ansible/builder/shadowmanee/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
 ee_python_interpreter:
-  python_path: "/usr/bin/python3.11"
+  python_path: "/usr/bin/python3.12"
 ee_build_files:
   - src: /home/ansible/ansible/builder/shadowmaneedev/ansible.cfg
     dest: configs
@@ -25,7 +25,7 @@ ee_bindep:
   - git [platform:rpm]
   - libcurl-devel [platform:rpm]
   - gcc [platform:rpm]
-  - python39-devel [platform:rpm]
+  - python3.12-devel [platform:rpm]
   - openssl-devel [platform:rpm]
   - libxml2-devel [platform:rpm]
   - libxslt-devel [platform:rpm]

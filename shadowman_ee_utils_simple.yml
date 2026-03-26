@@ -54,7 +54,7 @@
               - name: community.windows
               - name: microsoft.ad
           python_interpreter:
-            python_path: "/usr/bin/python3.11"
+            python_path: "/usr/bin/python3.12"
         build_steps:
           append_final:
             - RUN rm -f /etc/ansible/ansible.cfg

@@ -46,7 +46,7 @@
         tag: "{{ ansible_date_time.iso8601_basic_short }}"
         dependencies:
           python_interpreter:
-            python_path: "/usr/bin/python3.11"
+            python_path: "/usr/bin/python3.12"
           system:
             - python3-jinja2 [platform:rpm]
             - which [platform:rpm]
@@ -54,7 +54,7 @@
             - libcurl-devel [platform:rpm]
             - systemd-devel [platform:rpm]
             - gcc [platform:rpm]
-            - python3.11-devel [platform:rpm]
+            - python3.12-devel [platform:rpm]
             - pkgconf-pkg-config [platform:rpm]
             - openssl-devel [platform:rpm]
             - libxml2-devel [platform:rpm]
