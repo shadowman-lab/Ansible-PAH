@@ -70,7 +70,6 @@ ee_collections:
   - name: redhat.insights
   - name: redhat.openshift
   - name: redhat.openshift_virtualization
-  - name: redhat.rhel_idm
   - name: redhat.satellite
   - name: servicenow.itsm
   - name: shadowman.reports
