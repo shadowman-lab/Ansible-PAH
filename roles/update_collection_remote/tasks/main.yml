@@ -91,6 +91,8 @@
         version: '>=1.9.0'
       - name: hashicorp.terraform
         version: '>=1.1.0'
+      - name: hashicorp.vault
+        version: '>=1.2.0'
       - name: ibm.qradar
         version: '>=4.0.0'
       - name: juniper.eda

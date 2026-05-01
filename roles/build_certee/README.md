@@ -48,7 +48,7 @@ Role Variables
   - Default: `[{'src': '/home/ansible/ansible/builder/certee/ansible.cfg', 'dest': 'configs'}]`
 
 * **ee_collections**: Configuration parameter for build_certee
-  - Default: `[{'name': 'ansible.posix'}, {'name': 'ansible.windows'}, {'name': 'community.windows'}, {'name': 'microsoft.iis'}, {'name': 'venafi.machine_identity'}, {'name': 'community.crypto'}, {'name': 'community.hashi_vault'}]`
+  - Default: `[{'name': 'ansible.posix'}, {'name': 'ansible.windows'}, {'name': 'community.windows'}, {'name': 'microsoft.iis'}, {'name': 'venafi.machine_identity'}, {'name': 'community.crypto'}, {'name': 'hashicorp.vault'}]`
 
 * **ee_prepend_galaxy**: Configuration parameter for build_certee
   - Default: `['ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg']`
