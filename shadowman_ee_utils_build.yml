@@ -107,9 +107,9 @@
           prepend_galaxy:
             - ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg
           prepend_builder:
-            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.20-for-rhel-9-x86_64-rpms"
+            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.21-for-rhel-9-x86_64-rpms"
           prepend_final:
-            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.20-for-rhel-9-x86_64-rpms"
+            - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.21-for-rhel-9-x86_64-rpms"
           append_final:
             - COPY /certs/shadowman_cert.cer /certs/shadowman_cert.cer
             - COPY /certs/shadowman_private.key /certs/shadowman_private.key

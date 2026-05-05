@@ -72,10 +72,10 @@ Role Variables
   - Default: `['ADD _build/configs/ansible.cfg /etc/ansible/ansible.cfg']`
 
 * **ee_prepend_builder**: Configuration parameter for build_shadowmanee
-  - Default: `['ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.20-for-rhel-9-x86_64-rpms"']`
+  - Default: `['ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.21-for-rhel-9-x86_64-rpms"']`
 
 * **ee_prepend_final**: - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.17-for-rhel-8-x86_64-rpms --disablerepo=ubi-8-baseos-rpms --disablerepo=ubi-8-appstream-rpms --disablerepo=ubi-8-codeready-builder-rpms-8-x86_64"
-  - Default: `['ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.20-for-rhel-9-x86_64-rpms"']`
+  - Default: `['ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.21-for-rhel-9-x86_64-rpms"']`
 
 * **ee_append_final**: - ENV PKGMGR_OPTS "--nodocs --setopt install_weak_deps=0 --enablerepo=rhocp-4.17-for-rhel-8-x86_64-rpms --disablerepo=ubi-8-baseos-rpms --disablerepo=ubi-8-appstream-rpms --disablerepo=ubi-8-codeready-builder-rpms-8-x86_64"
   - Default: `['COPY _build/certs/shadowman_cert.cer /certs/shadowman_cert.cer', 'COPY _build/certs/shadowman_private.key /certs/shadowman_private.key', 'COPY _build/certs/certificate.pfx /certs/certificate.pfx', 'COPY _build/certs/service-ca-cert.crt /certs/service-ca-cert.crt', 'RUN microdnf reinstall tzdata -y', 'RUN rm -f /etc/ansible/ansible.cfg', 'RUN microdnf clean all']`
