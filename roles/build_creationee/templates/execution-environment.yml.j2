@@ -31,7 +31,8 @@ ansible_config: '{{ ansible_config }}'
       (ee_ansible_runner is defined and ee_ansible_runner|length ) or
       (ee_python_interpreter is defined and ee_python_interpreter|length ) or
         (ee_python is defined and ee_python|length ) or
-        (ee_collections is defined and ee_collections|length) %}
+        (ee_collections is defined and ee_collections|length) or
+        (ee_exclude is defined and ee_exclude|length) %}
 dependencies:
 {% if ee_ansible_core is defined %}
 {%      if ee_ansible_core|length %}
@@ -69,6 +70,12 @@ dependencies:
 {% if ee_bindep is defined %}
 {%      if ee_bindep|length %}
   system: {{ bindep_file }}
+{%      endif %}
+{% endif %}
+{% if ee_exclude is defined %}
+{%      if ee_exclude|length %}
+  exclude:
+{{ ee_exclude | to_nice_yaml | indent(4,true) }}
 {%      endif %}
 {% endif %}
 {% endif %}
