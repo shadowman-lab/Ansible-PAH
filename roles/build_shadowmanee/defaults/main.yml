@@ -73,6 +73,7 @@ ee_collections:
   - name: redhat.satellite
   - name: servicenow.itsm
   - name: shadowman.reports
+  - name: splunk.enterprise
   - name: vmware.vmware_rest
 # ee_prepend_base:
 #   - RUN microdnf upgrade -y
