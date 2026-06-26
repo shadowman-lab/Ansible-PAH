@@ -42,6 +42,7 @@ ee_bindep:
   - libxslt-devel [platform:rpm]
 ee_python:
   - python-jenkins
+  - requests<2.34.0
 ee_collections:
   - name: amazon.aws
   - name: ansible.controller
