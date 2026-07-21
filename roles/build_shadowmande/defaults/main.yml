@@ -6,8 +6,8 @@ image_name: shadowmande
 bindep_file: bindep.txt
 python_requirements_file: requirements.txt
 galaxy_requirements_file: requirements.yml
-ee_base_image: aap.shadowman.dev/ansible-automation-platform-26/de-minimal-rhel9:latest
-ee_base_sig_name: registry.redhat.io/ansible-automation-platform-26/de-minimal-rhel9:latest
+ee_base_image: aap.shadowman.dev/ansible-automation-platform-27/de-minimal-rhel9:latest
+ee_base_sig_name: registry.redhat.io/ansible-automation-platform-27/de-minimal-rhel9:latest
 galaxy_keyring: /certs/fullkeyring.kbx
 ee_package_manager_path: /usr/bin/microdnf
 ee_python_interpreter:
