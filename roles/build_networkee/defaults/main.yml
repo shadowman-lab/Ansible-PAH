@@ -27,6 +27,7 @@ ee_collections:
   - name: arista.eos
   - name: arubanetworks.aoscx
   - name: cisco.ios
+  - name: cisco.nxos
   - name: community.general
   - name: f5networks.f5_modules
   - name: netbox.netbox
