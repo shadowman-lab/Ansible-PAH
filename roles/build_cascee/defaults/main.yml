@@ -13,6 +13,17 @@ ee_python_interpreter:
 ee_build_files:
   - src: /home/ansible/ansible/builder/cascee/ansible.cfg
     dest: configs
+# ansible.eda declares Python and system packages for its event sources
+# (journald, Kafka, Azure Service Bus). Those run in decision environments,
+# not in this EE; the ansible.eda modules the CasC collections call need only
+# ansible-core. systemd-python has no wheel for Python 3.12 and failed to
+# compile ("Python.h: No such file or directory"), so leave all of
+# ansible.eda's declared dependencies out of the build.
+ee_exclude:
+  python:
+    - systemd-python
+  all_from_collections:
+    - ansible.eda
 ee_collections:
   - name: ansible.platform
   - name: ansible.controller
