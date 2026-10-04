@@ -3,6 +3,10 @@ ee_version: 3
 dest_dir: /home/ansible/ansible/builder/cascee/
 pah_name: aap.shadowman.dev
 image_name: cascee
+# Execution environment record in automation controller that points at the
+# new image, and the registry credential it uses to pull from PAH.
+ee_controller_name: Automation Hub Shadowman CasC EE
+ee_registry_credential: Automation Hub Container Registry
 galaxy_requirements_file: requirements.yml
 ee_base_image: aap.shadowman.dev/ansible-automation-platform/ee-minimal-rhel9:2.18
 ee_base_sig_name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel9:2.18

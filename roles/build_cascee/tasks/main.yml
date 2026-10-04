@@ -83,8 +83,12 @@
 
 - name: Update Execution Environment Version in Controller with new version
   ansible.controller.execution_environment:
-    name: "Automation Hub Shadowman CasC EE"
+    name: "{{ ee_controller_name }}"
     image: "{{ pah_name }}/{{ image_name }}:{{ ansible_date_time.iso8601_basic_short }}"
+    # Without a registry credential the execution nodes cannot pull the image
+    # from private automation hub, and jobs fail with "requested access to
+    # the resource is denied".
+    credential: "{{ ee_registry_credential }}"
   delegate_to: localhost
 
 - name: Delete completed EE to free space
