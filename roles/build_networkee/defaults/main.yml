@@ -19,6 +19,7 @@ ee_python:
   - pyats
   - pynautobot
   - scp
+  - cryptography<50.0.0
 ee_collections:
   - name: ansible.controller
   - name: ansible.netcommon
